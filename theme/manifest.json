@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "OLED Black Theme (Edge frame)",
+  "version": "1.0.0",
+  "description": "Pure black Edge window frame, tabs and toolbar for OLED displays.",
+  "theme": {
+    "colors": {
+      "frame": [0, 0, 0],
+      "frame_inactive": [0, 0, 0],
+      "frame_incognito": [0, 0, 0],
+      "frame_incognito_inactive": [0, 0, 0],
+      "toolbar": [0, 0, 0],
+      "tab_text": [255, 255, 255],
+      "tab_background_text": [170, 170, 170],
+      "bookmark_text": [255, 255, 255],
+      "toolbar_button_icon": [230, 230, 230],
+      "omnibox_background": [18, 18, 18],
+      "omnibox_text": [255, 255, 255],
+      "button_background": [0, 0, 0],
+      "ntp_background": [0, 0, 0],
+      "ntp_text": [255, 255, 255],
+      "ntp_link": [120, 170, 255]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="dark"><title>Demo dark UI</title>
+<style>
+ body{margin:0;background:#181818;color:#e8e8e8;font:15px system-ui,sans-serif}
+ header{background:#212121;padding:14px 24px;display:flex;gap:16px;align-items:center;border-bottom:1px solid #333}
+ header .logo{font-weight:700;font-size:18px} header input{flex:1;max-width:420px;background:#121212;border:1px solid #3a3a3a;color:#ddd;border-radius:20px;padding:8px 14px}
+ .wrap{display:flex}
+ nav{width:200px;background:#1c1c1c;min-height:620px;padding:12px}
+ nav a{display:block;padding:9px 12px;border-radius:8px;color:#ddd;text-decoration:none;transition:background .3s}
+ nav a.on{background:#2c2c2c}
+ main{flex:1;padding:20px;display:grid;align-content:start;grid-template-columns:repeat(3,1fr);gap:16px}
+ .card{background:#242424;border-radius:12px;padding:14px;transition:background-color .4s}
+ .card .thumb{height:110px;border-radius:8px;background:linear-gradient(135deg,#3b6ee8,#9b3be8)}
+ .card .inner{background:#2e2e2e;border-radius:8px;padding:8px;margin-top:10px;font-size:13px;color:#bbb}
+ .chips{grid-column:1/-1;display:flex;gap:8px}
+ .chip{background:rgba(255,255,255,.1);padding:6px 12px;border-radius:8px}
+ .chip.sel{background:#f1f1f1;color:#000}
+ .pseudo{position:relative;padding:14px;border-radius:12px;isolation:isolate}
+ .pseudo::before{content:"";position:absolute;inset:0;background:#262626;border-radius:12px;z-index:-1}
+ .tint{background:#0d1117;border:1px solid #30363d;border-radius:12px;padding:14px}
+ .accent{background:#0b2a5c;border-radius:12px;padding:14px}
+ footer{background:#212121;padding:14px 24px;color:#999}
+</style></head><body>
+<header><span class="logo">◆ DarkDemo</span><input value="search…"><span>Sign in</span></header>
+<div class="wrap">
+ <nav><a class="on" href="#">Home</a><a href="#">Trending</a><a href="#">Subscriptions</a><a href="#">Library</a><a href="#">History</a></nav>
+ <main>
+  <div class="chips"><span class="chip sel">All</span><span class="chip">Music</span><span class="chip">Gaming</span><span class="chip">Live</span></div>
+  <div class="card"><div class="thumb"></div><b>Card #242424</b><div class="inner">Nested panel #2e2e2e</div></div>
+  <div class="card"><div class="thumb"></div><b>Card with transition</b><div class="inner">Re-rendered by script</div></div>
+  <div class="pseudo"><b>::before background</b><p>Drawn by a pseudo-element (#262626)</p></div>
+  <div class="tint"><b>Blue-tinted dark</b><p>#0d1117 (GitHub-like)</p></div>
+  <div class="accent"><b>Navy accent</b><p>#0b2a5c – coloured, should stay</p></div>
+  <demo-widget></demo-widget>
+ </main>
+</div>
+<footer>Footer #212121</footer>
+<script>
+ customElements.define('demo-widget',class extends HTMLElement{constructor(){super();const r=this.attachShadow({mode:'closed'});r.innerHTML='<div style="background:#202020;border-radius:12px;padding:14px"><b>Closed shadow DOM</b><p style="background:#2a2a2a;padding:6px;border-radius:6px">Web component #202020</p></div>';}});
+ // simulate a framework re-render that toggles classes on an element with a background transition
+ setTimeout(()=>{document.querySelectorAll('.card')[1].classList.add('hydrated')},1500);
+</script>
+</body></html>
