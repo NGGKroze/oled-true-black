@@ -10,7 +10,7 @@
   const DEFAULTS = {
     enabled: true, threshold: 72, tolerance: 24, borders: false, disabledSites: [], sites: {},
     // experimental
-    expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false, expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true,
+    expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false, expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85,
   };
   const SKIP = new Set(["SCRIPT", "STYLE", "LINK", "META", "HEAD", "TITLE", "IMG", "VIDEO", "CANVAS", "IFRAME", "NOSCRIPT", "SOURCE", "PATH"]);
   const OBS = { childList: true, subtree: true, attributes: true, attributeOldValue: true, attributeFilter: ["class", "style"] };
@@ -49,6 +49,9 @@
     if (cfg.expOverlay) {
       const k = cfg.overlayStrength / 100;
       for (let n = 1; n <= 50; n++) css += `[${OATTR}="${n}"]{background-color:rgba(255,255,255,${((n / 100) * k).toFixed(3)}) !important;}`;
+    }
+    if (cfg.expDim) {
+      css += `img,video,picture,svg image{filter:brightness(${cfg.dimLevel / 100}) !important;}`;
     }
     return css;
   }
@@ -281,21 +284,22 @@
     chain.forEach((p, i) => stripped[i].forEach(([a, v]) => p.setAttribute(a, v)));
 
     const f = (x) => (x ? `rgb(${x.r | 0},${x.g | 0},${x.b | 0}${x.a < 1 ? " /" + (+x.a.toFixed(2)) : ""})` : "—");
+    const statusOf = (x) => {
+      if (!x || x.a === 0) return "transparent";
+      const mx = Math.max(x.r, x.g, x.b), mn = Math.min(x.r, x.g, x.b);
+      if (isDarkGray(x)) return "→ BLACK";
+      if (mn >= 200 && x.a < 0.9) return cfg.expOverlay && x.a <= 0.5 ? "→ softened overlay" : "kept (light translucent overlay)";
+      if (mx > cfg.threshold) return `kept (brightness ${Math.round(mx / 2.55)}% > threshold ${Math.round(cfg.threshold / 2.55)}%)`;
+      if (mx - mn > cfg.tolerance) return `kept (colour ${Math.round((mx - mn) / 2.55)}% > tolerance ${Math.round(cfg.tolerance / 2.55)}%)`;
+      return `kept (opacity ${Math.round(x.a * 100)}%)`;
+    };
     const c = cols[0];
-    const max = c ? Math.max(c.r, c.g, c.b) : 0;
-    const min = c ? Math.min(c.r, c.g, c.b) : 0;
-    const chroma = max - min;
-    let status;
-    if (!c || c.a === 0) status = "transparent";
-    else if (isDarkGray(c)) status = "→ BLACK";
-    else if (min >= 200 && c.a < 0.9) status = cfg.expOverlay && c.a <= 0.5 ? "→ softened overlay" : "kept (light translucent overlay)";
-    else if (max > cfg.threshold) status = `kept (max ${max | 0} > limit ${cfg.threshold})`;
-    else if (chroma > cfg.tolerance) status = `kept (chroma ${chroma | 0} > tolerance ${cfg.tolerance})`;
-    else status = `kept (alpha ${(+c.a.toFixed(2))})`;
+    const status = statusOf(c);
 
     // where does the visible background actually come from? (first non-transparent colour up the tree)
     const vi = cols.findIndex((x) => x && x.a > 0);
-    const visible = vi < 0 ? "—" : vi === 0 ? "(this element)" : `<${chain[vi].tagName.toLowerCase()}> ${f(cols[vi])}`;
+    const visible = vi < 0 ? "—" : vi === 0 ? "(this element)" : `<${chain[vi].tagName.toLowerCase()}> ${f(cols[vi])}  ${statusOf(cols[vi])}`;
+    const now = vi < 0 ? "—" : f(parseColor(getComputedStyle(chain[vi]).backgroundColor));
 
     if (!tip) {
       tip = document.createElement("div");
@@ -306,9 +310,9 @@
       document.documentElement.appendChild(tip);
     }
     tip.textContent =
-      `<${el.tagName.toLowerCase()}>\nbg:      ${f(c)}  ${status}\nvisible: ${visible}\nparent:  ${f(ancestorBg(el))}\nborder:  ${bw ? f(bc) + " " + bw + "px" : "—"}`;
+      `<${el.tagName.toLowerCase()}>   (original site colours)\nbg:      ${f(c)}  ${status}\nvisible: ${visible}\non screen now: ${now}\nparent:  ${f(ancestorBg(el))}\nborder:  ${bw ? f(bc) + " " + bw + "px" : "—"}`;
     tip.style.display = "block";
-    tip.style.left = Math.min(e.clientX + 14, innerWidth - 340) + "px";
+    tip.style.left = Math.min(e.clientX + 14, innerWidth - 460) + "px";
     tip.style.top = Math.min(e.clientY + 14, innerHeight - 100) + "px";
   }
 
@@ -453,6 +457,17 @@
     raw = { ...DEFAULTS, ...stored };
     recompute();
     apply();
+  });
+
+  chrome.runtime.onMessage.addListener((msg, _sender, reply) => {
+    if (!msg || msg.type !== "oled-stats") return;
+    let black = 0, pseudo = 0, roots = 0;
+    for (const root of styles.keys()) {
+      roots++;
+      black += root.querySelectorAll(`[${ATTR}]`).length;
+      pseudo += root.querySelectorAll(`[${PATTR}]`).length;
+    }
+    reply({ active, black, pseudo, shadowRoots: Math.max(0, roots - 1) });
   });
 
   chrome.storage.onChanged.addListener((changes, area) => {

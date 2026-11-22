@@ -22,6 +22,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 - **Per-site control:** turn it off for a site, or give a site its own settings.
 - **Optional black browser frame:** a separate theme for the tabs and toolbar.
 - **Quick toggle:** `Alt+Shift+B`.
+- **Live counter:** the popup shows how many areas on the current page were turned black.
 
 ### Experimental options
 
@@ -31,7 +32,8 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 - **Soften light overlays:** makes faint white tints (description boxes, chips) closer to black.
 - **Hover hint:** buttons and list rows light up faintly when you point at them.
 - **Translucent dark layers:** also catches partly see-through dark grays.
-- **Inspector:** hold `Alt` and move the mouse to see why an element did or didn't turn black.
+- **Dim images & video:** slightly darkens pictures and videos so they don't glare against the black page.
+- **Inspector:** hold `Alt` and move the mouse. It shows the site's original colours, where the visible background comes from, whether it turns black (and if not, why), and what is on screen now.
 - **Debug:** paints detected areas burgundy instead of black.
 
 | Popup | Settings |

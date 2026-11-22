@@ -3,8 +3,10 @@ const $ = (id) => document.getElementById(id);
 
 chrome.storage.sync.get(DEFAULTS, async (cfg) => {
   let host = "";
+  let tabId = null;
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    tabId = tab.id;
     const u = new URL(tab.url);
     if (u.protocol === "http:" || u.protocol === "https:") host = u.hostname;
   } catch (e) {}
@@ -67,6 +69,18 @@ chrome.storage.sync.get(DEFAULTS, async (cfg) => {
     chrome.storage.sync.set({ sites: cfg.sites });
     render();
   };
+
+  const stats = () => {
+    if (tabId == null || !host) return;
+    chrome.tabs.sendMessage(tabId, { type: "oled-stats" }, { frameId: 0 }, (r) => {
+      if (chrome.runtime.lastError || !r) { $("stats").textContent = "Reload the page to activate on it."; return; }
+      $("stats").textContent = r.active
+        ? `On this page: ${r.black} areas turned black` + (r.pseudo ? `, ${r.pseudo} pseudo-layers` : "") + (r.shadowRoots ? ` (incl. ${r.shadowRoots} web components)` : "") + "."
+        : "Not active on this page.";
+    });
+  };
+  stats();
+  setInterval(stats, 1500);
 
   $("more").onclick = (e) => { e.preventDefault(); chrome.runtime.openOptionsPage(); };
   render();

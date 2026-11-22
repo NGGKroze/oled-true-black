@@ -65,8 +65,15 @@
   </div>
   <span class="hint">How much of the original tint is kept. 100% = unchanged, 30% = faint, 0% = fully transparent (card disappears into black).</span>
 
+  <label class="row">Dim images &amp; video <input type="checkbox" data-key="expDim"></label>
+  <span class="hint">Slightly darkens pictures and videos, so bright thumbnails don't glare against the black page and static bright spots wear the OLED panel less.</span>
+  <div class="slider"><span class="name">Image brightness</span> <span><b id="dimLevelVal"></b></span>
+    <input type="range" data-key="dimLevel" min="50" max="100">
+  </div>
+  <span class="hint">100% = unchanged. 85% is barely noticeable; 70% is clearly dimmer.</span>
+
   <label class="row">Inspector (hold Alt + move the mouse) <input type="checkbox" data-key="expInspector"></label>
-  <span class="hint">Shows a small box with the element's original colour, where the visible background comes from, and whether it will turn black (and if not, why). Handy for tuning the sliders.</span>
+  <span class="hint">Shows a small box with the site's original colours (before the extension changed them), where the visible background comes from, whether it turns black (and if not, why), and what is on screen now. Handy for tuning the sliders.</span>
 
   <label class="row">Debug: paint detected areas burgundy <input type="checkbox" data-key="expDebug"></label>
   <span class="hint">Shows exactly which areas the extension detects, in burgundy instead of black.</span>
