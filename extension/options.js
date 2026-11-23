@@ -9,8 +9,17 @@ let cfg;
 
 // Edge uses edge://, Chrome and most Chromium browsers accept chrome:// (Brave redirects it)
 const isEdge = /\bEdg\//.test(navigator.userAgent);
+const isFirefox = /\bFirefox\//.test(navigator.userAgent);
 const scheme = isEdge ? "edge" : "chrome";
-$("browserTitle").textContent = isEdge ? "Edge" : "Browser (Chrome / Chromium)";
+$("browserTitle").textContent = isFirefox ? "Firefox" : isEdge ? "Edge" : "Browser (Chrome / Chromium)";
+// Firefox: about: pages instead of chrome:// pages; no force-dark flag
+const FF_PAGES = { "settings/appearance": "about:preferences", "extensions/": "about:addons", "extensions/shortcuts": "about:addons" };
+const pageUrl = (page) => (isFirefox ? FF_PAGES[page] : `${scheme}://${page}`);
+if (isFirefox) {
+  document.querySelectorAll('[data-page="flags/#enable-force-dark"]').forEach((b) => b.remove());
+  document.querySelectorAll('[data-page="extensions/"]').forEach((b) => (b.textContent = "Add-ons"));
+  document.querySelectorAll('[data-page="extensions/shortcuts"]').forEach((b) => (b.textContent = "Shortcuts (gear menu → Manage)"));
+}
 
 const inputs = [...document.querySelectorAll("[data-key]")];
 const isPct = (el) => el.dataset.scale === "pct";
@@ -76,7 +85,7 @@ chrome.storage.sync.get(DEFAULTS, (c) => {
   $("forget").onclick = () => { clearMemory(); $("forget").textContent = "Forgotten ✓"; };
   document.querySelectorAll("[data-page]").forEach((b) => {
     b.onclick = async () => {
-      const url = `${scheme}://${b.dataset.page}`;
+      const url = pageUrl(b.dataset.page);
       try { await navigator.clipboard.writeText(url); } catch (e) {}
       try { await chrome.tabs.create({ url }); $("msg").textContent = ""; }
       catch (e) { $("msg").textContent = `Copied: ${url} — paste it into the address bar.`; }

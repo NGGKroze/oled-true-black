@@ -1,0 +1,15 @@
+OLED True Black for Edge / Chrome / Brave / Opera / Vivaldi
+
+extension\  - the extension (true-black page backgrounds, black new tab, settings)
+theme\      - optional: black browser frame/tabs/toolbar (separate package: a browser theme
+              and an extension cannot be combined)
+
+Install (once per folder):
+  edge://extensions (or chrome://extensions) -> turn on "Developer mode" -> "Load unpacked"
+  -> select the inner folder (extension or theme, the one that contains manifest.json).
+
+After updating files: click "Reload" on the extension.
+Settings: extension icon -> "More settings & browser".
+Quick toggle: Alt+Shift+B.
+Local files: in the extension details enable "Allow access to file URLs".
+Don't want the black new tab? Remove the "chrome_url_overrides" block from extension\manifest.json.

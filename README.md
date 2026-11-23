@@ -1,6 +1,6 @@
 # OLED True Black
 
-A Chromium extension for **Microsoft Edge, Google Chrome, Brave, Opera and Vivaldi** that turns the dark-gray backgrounds of dark-mode websites into **pure black (`#000000`)**.
+A browser extension for **Microsoft Edge, Google Chrome, Brave, Opera, Vivaldi and Firefox** that turns the dark-gray backgrounds of dark-mode websites into **pure black (`#000000`)**.
 
 On an OLED screen a black pixel is switched off completely. Most dark themes use grays like `#121212`, `#181818` or `#212121`, so those pixels stay lit. Turning them black gives deeper contrast, uses less power and reduces burn-in on static UI.
 
@@ -44,14 +44,27 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 |---|---|
 | ![Popup](screenshots/popup.png) | ![Settings](screenshots/options.png) |
 
-## Install (developer mode)
+## Install
 
-1. Download **[OLED-True-Black-v1.10.0.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0.zip)** and unzip it.
+### Edge, Chrome, Brave, Opera, Vivaldi
+
+1. Download **[OLED-True-Black-v1.10.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
 
 After updating the files, click **Reload** on the extension. For local `file://` pages, turn on **Allow access to file URLs** in the extension's details.
+
+### Firefox (140 or newer)
+
+- **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
+- **Try it now (temporary, removed when Firefox restarts):**
+  1. Download **[OLED-True-Black-v1.10.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0-firefox.zip)**.
+  2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
+  3. Select the downloaded zip.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+
+Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
 ## Settings
 
@@ -119,13 +132,13 @@ turns black  ⇔  a ≥ 0.9  and  0 < max ≤ threshold  and  max − min ≤ to
 - **Hover states:** gray hover and highlight colours on recoloured elements turn black too. Use **Hover hint** to bring back a faint highlight.
 - **Images and canvas:** backgrounds drawn as images, on `<canvas>`, or in `<video>` aren't changed.
 - **Closed shadow DOM:** forcing closed shadow roots open could, rarely, confuse a widget. Turn the extension off for that site from the popup.
-- **Firefox:** not supported (different manifest format).
 
 ## Project layout
 
 ```
 extension/
-  manifest.json     Manifest V3
+  manifest.json          Manifest V3 (Chromium)
+  manifest.firefox.json  Manifest V3 (Firefox: background script, add-on ID)
   content.js        detection + recolouring (isolated world)
   main-world.js     attachShadow patch (page world)
   background.js     keyboard shortcut, OFF badge
@@ -134,10 +147,13 @@ extension/
   newtab.*          black new-tab page
   ui.css, ui.js     shared UI styles and helpers
 theme/
-  manifest.json     black browser frame (optional)
+  manifest.json     black browser frame for Chromium browsers (optional)
+theme-firefox/
+  manifest.json     black browser frame for Firefox (optional)
+build.py            builds the install zips into dist/
 demo.html           test page used for the screenshots
 demo-glow.html      ambient-glow test page
-dist/               ready-to-install zip
+dist/               ready-to-install zips (Chromium, Firefox, Firefox theme)
 ```
 
 Don't want the black new-tab page? Delete the `chrome_url_overrides` block from `extension/manifest.json`.
