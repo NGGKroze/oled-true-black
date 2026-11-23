@@ -46,7 +46,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 
 ## Install (developer mode)
 
-1. Download this repository: **Code → Download ZIP**, then unzip it.
+1. Download **[OLED-True-Black-v1.10.0.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -137,6 +137,7 @@ theme/
   manifest.json     black browser frame (optional)
 demo.html           test page used for the screenshots
 demo-glow.html      ambient-glow test page
+dist/               ready-to-install zip
 ```
 
 Don't want the black new-tab page? Delete the `chrome_url_overrides` block from `extension/manifest.json`.
