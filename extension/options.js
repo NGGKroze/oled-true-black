@@ -1,7 +1,7 @@
 const DEFAULTS = {
   enabled: true, threshold: 72, tolerance: 24, borders: false, disabledSites: [], sites: {},
   expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false,
-  expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85,
+  expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85, hideGlow: true,
 };
 const LISTS = ["disabledSites", "sites"];
 const $ = (id) => document.getElementById(id);

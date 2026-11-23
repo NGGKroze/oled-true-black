@@ -75,7 +75,7 @@ chrome.storage.sync.get(DEFAULTS, async (cfg) => {
     chrome.tabs.sendMessage(tabId, { type: "oled-stats" }, { frameId: 0 }, (r) => {
       if (chrome.runtime.lastError || !r) { $("stats").textContent = "Reload the page to activate on it."; return; }
       $("stats").textContent = r.active
-        ? `On this page: ${r.black} areas turned black` + (r.pseudo ? `, ${r.pseudo} pseudo-layers` : "") + (r.shadowRoots ? ` (incl. ${r.shadowRoots} web components)` : "") + "."
+        ? `On this page: ${r.black} areas turned black` + (r.pseudo ? `, ${r.pseudo} pseudo-layers` : "") + (r.glow ? `, ${r.glow} glow hidden` : "") + (r.shadowRoots ? ` (incl. ${r.shadowRoots} web components)` : "") + "."
         : "Not active on this page.";
     });
   };

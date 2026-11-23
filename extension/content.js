@@ -5,12 +5,14 @@
   const OATTR = "data-oled-ov";
   const PATTR = "data-oled-pseudo";
   const RATTR = "data-oled-read";
+  const GATTR = "data-oled-glow";
+  const MEDIA = new Set(["CANVAS", "VIDEO", "IMG"]);
   const SKIPATTR = "data-oled-skip";
-  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR];
+  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR, GATTR];
   const DEFAULTS = {
     enabled: true, threshold: 72, tolerance: 24, borders: false, disabledSites: [], sites: {},
     // experimental
-    expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false, expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85,
+    expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false, expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85, hideGlow: true,
   };
   const SKIP = new Set(["SCRIPT", "STYLE", "LINK", "META", "HEAD", "TITLE", "IMG", "VIDEO", "CANVAS", "IFRAME", "NOSCRIPT", "SOURCE", "PATH"]);
   const OBS = { childList: true, subtree: true, attributes: true, attributeOldValue: true, attributeFilter: ["class", "style"] };
@@ -38,7 +40,8 @@
       `[${ATTR}]{background-color:${bg} !important;background-image:none !important;scrollbar-color:#4a4a4a #000;}` +
       `[${BATTR}]{border-color:#000 !important;}` +
       `[${PATTR}~="b"]::before,[${PATTR}~="a"]::after{background-color:${bg} !important;background-image:none !important;}` +
-      `[${RATTR}],[${RATTR}]::before,[${RATTR}]::after{transition:none !important;}`;
+      `[${RATTR}],[${RATTR}]::before,[${RATTR}]::after{transition:none !important;}` +
+      `[${GATTR}]{opacity:0 !important;}`;
     if (cfg.expEdge) {
       const k = cfg.edgeLevel;
       css += `[${EATTR}]:not(:focus-visible){outline:1px solid rgb(${k},${k},${k}) !important;outline-offset:-1px !important;}`;
@@ -152,6 +155,17 @@
     return null;
   }
 
+  // Blurred copies of a picture/video drawn behind content ("ambient mode", glow backdrops).
+  // They are images, not background colours, so the colour rule never sees them.
+  function isGlow(el, cs) {
+    if (!cfg.hideGlow) return false;
+    const f = cs.filter;
+    if (!f || !f.includes("blur(")) return false;
+    const px = parseFloat(f.slice(f.indexOf("blur(") + 5)) || 0;
+    if (px < 8) return false; // small blurs are UI effects, not glows
+    return MEDIA.has(el.tagName) || !!el.querySelector("canvas,video,img");
+  }
+
   // --- decision for a single element (read-only): bit 1 = background, 2 = border, 4 = edge outline ----
   function decide(el) {
     const cs = getComputedStyle(el);
@@ -159,6 +173,7 @@
     const bi = cs.backgroundImage;
     orig.set(el, c && c.a >= 0.9 ? c : false);
     let bits = 0;
+    if (isGlow(el, cs)) return 64;
 
     if (el === document.documentElement && c && c.a < 0.1 && darkScheme(cs.colorScheme)) {
       bits |= 1; // transparent <html> + dark color-scheme paints a gray canvas
@@ -220,7 +235,7 @@
     const batch = [];
     for (const el of queue) {
       queue.delete(el);
-      if (el.isConnected && !SKIP.has(el.tagName) && !el.hasAttribute(SKIPATTR)) batch.push(el);
+      if (el.isConnected && (!SKIP.has(el.tagName) || (cfg.hideGlow && MEDIA.has(el.tagName))) && !el.hasAttribute(SKIPATTR)) batch.push(el);
       if (batch.length >= BATCH) break;
     }
 
@@ -234,7 +249,7 @@
       if (had) { el.setAttribute(RATTR, ""); reread.push(el); }
     }
     // 2) read
-    const bits = batch.map(decide);
+    const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) ? 64 : 0) : decide(el)));
     // 3) write
     const shadows = [];
     batch.forEach((el, i) => {
@@ -243,6 +258,7 @@
       if (b & 2) el.setAttribute(BATTR, "");
       if (b & 4) el.setAttribute(EATTR, "");
       if (b & 8) el.setAttribute(OATTR, String(b >> 8));
+      if (b & 64) el.setAttribute(GATTR, "");
       if (b & 48) el.setAttribute(PATTR, (b & 16 ? "b " : "") + (b & 32 ? "a" : ""));
       if (el.shadowRoot) shadows.push(el.shadowRoot);
     });
@@ -409,7 +425,7 @@
         if (m.attributeName === "style") {
           const old = m.oldValue || "";
           const now = t.getAttribute("style") || "";
-          const rel = (s) => s.includes("background") || s.includes("--") || s.includes("border");
+          const rel = (s) => s.includes("background") || s.includes("--") || s.includes("border") || s.includes("filter");
           if (!rel(old) && !rel(now)) continue;
         }
         if (t === document.documentElement || t === document.body) rescanDocumentSoon();
@@ -461,13 +477,14 @@
 
   chrome.runtime.onMessage.addListener((msg, _sender, reply) => {
     if (!msg || msg.type !== "oled-stats") return;
-    let black = 0, pseudo = 0, roots = 0;
+    let black = 0, pseudo = 0, glow = 0, roots = 0;
     for (const root of styles.keys()) {
       roots++;
       black += root.querySelectorAll(`[${ATTR}]`).length;
       pseudo += root.querySelectorAll(`[${PATTR}]`).length;
+      glow += root.querySelectorAll(`[${GATTR}]`).length;
     }
-    reply({ active, black, pseudo, shadowRoots: Math.max(0, roots - 1) });
+    reply({ active, black, pseudo, glow, shadowRoots: Math.max(0, roots - 1) });
   });
 
   chrome.storage.onChanged.addListener((changes, area) => {

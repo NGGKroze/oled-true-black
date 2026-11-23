@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "OLED True Black",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Turns dark-gray page backgrounds into true black (#000) so OLED pixels switch off.",
   "permissions": [
     "storage",

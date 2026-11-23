@@ -18,6 +18,10 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
   - `::before` / `::after` background layers
   - dark gradients and modern colour formats (`oklch`, `lab`, `color-mix`)
   - content that loads after the page or changes later (infinite feeds, single-page apps)
+- **Hides ambient glow:** blurred copies of a video drawn behind the player (for example YouTube's Ambient mode) are removed. They are images, not gray backgrounds, so the colour rule alone can't catch them.
+
+  ![Ambient glow hidden](screenshots/compare-glow.png)
+
 - **No gray flash:** sites that were dark last time are painted black immediately on the next visit.
 - **Per-site control:** turn it off for a site, or give a site its own settings.
 - **Optional black browser frame:** a separate theme for the tabs and toolbar.
@@ -60,6 +64,7 @@ All brightness values are a percentage of full white (0% = black, 100% = white).
 | Presets | Normal | **Soft** (20% / 6%): near-black only. **Normal** (28% / 9%). **Aggressive** (43% / 13%): also mid-grays. |
 | Black borders | off | Also turns thin dark-gray border lines black. |
 | Pseudo-element backgrounds | on | Catches backgrounds drawn with `::before` / `::after`. |
+| Hide blurred glow behind videos | on | Hides large blurred canvas/video/image layers (blur ≥ 8px). The real video is never touched. |
 | Prevent gray flash | on | Remembers dark sites and paints them black before the page has been scanned. |
 
 ## How it works
@@ -131,6 +136,7 @@ extension/
 theme/
   manifest.json     black browser frame (optional)
 demo.html           test page used for the screenshots
+demo-glow.html      ambient-glow test page
 ```
 
 Don't want the black new-tab page? Delete the `chrome_url_overrides` block from `extension/manifest.json`.

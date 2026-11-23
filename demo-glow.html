@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="color-scheme" content="dark"><style>
+body{margin:0;background:#0f0f0f;color:#eee;font:15px system-ui}
+.stage{position:relative;width:900px;margin:40px}
+#glow{position:absolute;inset:-60px;filter:blur(60px);opacity:.7;z-index:0}
+#glow canvas{width:100%;height:100%}
+.player{position:relative;z-index:1;height:420px;background:#000;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.player .v{width:100%;height:100%;border-radius:12px;background:linear-gradient(120deg,#8a6a3a,#4a5560 60%,#2a3040)}
+.meta{position:relative;z-index:1;padding:16px 0}
+</style></head><body>
+<div class="stage"><div id="glow"><canvas width="160" height="90"></canvas></div>
+<div class="player"><div class="v"></div></div><div class="meta"><b>Video title</b><p>Channel · description</p></div></div>
+<script>const c=document.querySelector('canvas').getContext('2d');const g=c.createLinearGradient(0,0,160,90);g.addColorStop(0,'#8a6a3a');g.addColorStop(.6,'#4a5560');g.addColorStop(1,'#2a3040');c.fillStyle=g;c.fillRect(0,0,160,90);</script>
+</body></html>
