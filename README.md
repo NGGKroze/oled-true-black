@@ -18,7 +18,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
   - `::before` / `::after` background layers
   - dark gradients and modern colour formats (`oklch`, `lab`, `color-mix`)
   - content that loads after the page or changes later (infinite feeds, single-page apps)
-- **Hides ambient glow:** blurred copies of a video drawn behind the player (for example YouTube's Ambient mode) are removed. They are images, not gray backgrounds, so the colour rule alone can't catch them.
+- **Hides ambient glow:** blurred copies of a video drawn behind the player (for example YouTube's Ambient mode) are removed. They are images, not gray backgrounds, so the colour rule alone can't catch them. Tiny canvases stretched over a large area (YouTube Shorts' backdrop) are hidden too.
 
   ![Ambient glow hidden](screenshots/compare-glow.png)
 
@@ -48,7 +48,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.10.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.11.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.11.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -59,7 +59,7 @@ After updating the files, click **Reload** on the extension. For local `file://`
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.10.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.10.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.11.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.11.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
 - **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
@@ -118,6 +118,7 @@ turns black  ⇔  a ≥ 0.9  and  0 < max ≤ threshold  and  max − min ≤ to
 
 ### How it fits into pages
 
+- **Wins against site CSS:** every rule carries extra specificity (`:not(#oled-x):not(#oled-x)`), so site rules like `html[dark]{background:#0f0f0f !important}` can't bring the gray back.
 - **No inline style changes:** the extension only adds `data-oled-*` attributes plus one small stylesheet. The page's own styles and scripts are untouched, and turning it off removes every trace instantly.
 - **Theme switches and re-renders:** when a site changes classes on an element, the extension re-checks it.
   - Before reading the colour again, it briefly adds `transition: none`. Otherwise a background transition would report the in-between black, and the element would fade back to gray.
@@ -153,6 +154,7 @@ theme-firefox/
 build.py            builds the install zips into dist/
 demo.html           test page used for the screenshots
 demo-glow.html      ambient-glow test page
+demo-shorts.html    Shorts-like test page (stretched canvas, !important site rule)
 dist/               ready-to-install zips (Chromium, Firefox, Firefox theme)
 ```
 

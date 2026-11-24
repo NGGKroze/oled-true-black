@@ -34,27 +34,30 @@
 
   const shouldRun = () => cfg.enabled && !cfg.disabledSites.includes(location.hostname);
 
+  // Each selector gets :not(#oled-x):not(#oled-x) (= 2 IDs of specificity), so site rules such as
+  // html[dark]{background:#0f0f0f !important} can no longer override our !important black.
+  const B = ":not(#oled-x):not(#oled-x)";
   function cssText() {
     const bg = cfg.expDebug ? "#4a0030" : "#000";
     let css =
-      `[${ATTR}]{background-color:${bg} !important;background-image:none !important;scrollbar-color:#4a4a4a #000;}` +
-      `[${BATTR}]{border-color:#000 !important;}` +
-      `[${PATTR}~="b"]::before,[${PATTR}~="a"]::after{background-color:${bg} !important;background-image:none !important;}` +
-      `[${RATTR}],[${RATTR}]::before,[${RATTR}]::after{transition:none !important;}` +
-      `[${GATTR}]{opacity:0 !important;}`;
+      `[${ATTR}]${B}{background-color:${bg} !important;background-image:none !important;scrollbar-color:#4a4a4a #000;}` +
+      `[${BATTR}]${B}{border-color:#000 !important;}` +
+      `[${PATTR}~="b"]${B}::before,[${PATTR}~="a"]${B}::after{background-color:${bg} !important;background-image:none !important;}` +
+      `[${RATTR}]${B},[${RATTR}]${B}::before,[${RATTR}]${B}::after{transition:none !important;}` +
+      `[${GATTR}]${B}{opacity:0 !important;}`;
     if (cfg.expEdge) {
       const k = cfg.edgeLevel;
-      css += `[${EATTR}]:not(:focus-visible){outline:1px solid rgb(${k},${k},${k}) !important;outline-offset:-1px !important;}`;
+      css += `[${EATTR}]${B}:not(:focus-visible){outline:1px solid rgb(${k},${k},${k}) !important;outline-offset:-1px !important;}`;
     }
     if (cfg.expHover) {
-      css += `:is(a,button,summary,li,[role=button],[role=menuitem],[role=option],[role=link],[role=tab])[${ATTR}]:hover{background-color:#161616 !important;}`;
+      css += `:is(a,button,summary,li,[role=button],[role=menuitem],[role=option],[role=link],[role=tab])[${ATTR}]${B}:hover{background-color:#161616 !important;}`;
     }
     if (cfg.expOverlay) {
       const k = cfg.overlayStrength / 100;
-      for (let n = 1; n <= 50; n++) css += `[${OATTR}="${n}"]{background-color:rgba(255,255,255,${((n / 100) * k).toFixed(3)}) !important;}`;
+      for (let n = 1; n <= 50; n++) css += `[${OATTR}="${n}"]${B}{background-color:rgba(255,255,255,${((n / 100) * k).toFixed(3)}) !important;}`;
     }
     if (cfg.expDim) {
-      css += `img,video,picture,svg image{filter:brightness(${cfg.dimLevel / 100}) !important;}`;
+      css += `:is(img,video,picture,svg image)${B}{filter:brightness(${cfg.dimLevel / 100}) !important;}`;
     }
     return css;
   }
@@ -166,6 +169,20 @@
     return MEDIA.has(el.tagName) || !!el.querySelector("canvas,video,img");
   }
 
+  // A tiny canvas stretched over a large area is a soft colour wash (e.g. YouTube Shorts' ambient
+  // backdrop), not real content: real canvases (charts, games, maps) are drawn at ~1x display size.
+  const canvasRetry = new WeakMap();
+  function isStretchedCanvas(el) {
+    if (!cfg.hideGlow || el.tagName !== "CANVAS" || !el.width) return false;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) {
+      const n = canvasRetry.get(el) || 0; // not laid out yet: look again a bit later
+      if (n < 5) { canvasRetry.set(el, n + 1); setTimeout(() => enqueue(el, false), 1000); }
+      return false;
+    }
+    return w >= 200 && h >= 150 && w / el.width >= 4 && h / el.height >= 4;
+  }
+
   // --- decision for a single element (read-only): bit 1 = background, 2 = border, 4 = edge outline ----
   function decide(el) {
     const cs = getComputedStyle(el);
@@ -249,7 +266,7 @@
       if (had) { el.setAttribute(RATTR, ""); reread.push(el); }
     }
     // 2) read
-    const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) ? 64 : 0) : decide(el)));
+    const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) || isStretchedCanvas(el) ? 64 : 0) : decide(el)));
     // 3) write
     const shadows = [];
     batch.forEach((el, i) => {
@@ -315,7 +332,9 @@
     // where does the visible background actually come from? (first non-transparent colour up the tree)
     const vi = cols.findIndex((x) => x && x.a > 0);
     const visible = vi < 0 ? "—" : vi === 0 ? "(this element)" : `<${chain[vi].tagName.toLowerCase()}> ${f(cols[vi])}  ${statusOf(cols[vi])}`;
-    const now = vi < 0 ? "—" : f(parseColor(getComputedStyle(chain[vi]).backgroundColor));
+    const nowC = vi < 0 ? null : parseColor(getComputedStyle(chain[vi]).backgroundColor);
+    const overridden = vi >= 0 && chain[vi].hasAttribute(ATTR) && nowC && Math.max(nowC.r, nowC.g, nowC.b) > 0 && !cfg.expDebug;
+    const now = vi < 0 ? "—" : f(nowC) + (overridden ? "  ⚠ site CSS overrides the black" : "");
 
     if (!tip) {
       tip = document.createElement("div");
@@ -383,7 +402,7 @@
   function preBlack(on) {
     if (on && !pre) {
       pre = document.createElement("style");
-      pre.textContent = "html,body{background-color:#000 !important;}";
+      pre.textContent = `:is(html,body)${B}{background-color:#000 !important;}`;
       (document.head || document.documentElement).appendChild(pre);
       setTimeout(() => preBlack(false), 3000); // safety net
     } else if (!on && pre) {

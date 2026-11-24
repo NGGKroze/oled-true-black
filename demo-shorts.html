@@ -1,0 +1,10 @@
+<!DOCTYPE html><html dark id="root"><head><meta charset="utf-8"><style>
+html[dark]{background:#0f0f0f !important}
+#root body{margin:0;color:#eee;font:15px system-ui;background:transparent}
+.page{position:relative;height:640px;display:flex;justify-content:center;align-items:center}
+#wash{position:absolute;left:25%;width:50%;top:0;height:100%}
+.short{position:relative;width:300px;height:560px;background:#000;border-radius:12px;overflow:hidden}
+.short .v{position:absolute;inset:180px 0;background:linear-gradient(#6a6a78,#3a3440)}
+</style></head><body><div class="page"><canvas id="wash" width="16" height="36"></canvas><div class="short"><div class="v"></div></div></div>
+<script>const c=document.getElementById('wash').getContext('2d');for(let x=0;x<16;x++){c.fillStyle=`rgb(${40+((x*37)%30)},${40+((x*37)%30)},${44+((x*37)%30)})`;c.fillRect(x,0,1,36);}</script>
+</body></html>
