@@ -46,9 +46,11 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 
 ## Install
 
+All downloads are on the **[latest release](https://github.com/NGGKroze/oled-true-black/releases/latest)** page.
+
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.11.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.11.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.11.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-True-Black-v1.11.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -59,10 +61,10 @@ After updating the files, click **Reload** on the extension. For local `file://`
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.11.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-True-Black-v1.11.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.11.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-True-Black-v1.11.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/raw/main/dist/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
@@ -151,11 +153,10 @@ theme/
   manifest.json     black browser frame for Chromium browsers (optional)
 theme-firefox/
   manifest.json     black browser frame for Firefox (optional)
-build.py            builds the install zips into dist/
+build.py            builds the install zips into dist/ (attached to each GitHub release)
 demo.html           test page used for the screenshots
 demo-glow.html      ambient-glow test page
 demo-shorts.html    Shorts-like test page (stretched canvas, !important site rule)
-dist/               ready-to-install zips (Chromium, Firefox, Firefox theme)
 ```
 
 Don't want the black new-tab page? Delete the `chrome_url_overrides` block from `extension/manifest.json`.
