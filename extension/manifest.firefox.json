@@ -1,14 +1,13 @@
 {
   "manifest_version": 3,
   "name": "OLED True Black",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "__MSG_extDesc__",
   "default_locale": "en",
   "permissions": [
     "storage",
     "activeTab",
-    "search",
-    "alarms"
+    "search"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -84,8 +83,5 @@
     "gecko_android": {
       "strict_min_version": "142.0"
     }
-  },
-  "host_permissions": [
-    "https://api.github.com/*"
-  ]
+  }
 }

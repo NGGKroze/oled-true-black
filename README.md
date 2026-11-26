@@ -67,7 +67,7 @@ All downloads are on the **[latest release](https://github.com/NGGKroze/oled-tru
 
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.15.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-True-Black-v1.15.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.16.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-True-Black-v1.16.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -78,10 +78,10 @@ To update: download the new zip, replace the old `extension` folder with the new
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.15.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-True-Black-v1.15.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.16.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-True-Black-v1.16.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 

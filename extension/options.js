@@ -144,24 +144,27 @@ const TAB_TITLE = { general: "tabGeneral", det: "tabDetection", look: "tabLook",
 
   // ---------- backup & updates ----------
   const bp = panels.backup[1];
-  const upd = await chrome.storage.sync.get({ updateCheck: !IS_FIREFOX });
-  bp.append(el("h3", "", t("secUpdates")));
-  bp.append(switchRow(t("l_updateCheck"), t("h_updateCheck"), () => upd.updateCheck, (v) => { upd.updateCheck = v; chrome.storage.sync.set({ updateCheck: v }); }));
-  const updStatus = el("div", "status");
-  const checkBtn = button("checkNow", () => { updStatus.textContent = t("checking"); chrome.runtime.sendMessage({ type: "oled-check-update" }, showLatest); });
-  bp.append(checkBtn, updStatus);
-  async function showLatest() {
-    const { latest, lastCheckError } = await chrome.storage.local.get({ latest: null, lastCheckError: null });
-    if (lastCheckError) { updStatus.textContent = t("updFailed", lastCheckError); return; }
-    if (!latest) { updStatus.textContent = t("updNever", version); return; }
-    const when = new Date(latest.checked).toLocaleString();
-    const num = (v) => String(v).split(".").map((n) => parseInt(n, 10) || 0);
-    const a = num(latest.version), c = num(version);
-    let newer = false;
-    for (let i = 0; i < Math.max(a.length, c.length); i++) if ((a[i] || 0) !== (c[i] || 0)) { newer = (a[i] || 0) > (c[i] || 0); break; }
-    updStatus.textContent = newer ? t("updNew", latest.version, version, when) : t("updOk", version, when);
+  // Firefox builds have no update checker: add-ons from addons.mozilla.org update themselves
+  if (!IS_FIREFOX) {
+    const upd = await chrome.storage.sync.get({ updateCheck: !IS_FIREFOX });
+    bp.append(el("h3", "", t("secUpdates")));
+    bp.append(switchRow(t("l_updateCheck"), t("h_updateCheck"), () => upd.updateCheck, (v) => { upd.updateCheck = v; chrome.storage.sync.set({ updateCheck: v }); }));
+    const updStatus = el("div", "status");
+    const checkBtn = button("checkNow", () => { updStatus.textContent = t("checking"); chrome.runtime.sendMessage({ type: "oled-check-update" }, showLatest); });
+    bp.append(checkBtn, updStatus);
+    async function showLatest() {
+      const { latest, lastCheckError } = await chrome.storage.local.get({ latest: null, lastCheckError: null });
+      if (lastCheckError) { updStatus.textContent = t("updFailed", lastCheckError); return; }
+      if (!latest) { updStatus.textContent = t("updNever", version); return; }
+      const when = new Date(latest.checked).toLocaleString();
+      const num = (v) => String(v).split(".").map((n) => parseInt(n, 10) || 0);
+      const a = num(latest.version), c = num(version);
+      let newer = false;
+      for (let i = 0; i < Math.max(a.length, c.length); i++) if ((a[i] || 0) !== (c[i] || 0)) { newer = (a[i] || 0) > (c[i] || 0); break; }
+      updStatus.textContent = newer ? t("updNew", latest.version, version, when) : t("updOk", version, when);
+    }
+    showLatest();
   }
-  showLatest();
 
   bp.append(el("h3", "", t("secBackup")), hint(t("backupHint")));
   const bstat = el("div", "status");

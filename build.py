@@ -10,7 +10,7 @@ import json, pathlib, shutil, tempfile, zipfile
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "extension"
 DIST = ROOT / "dist"
-SKIP = {"manifest.firefox.json"}
+SKIP = {"manifest.firefox.json", "background.firefox.js"}
 
 
 def zip_dir(folder: pathlib.Path, out: pathlib.Path, prefix: str = ""):
@@ -39,6 +39,7 @@ def main():
         ff = tmp / "firefox"
         shutil.copytree(SRC, ff, ignore=shutil.ignore_patterns(*SKIP))
         shutil.copy(SRC / "manifest.firefox.json", ff / "manifest.json")
+        shutil.copy(SRC / "background.firefox.js", ff / "background.js")  # no GitHub update checker in the Firefox build
         zip_dir(ff, DIST / f"OLED-True-Black-v{version}-firefox.zip")
 
     zip_dir(ROOT / "theme-firefox", DIST / "OLED-Black-Theme-firefox.zip")
