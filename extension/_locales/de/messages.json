@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "Eine Beispielseite – echte Seiten unterscheiden sich. Fahre über ein Panel, um die Farbe zu sehen."
+ },
+ "l_expLight": {
+  "message": "Helle Seiten → dunkel (weiße Hintergründe werden schwarz)"
+ },
+ "h_expLight": {
+  "message": "Macht weiße und hellgraue Hintergründe schwarz, blasse Farbtöne zu dunklen Tönen derselben Farbe und dunkle Schrift hell. Für Seiten ohne Dark Mode. Bilder bleiben unverändert. Auf überladenen Seiten aufwendiger und bei manchen Layouts seltsam."
+ },
+ "l_lightLevel": {
+  "message": "Heller Hintergrund ab"
  }
 }

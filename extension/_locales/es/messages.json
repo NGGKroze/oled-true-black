@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "Una página de ejemplo: los sitios reales difieren. Pasa el ratón sobre un panel para ver su color."
+ },
+ "l_expLight": {
+  "message": "Páginas claras → oscuras (los fondos blancos pasan a negro)"
+ },
+ "h_expLight": {
+  "message": "Vuelve negros los fondos blancos y gris claro, los tintes pálidos en tintes oscuros del mismo color y el texto oscuro en claro. Para sitios sin modo oscuro. Las imágenes no cambian. Es más pesado en páginas cargadas y puede verse raro en algunos diseños."
+ },
+ "l_lightLevel": {
+  "message": "Fondo claro desde"
  }
 }

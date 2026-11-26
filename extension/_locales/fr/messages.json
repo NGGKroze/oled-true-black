@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "Une page factice — les vrais sites diffèrent. Survolez un panneau pour voir sa couleur."
+ },
+ "l_expLight": {
+  "message": "Pages claires → sombres (les fonds blancs passent au noir)"
+ },
+ "h_expLight": {
+  "message": "Rend noirs les fonds blancs et gris clair, transforme les teintes pâles en teintes sombres de la même couleur et le texte foncé en texte clair. Pour les sites sans mode sombre. Les images restent inchangées. Plus lourd sur les pages chargées et parfois étrange selon la mise en page."
+ },
+ "l_lightLevel": {
+  "message": "Fond clair à partir de"
  }
 }

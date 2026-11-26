@@ -9,7 +9,14 @@
   const MEDIA = new Set(["CANVAS", "VIDEO", "IMG"]);
   const SKIPATTR = "data-oled-skip";
   const TATTR = "data-oled-txt";
-  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR, GATTR, TATTR];
+  const LTATTR = "data-oled-lt"; // light-page mode: dark text turned light (value = brightness bucket)
+  const LBATTR = "data-oled-lb"; // light-page mode: light border turned dark gray
+  const TNATTR = "data-oled-tint"; // light-page mode: pastel background turned into a dark tint (value = colour id)
+  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR, GATTR, TATTR, LTATTR, LBATTR, TNATTR];
+  // decide() returns flag bits plus small values packed above them
+  const F_BG = 1, F_BORDER = 2, F_EDGE = 4, F_OV = 8, F_PB = 16, F_PA = 32, F_GLOW = 64, F_TXT = 128, F_LT = 256, F_LB = 512, F_TINT = 1024;
+  const OV_SHIFT = 12, TINT_SHIFT = 18, LT_SHIFT = 24;
+  const tints = []; // [r,g,b] per tint id (1-based), shared by all roots
   const DEFAULTS = OLED.DEFAULTS; // core.js
   const SKIP = new Set(["SCRIPT", "STYLE", "LINK", "META", "HEAD", "TITLE", "IMG", "VIDEO", "CANVAS", "IFRAME", "NOSCRIPT", "SOURCE", "PATH"]);
   const OBS = { childList: true, subtree: true, attributes: true, attributeOldValue: true, attributeFilter: ["class", "style"] };
@@ -64,6 +71,12 @@
     if (cfg.expText) {
       const k = Math.round(cfg.textCap * 2.55);
       css += `[${TATTR}]${B}{color:rgb(${k},${k},${k}) !important;}`;
+    }
+    if (cfg.expLight) {
+      css += `:root[${ATTR}]${B}{color-scheme:dark !important;}`; // dark form controls, scrollbars and default text colour
+      css += `[${LBATTR}]${B}{border-color:#303030 !important;}`;
+      for (let n = 0; n < 8; n++) { const v = OLED.flipValue(n); css += `[${LTATTR}="${n}"]${B}{color:rgb(${v},${v},${v}) !important;}`; }
+      tints.forEach((t, i) => { css += `[${TNATTR}="${i + 1}"]${B}{background-color:rgb(${t[0]},${t[1]},${t[2]}) !important;background-image:none !important;}`; });
     }
     return css;
   }
@@ -121,12 +134,48 @@
     return matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
+  // a background that will end up black: dark gray, or (light-page mode) a light neutral
+  const goesBlack = (c) => isDarkGray(c) || (cfg.expLight && OLED.isLightNeutral(c, cfg));
+
   // Gradient made only of opaque dark grays (no url(), no alpha scrims, no exotic colour spaces)
   function gradientDark(bi) {
     if (!bi || !bi.includes("gradient(") || bi.includes("url(")) return false;
     if (/(?:color|oklch|oklab|lab|lch|hwb)\(/.test(bi)) return false;
     const cols = bi.match(/rgba?\([^)]*\)/g);
-    return !!cols && cols.every((s) => isDarkGray(parseColor(s)));
+    return !!cols && cols.every((s) => goesBlack(parseColor(s)));
+  }
+
+  // tint id for a pastel colour (adds one CSS rule per new colour; capped)
+  function tintId(c) {
+    const t = OLED.tintOf(c);
+    let i = tints.findIndex((x) => x[0] === t[0] && x[1] === t[1] && x[2] === t[2]);
+    if (i < 0) {
+      if (tints.length >= 60) return 0;
+      tints.push(t);
+      i = tints.length - 1;
+      for (const st of styles.values()) st.textContent = cssText();
+    }
+    return i + 1;
+  }
+
+  // light-page mode: is the visible background behind this text going to be dark?
+  const hasImg = new WeakMap(); // element -> its background-image is a url()
+  function darkBehind(el, c) {
+    const dark = (x) => goesBlack(x) || OLED.isLightBg(x, cfg) || isDarkGray(x);
+    if (c && c.a >= 0.9) return !hasImg.get(el) && dark(c);
+    let p = parentOf(el);
+    for (let n = 0; p && n < 14; n++, p = parentOf(p)) {
+      if (hasImg.get(p)) return false;
+      const o = orig.get(p);
+      if (o) return dark(o);
+      if (o === false) continue;
+      if (p.hasAttribute(ATTR) || p.hasAttribute(TNATTR)) return true;
+      const cs = getComputedStyle(p);
+      if (cs.backgroundImage.includes("url(")) return false;
+      const pc = parseColor(cs.backgroundColor);
+      if (pc && pc.a >= 0.9) return dark(pc);
+    }
+    return true; // the page canvas is black in light-page mode
   }
 
   function bordersDark(cs) {
@@ -134,6 +183,17 @@
     for (const s of SIDES) {
       if (cs["border" + s + "Style"] === "none" || !(parseFloat(cs["border" + s + "Width"]) > 0)) continue;
       if (!isDarkOnBlack(parseColor(cs["border" + s + "Color"]))) return false;
+      any = true;
+    }
+    return any;
+  }
+
+  // light-page mode: every visible border side is a light neutral
+  function bordersLight(cs) {
+    let any = false;
+    for (const s of SIDES) {
+      if (cs["border" + s + "Style"] === "none" || !(parseFloat(cs["border" + s + "Width"]) > 0)) continue;
+      if (!OLED.isLightNeutral(parseColor(cs["border" + s + "Color"]), cfg)) return false;
       any = true;
     }
     return any;
@@ -192,22 +252,36 @@
     const c = parseColor(cs.backgroundColor);
     const bi = cs.backgroundImage;
     orig.set(el, c && c.a >= 0.9 ? c : false);
+    const url = !!(bi && bi !== "none" && bi.includes("url("));
+    if (cfg.expLight) hasImg.set(el, url);
     let bits = 0;
-    if (isGlow(el, cs)) return 64;
+    if (isGlow(el, cs)) return F_GLOW;
 
-    if (el === document.documentElement && c && c.a < 0.1 && darkScheme(cs.colorScheme)) {
-      bits |= 1; // transparent <html> + dark color-scheme paints a gray canvas
-    } else if (isDarkGray(c)) {
+    if (el === document.documentElement && c && c.a < 0.1 && (darkScheme(cs.colorScheme) || cfg.expLight)) {
+      bits |= F_BG; // transparent <html> + dark color-scheme (or a light page being darkened) paints a gray/white canvas
+    } else if (goesBlack(c)) {
       // keep real photos/thumbnails: only strip gradients, never url() images
-      if (!(bi && bi !== "none" && bi.includes("url("))) bits |= 1;
+      if (!url) bits |= F_BG;
+    } else if (cfg.expLight && !url && OLED.isLightBg(c, cfg)) {
+      const id = tintId(c); // pale green/red/yellow row -> dark green/red/yellow
+      bits |= id ? F_TINT | (id << TINT_SHIFT) : F_BG;
     } else if (c && c.a < 0.1 && gradientDark(bi)) {
-      bits |= 1;
+      bits |= F_BG;
     }
 
-    if (cfg.borders && bordersDark(cs)) bits |= 2;
+    if (cfg.borders && bordersDark(cs)) bits |= F_BORDER;
+    if (cfg.expLight && bordersLight(cs)) bits |= F_LB;
+
+    // light-page mode: dark text on a background that is now dark becomes light
+    if (cfg.expLight && hasOwnText(el)) {
+      const tc = parseColor(cs.color);
+      if (OLED.isDarkText(tc) && (bits & (F_BG | F_TINT) ? true : darkBehind(el, c))) {
+        bits |= F_LT | (OLED.flipBucket(Math.max(tc.r, tc.g, tc.b)) << LT_SHIFT);
+      }
+    }
 
     // experimental: keep a thin outline where this gray panel differed from what was behind it
-    if (cfg.expEdge && bits & 1 && c.a >= 0.6 && el !== document.documentElement && el !== document.body) {
+    if (cfg.expEdge && bits & F_BG && c.a >= 0.6 && el !== document.documentElement && el !== document.body) {
       const anc = ancestorBg(el);
       const ownMax = Math.max(c.r, c.g, c.b);
       const ancMax = anc ? Math.max(anc.r, anc.g, anc.b) : 0;
@@ -220,7 +294,7 @@
         const ct = ps.content;
         if (ct === "none" || ct === "normal") continue;
         const pc = parseColor(ps.backgroundColor);
-        if (isDarkGray(pc) && !ps.backgroundImage.includes("url(")) bits |= flag;
+        if (goesBlack(pc) && !ps.backgroundImage.includes("url(")) bits |= flag;
       }
     }
 
@@ -229,13 +303,13 @@
       const tc = parseColor(cs.color);
       if (tc && tc.a >= 0.9) {
         const lo = Math.min(tc.r, tc.g, tc.b);
-        if (lo > Math.round(cfg.textCap * 2.55) && Math.max(tc.r, tc.g, tc.b) - lo <= cfg.tolerance) bits |= 128;
+        if (lo > Math.round(cfg.textCap * 2.55) && Math.max(tc.r, tc.g, tc.b) - lo <= cfg.tolerance) bits |= F_TXT;
       }
     }
 
     // experimental: soften light translucent overlays (e.g. rgba(255,255,255,.1) cards) to a weaker alpha
     if (cfg.expOverlay && c && c.a >= 0.02 && c.a <= 0.5 && Math.min(c.r, c.g, c.b) >= 200 && Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b) <= cfg.tolerance) {
-      bits |= 8 | (Math.min(50, Math.round(c.a * 100)) << 8);
+      bits |= F_OV | (Math.min(50, Math.round(c.a * 100)) << OV_SHIFT);
     }
     return bits;
   }
@@ -279,18 +353,21 @@
       if (had || (MEDIA.has(el.tagName) && (cfg.expDim || cfg.expVideo))) { el.setAttribute(RATTR, ""); reread.push(el); }
     }
     // 2) read
-    const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) || isStretchedCanvas(el) ? 64 : 0) : decide(el)));
+    const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) || isStretchedCanvas(el) ? F_GLOW : 0) : decide(el)));
     // 3) write
     const shadows = [];
     batch.forEach((el, i) => {
       const b = bits[i];
-      if (b & 1) el.setAttribute(ATTR, "");
-      if (b & 2) el.setAttribute(BATTR, "");
-      if (b & 4) el.setAttribute(EATTR, "");
-      if (b & 8) el.setAttribute(OATTR, String(b >> 8));
-      if (b & 64) el.setAttribute(GATTR, "");
-      if (b & 128) el.setAttribute(TATTR, "");
-      if (b & 48) el.setAttribute(PATTR, (b & 16 ? "b " : "") + (b & 32 ? "a" : ""));
+      if (b & F_BG) el.setAttribute(ATTR, "");
+      if (b & F_BORDER) el.setAttribute(BATTR, "");
+      if (b & F_EDGE) el.setAttribute(EATTR, "");
+      if (b & F_OV) el.setAttribute(OATTR, String((b >> OV_SHIFT) & 63));
+      if (b & F_GLOW) el.setAttribute(GATTR, "");
+      if (b & F_TXT) el.setAttribute(TATTR, "");
+      if (b & F_LT) el.setAttribute(LTATTR, String((b >> LT_SHIFT) & 7));
+      if (b & F_LB) el.setAttribute(LBATTR, "");
+      if (b & F_TINT) el.setAttribute(TNATTR, String((b >> TINT_SHIFT) & 63));
+      if (b & (F_PB | F_PA)) el.setAttribute(PATTR, (b & F_PB ? "b " : "") + (b & F_PA ? "a" : ""));
       if (el.shadowRoot) shadows.push(el.shadowRoot);
     });
     // apply the new marks while transitions are still off, then restore the site's transitions
@@ -524,7 +601,7 @@
     let black = 0, pseudo = 0, glow = 0, roots = 0;
     for (const root of styles.keys()) {
       roots++;
-      black += root.querySelectorAll(`[${ATTR}]`).length;
+      black += root.querySelectorAll(`[${ATTR}],[${TNATTR}]`).length;
       pseudo += root.querySelectorAll(`[${PATTR}]`).length;
       glow += root.querySelectorAll(`[${GATTR}]`).length;
     }

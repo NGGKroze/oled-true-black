@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "Una pagina di esempio — i siti reali sono diversi. Passa sopra un pannello per vederne il colore."
+ },
+ "l_expLight": {
+  "message": "Pagine chiare → scure (gli sfondi bianchi diventano neri)"
+ },
+ "h_expLight": {
+  "message": "Rende neri gli sfondi bianchi e grigio chiaro, le tinte pallide in tinte scure dello stesso colore e il testo scuro in chiaro. Per siti senza modalità scura. Le immagini restano invariate. Più pesante su pagine complesse e a volte strano su certi layout."
+ },
+ "l_lightLevel": {
+  "message": "Sfondo chiaro da"
  }
 }

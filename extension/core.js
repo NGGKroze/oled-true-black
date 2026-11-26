@@ -8,7 +8,7 @@
     // experimental
     expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false,
     expOverlay: false, overlayStrength: 50, expDim: false, dimLevel: 85,
-    expVideo: false, crushLevel: 6, expText: false, textCap: 88,
+    expVideo: false, crushLevel: 6, expText: false, textCap: 88, expLight: false, lightLevel: 80,
     expInspector: false, expDebug: false,
     // burn-in care
     idleCare: false, idleDimMin: 2, idleBlackMin: 5, idleDimLevel: 60, cursorHideSec: 0,
@@ -20,7 +20,7 @@
   const PER_SITE = [
     "threshold", "tolerance", "borders", "pseudo", "hideGlow", "perfMode",
     "expEdge", "edgeLevel", "edgeDelta", "expHover", "expAlpha", "expOverlay", "overlayStrength",
-    "expDim", "dimLevel", "expVideo", "crushLevel", "expText", "textCap",
+    "expDim", "dimLevel", "expVideo", "crushLevel", "expText", "textCap", "expLight", "lightLevel",
   ];
 
   const toPct = (raw) => Math.round(raw / 2.55);
@@ -71,7 +71,7 @@
       c.tolerance = Math.min(c.tolerance, 8);
       Object.assign(c, {
         borders: false, expEdge: false, expHover: false, expAlpha: false, expOverlay: false,
-        hideGlow: false, expDim: false, expVideo: false, expText: false,
+        hideGlow: false, expDim: false, expVideo: false, expText: false, expLight: false,
       });
     }
     if (c.perfMode) { c.pseudo = false; c.borders = false; }
@@ -90,6 +90,21 @@
     const max = Math.max(c.r, c.g, c.b), min = Math.min(c.r, c.g, c.b);
     return max * c.a > 0 && max * c.a <= cfg.threshold && max - min <= cfg.tolerance;
   }
+
+  // --- light pages -> dark (experimental): light backgrounds go black, pastel ones become dark tints, dark text becomes light
+  const lightRaw = (cfg) => Math.round(cfg.lightLevel * 2.55);
+  const LIGHT_NEUTRAL = 12; // light grays up to this colour spread (~5%) become black; stronger pastels keep their hue
+  const isLightBg = (c, cfg) => !!c && c.a >= 0.9 && Math.min(c.r, c.g, c.b) >= lightRaw(cfg);
+  const isLightNeutral = (c, cfg) => isLightBg(c, cfg) && Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b) <= LIGHT_NEUTRAL;
+  // same hue, dark: a pale green row becomes a dark green row (channels quantised so only a few distinct colours exist)
+  function tintOf(c) {
+    const mn = Math.min(c.r, c.g, c.b);
+    const q = (v) => Math.min(90, Math.round((22 + (v - mn) * 1.4) / 4) * 4);
+    return [q(c.r), q(c.g), q(c.b)];
+  }
+  const isDarkText = (c) => !!c && c.a >= 0.9 && Math.max(c.r, c.g, c.b) <= 140 && Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b) <= 40;
+  const flipBucket = (max) => Math.round((Math.max(150, Math.min(235, 255 - max)) - 150) / 12); // 0..7
+  const flipValue = (n) => 150 + 12 * n;
 
   // Video black crush: a tone curve that sends near-black to 0 and leaves everything above 2x the
   // level untouched (smooth in between), as a CSS filter built from an inline SVG data URL.
@@ -110,6 +125,6 @@
     return `url("data:image/svg+xml,${encodeURIComponent(svg)}#c")`;
   }
 
-  g.OLED = { DEFAULTS, PER_SITE, toPct, toRaw, hexGray, hostIn, without, siteMode, inSchedule, effective, fixFor, isDarkGray, isDarkOnBlack, crushFilter };
+  g.OLED = { DEFAULTS, PER_SITE, toPct, toRaw, hexGray, hostIn, without, siteMode, inSchedule, effective, fixFor, isDarkGray, isDarkOnBlack, crushFilter, isLightBg, isLightNeutral, tintOf, isDarkText, flipBucket, flipValue };
   g.toPct = toPct; g.toRaw = toRaw; g.hexGray = hexGray;
 })(globalThis);

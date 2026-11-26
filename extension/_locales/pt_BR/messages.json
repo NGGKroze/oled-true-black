@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "Uma página de exemplo — sites reais diferem. Passe o mouse sobre um painel para ver a cor."
+ },
+ "l_expLight": {
+  "message": "Páginas claras → escuras (fundos brancos viram preto)"
+ },
+ "h_expLight": {
+  "message": "Deixa pretos os fundos brancos e cinza-claros, tons pálidos em tons escuros da mesma cor e texto escuro em claro. Para sites sem modo escuro. Imagens não mudam. Mais pesado em páginas cheias e pode ficar estranho em alguns layouts."
+ },
+ "l_lightLevel": {
+  "message": "Fundo claro a partir de"
  }
 }

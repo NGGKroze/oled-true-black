@@ -22,6 +22,8 @@ const CTL = {
   expAlpha: { t: "switch", exp: 1 },
   expOverlay: { t: "switch", exp: 1, sub: ["overlayStrength"] },
   overlayStrength: { t: "range", min: 0, max: 100 },
+  expLight: { t: "switch", exp: 1, sub: ["lightLevel"] },
+  lightLevel: { t: "range", min: 60, max: 98 },
   expInspector: { t: "switch", exp: 1 },
   expDebug: { t: "switch", exp: 1 },
   idleCare: { t: "switch", sub: ["idleDimMin", "idleBlackMin", "idleDimLevel", "cursorHideSec"] },
@@ -39,7 +41,7 @@ const GROUPS = {
   det: ["presets", "threshold", "tolerance"],
   look: ["borders", "pseudo", "hideGlow", "antiFlash", "perfMode"],
   media: ["expDim", "expVideo", "expText"],
-  exp: ["expEdge", "expHover", "expAlpha", "expOverlay", "expInspector", "expDebug"],
+  exp: ["expLight", "expEdge", "expHover", "expAlpha", "expOverlay", "expInspector", "expDebug"],
   idle: ["idleCare"],
   schedule: ["schedule"],
 };

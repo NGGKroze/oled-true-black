@@ -475,5 +475,14 @@
  },
  "pvNote": {
   "message": "A mock page — real sites differ. Hover a panel to see its colour."
+ },
+ "l_expLight": {
+  "message": "Light pages → dark (white backgrounds go black)"
+ },
+ "h_expLight": {
+  "message": "Turns white and light-gray backgrounds black, pale colour tints into dark tints of the same colour, and dark text into light text. For sites with no dark mode. Pictures stay as they are. Heavier on busy pages and can look odd on some layouts."
+ },
+ "l_lightLevel": {
+  "message": "Light background from"
  }
 }

@@ -47,6 +47,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 - **Hover hint:** buttons and list rows light up faintly when you point at them.
 - **Translucent dark layers:** also catches partly see-through dark grays.
 - **Dim images & video:** slightly darkens pictures and videos so they don't glare against the black page.
+- **Light pages → dark:** for sites with no dark mode (for example nyaa.si). White and light-gray backgrounds go black, pale colour tints (green, red or yellow table rows) become dark tints of the same colour, light borders become dark gray, and dark text turns light. Pictures, colourful gradients and text over background images are left alone. Off by default and applied per site if you like; "Light background from" sets how bright a background must be to count as light. Heavier on busy pages.
 - **Video black crush:** video is rarely encoded with true black. Dark scenes sit at 3–10% brightness, so those pixels stay lit. This applies a tone curve (an SVG filter on the `<video>` element): everything at or below the level goes to `#000`, everything above twice the level is untouched, and it blends smoothly in between. Meant for non-HDR video. It costs a little GPU and may stop the browser from using hardware video overlays, so it is off by default. Turn it off if HDR content looks wrong.
 
   ![Video black crush off vs on](screenshots/compare-video-crush.png)
@@ -66,7 +67,7 @@ All downloads are on the **[latest release](https://github.com/NGGKroze/oled-tru
 
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.14.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.14.0/OLED-True-Black-v1.14.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.15.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-True-Black-v1.15.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -77,10 +78,10 @@ To update: download the new zip, replace the old `extension` folder with the new
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.14.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.14.0/OLED-True-Black-v1.14.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.15.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-True-Black-v1.15.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.14.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.15.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
@@ -102,6 +103,7 @@ All brightness values are a percentage of full white (0% = black, 100% = white).
 | Site mode | Auto | Per site: Auto / Deepen (only grays up to 11%, tolerance 3%, no extras) / Off. |
 | Run on | all sites | Everywhere except the sites you turn off, or only the sites you list. |
 | Schedule | off | From / until, local time. Overnight ranges such as 20:00–07:00 work. |
+| Light pages → dark | off | Light background from 60–98% (default 80%). |
 | Video black crush | off | Level 1–15% (default 6%). |
 | Soften bright text | off | Maximum text brightness 60–100% (default 88%). |
 

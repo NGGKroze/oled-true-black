@@ -9,7 +9,7 @@ const MOCK = {
     ] },
     { box: [0, 14, 22, 86], bg: [22, 22, 22], k: [
       { box: [8, 6, 84, 9], bg: [40, 40, 40], k: [{ txt: "Home", box: [10, 30], color: [255, 255, 255] }] },
-      { txt: "Mail", box: [10, 24], color: [190, 190, 190] },
+      { box: [8, 24, 84, 26], bg: [243, 243, 243], k: [{ txt: "Light", box: [10, 38], color: [40, 40, 40] }] },
       { kind: "image", box: [8, 58, 84, 32] },
     ] },
     { box: [25, 18, 34, 42], bg: [34, 34, 34], bd: [54, 54, 54], k: [
@@ -79,13 +79,19 @@ const preview = (() => {
     const dim = cfg.expDim ? `brightness(${cfg.dimLevel / 100})` : "";
     let blackArea = 0;
     const info = [];
+    const blackMap = new Map();
 
     list.forEach((n, idx) => {
       const s = n.spec, el = n.el;
       if (s.txt) {
         const c = s.color;
         const cap = applied && cfg.expText && Math.min(...c) > capRaw ? capRaw : null;
-        el.style.color = cap == null ? rgb(c) : rgb([cap, cap, cap]);
+        let out = cap == null ? rgb(c) : rgb([cap, cap, cap]);
+        if (applied && cfg.expLight && OLED.isDarkText({ r: c[0], g: c[1], b: c[2], a: 1 })) {
+          let p = n.parent; while (p && !(p.spec.bg && (p.spec.bg[3] ?? 1) >= 0.9)) p = p.parent;
+          if (!p || blackMap.get(p)) { const v = OLED.flipValue(OLED.flipBucket(Math.max(...c))); out = rgb([v, v, v]); }
+        }
+        el.style.color = out;
         return;
       }
       if (s.kind === "image") { el.style.filter = applied ? dim : ""; return; }
@@ -95,7 +101,8 @@ const preview = (() => {
       const bg = s.bg || MOCK.bg;
       const a = bg[3] ?? 1;
       const color = { r: bg[0], g: bg[1], b: bg[2], a };
-      const black = applied && OLED.isDarkGray(color, cfg);
+      const black = applied && (OLED.isDarkGray(color, cfg) || (cfg.expLight && OLED.isLightNeutral(color, cfg)));
+      blackMap.set(n, black);
       let shown = rgb(bg, a), note = `rgb(${bg[0]},${bg[1]},${bg[2]})`;
       if (black) { shown = "#000"; note += " → #000000"; }
       else if (applied && cfg.expOverlay && a >= 0.02 && a <= 0.5 && Math.min(bg[0], bg[1], bg[2]) >= 200) {
