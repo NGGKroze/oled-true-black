@@ -76,7 +76,7 @@ To update: download the new zip, replace the old `extension` folder with the new
 
 ### Firefox (140 or newer)
 
-- **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
+- **From Firefox Add-ons (recommended):** **[OLED True Black on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/oled-true-black/)**. It updates itself.
 - **Try it now (temporary, removed when Firefox restarts):**
   1. Download **[OLED-True-Black-v1.16.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-True-Black-v1.16.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.

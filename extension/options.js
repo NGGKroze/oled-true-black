@@ -144,9 +144,9 @@ const TAB_TITLE = { general: "tabGeneral", det: "tabDetection", look: "tabLook",
 
   // ---------- backup & updates ----------
   const bp = panels.backup[1];
-  // Firefox builds have no update checker: add-ons from addons.mozilla.org update themselves
-  if (!IS_FIREFOX) {
-    const upd = await chrome.storage.sync.get({ updateCheck: !IS_FIREFOX });
+  // Store builds have no update checker (no "alarms" permission): the store updates the add-on itself
+  if ((chrome.runtime.getManifest().permissions || []).includes("alarms")) {
+    const upd = await chrome.storage.sync.get({ updateCheck: true });
     bp.append(el("h3", "", t("secUpdates")));
     bp.append(switchRow(t("l_updateCheck"), t("h_updateCheck"), () => upd.updateCheck, (v) => { upd.updateCheck = v; chrome.storage.sync.set({ updateCheck: v }); }));
     const updStatus = el("div", "status");

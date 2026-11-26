@@ -1,4 +1,4 @@
-// Firefox build: badge and keyboard shortcut only. No network access, no update checks (AMO updates the add-on).
+// Store builds (Firefox, Chrome Web Store, Edge Add-ons): badge and keyboard shortcut only. No network access, no update checks (the store updates the add-on).
 async function refreshBadge() {
   const { enabled } = await chrome.storage.sync.get({ enabled: true });
   if (!enabled) {
