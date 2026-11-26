@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "Turns dark-gray page backgrounds into true black (#000) so OLED pixels switch off."
+ },
+ "tipMaster": {
+  "message": "Master switch (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "Settings apply to"
+ },
+ "scopeAll": {
+  "message": "All sites"
+ },
+ "scopeSite": {
+  "message": "Only this site"
+ },
+ "scopeSiteHint": {
+  "message": "A separate copy of these settings is kept for {0}. Switch back to “All sites” to remove it."
+ },
+ "modeAuto": {
+  "message": "Auto"
+ },
+ "modeDeepen": {
+  "message": "Deepen"
+ },
+ "modeOff": {
+  "message": "Off"
+ },
+ "modeAutoDesc": {
+  "message": "Recolours every dark gray"
+ },
+ "modeDeepenDesc": {
+  "message": "Only near-blacks turn pure black"
+ },
+ "modeOffDesc": {
+  "message": "Does nothing on this site"
+ },
+ "modeNotListed": {
+  "message": "Not on your allowed list"
+ },
+ "notAvailable": {
+  "message": "Not available on this page"
+ },
+ "statsLine": {
+  "message": "{0} areas black · {1} ms · {2} checked"
+ },
+ "statsPseudo": {
+  "message": "{0} pseudo-layers"
+ },
+ "statsGlow": {
+  "message": "{0} glows hidden"
+ },
+ "statsShadow": {
+  "message": "{0} web components"
+ },
+ "statsReload": {
+  "message": "Reload the page to activate it."
+ },
+ "statsOff": {
+  "message": "Not active on this page."
+ },
+ "updateAvail": {
+  "message": "Version {0} is available (you have {1}) — download"
+ },
+ "moreSettings": {
+  "message": "All settings & live preview →"
+ },
+ "reportSite": {
+  "message": "Report a problem with this site"
+ },
+ "reportTip": {
+  "message": "Opens a pre-filled GitHub issue with the site name, version and settings. Nothing is sent until you press Submit."
+ },
+ "tagExperimental": {
+  "message": "experimental"
+ },
+ "tagAllSites": {
+  "message": "all sites"
+ },
+ "tagAllSitesTip": {
+  "message": "This setting is global; it can't differ per site."
+ },
+ "off": {
+  "message": "off"
+ },
+ "unitMin": {
+  "message": "min"
+ },
+ "unitSec": {
+  "message": "s"
+ },
+ "secDetection": {
+  "message": "Detection"
+ },
+ "secLook": {
+  "message": "Look & behaviour"
+ },
+ "secMedia": {
+  "message": "Video, images & text"
+ },
+ "secExperimental": {
+  "message": "Experimental"
+ },
+ "secCare": {
+  "message": "Burn-in care & schedule"
+ },
+ "secIdle": {
+  "message": "Idle care (burn-in protection)"
+ },
+ "secSchedule": {
+  "message": "Schedule"
+ },
+ "secUpdates": {
+  "message": "Updates"
+ },
+ "secBackup": {
+  "message": "Backup"
+ },
+ "presetSoft": {
+  "message": "Soft"
+ },
+ "presetNormal": {
+  "message": "Normal"
+ },
+ "presetAggressive": {
+  "message": "Aggressive"
+ },
+ "h_presets": {
+  "message": "Soft: only near-black grays. Normal: typical dark-mode sites (recommended). Aggressive: lighter grays too — more black, less contrast between cards."
+ },
+ "l_enabled": {
+  "message": "Enabled"
+ },
+ "l_threshold": {
+  "message": "Black threshold"
+ },
+ "h_threshold": {
+  "message": "How light a gray may be and still turn black. The swatch shows the lightest shade that turns black. About 28% covers typical dark modes; 40%+ also takes mid-grays."
+ },
+ "l_tolerance": {
+  "message": "Color tolerance"
+ },
+ "h_tolerance": {
+  "message": "How colourful a dark shade may be and still count as gray. 0% = pure grays only; about 9% also takes slightly blue or green darks; above 15% strongly coloured darks go black too."
+ },
+ "l_borders": {
+  "message": "Black borders"
+ },
+ "h_borders": {
+  "message": "Also turns thin dark-gray border lines black."
+ },
+ "l_pseudo": {
+  "message": "Pseudo-element backgrounds"
+ },
+ "h_pseudo": {
+  "message": "Catches backgrounds drawn by invisible ::before / ::after layers (cards, dividers, sticky headers). Turn off only if something breaks."
+ },
+ "l_hideGlow": {
+  "message": "Hide blurred glow behind videos"
+ },
+ "h_hideGlow": {
+  "message": "Removes blurred copies of a video or picture drawn behind the content, like YouTube's ambient mode."
+ },
+ "l_antiFlash": {
+  "message": "Prevent gray flash on load"
+ },
+ "h_antiFlash": {
+  "message": "Remembers dark sites and paints them black instantly next time, before the page finishes scanning."
+ },
+ "l_perfMode": {
+  "message": "Performance mode"
+ },
+ "h_perfMode": {
+  "message": "Lighter scanning for heavy pages: no pseudo-layers or borders, smaller batches, ignores inline-style changes. See the ms counter in the popup."
+ },
+ "l_expDim": {
+  "message": "Dim images & video"
+ },
+ "h_expDim": {
+  "message": "Slightly darkens pictures and videos so bright thumbnails don't glare against the black page."
+ },
+ "l_dimLevel": {
+  "message": "Image brightness"
+ },
+ "l_expVideo": {
+  "message": "Video black crush"
+ },
+ "h_expVideo": {
+  "message": "Pushes near-black video pixels to true black so dark scenes switch pixels off. For non-HDR video; costs a little GPU. Turn off if HDR content looks wrong."
+ },
+ "l_crushLevel": {
+  "message": "Crush level"
+ },
+ "l_expText": {
+  "message": "Soften bright text"
+ },
+ "h_expText": {
+  "message": "Caps near-white text a little below pure white to reduce glare and halation on black."
+ },
+ "l_textCap": {
+  "message": "Maximum text brightness"
+ },
+ "l_expEdge": {
+  "message": "Thin outline on gray panels"
+ },
+ "h_expEdge": {
+  "message": "Keeps a fine line where a gray panel stood out from what was behind it, so you can still see nested panels."
+ },
+ "l_edgeLevel": {
+  "message": "Outline brightness"
+ },
+ "l_edgeDelta": {
+  "message": "Minimum contrast for an outline"
+ },
+ "l_expHover": {
+  "message": "Hover hint"
+ },
+ "h_expHover": {
+  "message": "Buttons, links and list rows light up faintly under the pointer."
+ },
+ "l_expAlpha": {
+  "message": "Translucent dark layers"
+ },
+ "h_expAlpha": {
+  "message": "Also treats partly see-through dark grays (over 60% opaque) as backgrounds. May hide content behind them."
+ },
+ "l_expOverlay": {
+  "message": "Soften light translucent overlays"
+ },
+ "h_expOverlay": {
+  "message": "Cards that are only a faint white tint (e.g. YouTube's description box) get a weaker tint."
+ },
+ "l_overlayStrength": {
+  "message": "Overlay strength"
+ },
+ "l_expInspector": {
+  "message": "Inspector (hold Alt + move the mouse)"
+ },
+ "h_expInspector": {
+  "message": "Shows the site's original colours under the pointer and whether they turn black. English only."
+ },
+ "l_expDebug": {
+  "message": "Debug: paint detected areas burgundy"
+ },
+ "h_expDebug": {
+  "message": "Shows exactly which areas are detected."
+ },
+ "l_idleCare": {
+  "message": "Dim, then black out idle pages"
+ },
+ "h_idleCare": {
+  "message": "An untouched page first dims, then fades to black, so static elements don't burn in. Any input wakes it; the first click only wakes. Never while video plays or in background tabs."
+ },
+ "l_idleDimMin": {
+  "message": "Dim after"
+ },
+ "l_idleBlackMin": {
+  "message": "Black out after"
+ },
+ "l_idleDimLevel": {
+  "message": "Dim strength"
+ },
+ "l_cursorHideSec": {
+  "message": "Hide mouse cursor after"
+ },
+ "l_schedule": {
+  "message": "Only run at certain hours"
+ },
+ "h_schedule": {
+  "message": "Outside the chosen hours the extension does nothing (and idle care pauses)."
+ },
+ "l_schedFrom": {
+  "message": "From"
+ },
+ "l_schedTo": {
+  "message": "Until"
+ },
+ "l_lang": {
+  "message": "Language"
+ },
+ "h_lang": {
+  "message": "Language names are shown in their own language. Corrections are welcome on GitHub."
+ },
+ "langAuto": {
+  "message": "Automatic (browser language)"
+ },
+ "l_updateCheck": {
+  "message": "Check GitHub for new versions (once a day)"
+ },
+ "h_updateCheck": {
+  "message": "Only the version number is fetched, nothing about you is sent. Installing is still manual: browsers don't let unpacked extensions replace themselves."
+ },
+ "tabGeneral": {
+  "message": "General"
+ },
+ "tabDetection": {
+  "message": "Detection"
+ },
+ "tabLook": {
+  "message": "Look & behaviour"
+ },
+ "tabMedia": {
+  "message": "Video, images & text"
+ },
+ "tabExperimental": {
+  "message": "Experimental"
+ },
+ "tabCare": {
+  "message": "Burn-in care"
+ },
+ "tabSites": {
+  "message": "Sites"
+ },
+ "tabBackup": {
+  "message": "Updates & backup"
+ },
+ "tabBrowser": {
+  "message": "Browser & theme"
+ },
+ "lead_general": {
+  "message": "Turns dark-gray page backgrounds into pure black (#000000), so OLED pixels switch fully off. The preview shows what your settings do."
+ },
+ "lead_det": {
+  "message": "Which grays count as “dark gray”. Values are percentages of full white (0% = black)."
+ },
+ "lead_look": {
+  "message": "How the extension treats borders, hidden layers and page loading."
+ },
+ "lead_media": {
+  "message": "Optional tweaks for pictures, video and text. All experimental."
+ },
+ "lead_exp": {
+  "message": "Extra features that may not suit every site."
+ },
+ "lead_care": {
+  "message": "Protects the panel from static images burning in."
+ },
+ "lead_sites": {
+  "message": "Where the extension runs and how."
+ },
+ "lead_backup": {
+  "message": "Check for new versions and move your settings between browsers."
+ },
+ "lead_browser": {
+  "message": "The extension only recolours web pages. The browser frame comes from the optional black theme and the browser's own appearance settings."
+ },
+ "shortcutHint": {
+  "message": "Toggle anywhere with Alt+Shift+B (change it on the browser's extension shortcuts page)."
+ },
+ "resetAll": {
+  "message": "Reset settings to defaults"
+ },
+ "forgetSites": {
+  "message": "Forget remembered sites"
+ },
+ "forgotten": {
+  "message": "Forgotten ✓"
+ },
+ "runOn": {
+  "message": "Run on"
+ },
+ "scopeEverywhere": {
+  "message": "all sites except the ones I turn off"
+ },
+ "scopeListed": {
+  "message": "only the sites I list"
+ },
+ "listOff": {
+  "message": "Turned off"
+ },
+ "listOffHint": {
+  "message": "The extension does nothing on these sites (and their subdomains)."
+ },
+ "listAllow": {
+  "message": "Allowed sites"
+ },
+ "listAllowHint": {
+  "message": "Used when “Run on” is set to only the sites I list."
+ },
+ "listDeepen": {
+  "message": "Deepen only"
+ },
+ "listDeepenHint": {
+  "message": "Only near-blacks turn pure black here; no other changes."
+ },
+ "listOwn": {
+  "message": "Own settings"
+ },
+ "listOwnHint": {
+  "message": "Sites with their own copy of the settings. Create one from the toolbar popup."
+ },
+ "add": {
+  "message": "Add"
+ },
+ "remove": {
+  "message": "Remove"
+ },
+ "none": {
+  "message": "— none —"
+ },
+ "checkNow": {
+  "message": "Check now"
+ },
+ "checking": {
+  "message": "Checking…"
+ },
+ "updFailed": {
+  "message": "Last check failed: {0}"
+ },
+ "updNever": {
+  "message": "You have {0}. Not checked yet."
+ },
+ "updOk": {
+  "message": "You have {0} — up to date (checked {1})."
+ },
+ "updNew": {
+  "message": "Version {0} is available — you have {1} (checked {2})."
+ },
+ "backupHint": {
+  "message": "Save all settings (including site lists) to a file, or load them in another browser."
+ },
+ "exportBtn": {
+  "message": "Export settings"
+ },
+ "importBtn": {
+  "message": "Import settings"
+ },
+ "exported": {
+  "message": "Exported."
+ },
+ "imported": {
+  "message": "Imported — reloading…"
+ },
+ "importFailed": {
+  "message": "Import failed: {0}"
+ },
+ "notSettingsFile": {
+  "message": "not an OLED True Black settings file"
+ },
+ "pageAppearance": {
+  "message": "Appearance"
+ },
+ "pageExtensions": {
+  "message": "Extensions / Load unpacked"
+ },
+ "pageAddons": {
+  "message": "Add-ons"
+ },
+ "pageShortcuts": {
+  "message": "Keyboard shortcuts"
+ },
+ "pageShortcutsFx": {
+  "message": "Shortcuts (gear menu → Manage)"
+ },
+ "pageFlag": {
+  "message": "Flag: Auto Dark Mode"
+ },
+ "copied": {
+  "message": "Copied: {0} — paste it into the address bar."
+ },
+ "limits": {
+  "message": "Does not work on browser-internal pages, the built-in PDF viewer, extension stores or the sidebar. For local files, enable “Allow access to file URLs” in the extension details."
+ },
+ "pvTitle": {
+  "message": "Live preview"
+ },
+ "pvBefore": {
+  "message": "Original site"
+ },
+ "pvAfter": {
+  "message": "With OLED True Black"
+ },
+ "pvPixels": {
+  "message": "Pixels switched off: {0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "A mock page — real sites differ. Hover a panel to see its colour."
+ }
+}

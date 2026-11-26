@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "Transforme les fonds gris foncé des pages en noir pur (#000) pour éteindre les pixels OLED."
+ },
+ "tipMaster": {
+  "message": "Interrupteur général (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "Les réglages s'appliquent à"
+ },
+ "scopeAll": {
+  "message": "Tous les sites"
+ },
+ "scopeSite": {
+  "message": "Ce site seulement"
+ },
+ "scopeSiteHint": {
+  "message": "Une copie distincte de ces réglages est conservée pour {0}. Revenez à « Tous les sites » pour la supprimer."
+ },
+ "modeAuto": {
+  "message": "Auto"
+ },
+ "modeDeepen": {
+  "message": "Noirs seuls"
+ },
+ "modeOff": {
+  "message": "Off"
+ },
+ "modeAutoDesc": {
+  "message": "Recolore chaque gris foncé"
+ },
+ "modeDeepenDesc": {
+  "message": "Seuls les quasi-noirs deviennent noir pur"
+ },
+ "modeOffDesc": {
+  "message": "Ne fait rien sur ce site"
+ },
+ "modeNotListed": {
+  "message": "Pas dans votre liste autorisée"
+ },
+ "notAvailable": {
+  "message": "Indisponible sur cette page"
+ },
+ "statsLine": {
+  "message": "{0} zones noires · {1} ms · {2} vérifiées"
+ },
+ "statsPseudo": {
+  "message": "{0} pseudo-couches"
+ },
+ "statsGlow": {
+  "message": "{0} lueurs masquées"
+ },
+ "statsShadow": {
+  "message": "{0} composants web"
+ },
+ "statsReload": {
+  "message": "Rechargez la page pour l'activer."
+ },
+ "statsOff": {
+  "message": "Inactif sur cette page."
+ },
+ "updateAvail": {
+  "message": "La version {0} est disponible (vous avez la {1}) — télécharger"
+ },
+ "moreSettings": {
+  "message": "Tous les réglages et aperçu →"
+ },
+ "reportSite": {
+  "message": "Signaler un problème sur ce site"
+ },
+ "reportTip": {
+  "message": "Ouvre un ticket GitHub prérempli (site, version, réglages). Rien n'est envoyé avant que vous cliquiez sur Submit."
+ },
+ "tagExperimental": {
+  "message": "expérimental"
+ },
+ "tagAllSites": {
+  "message": "tous les sites"
+ },
+ "tagAllSitesTip": {
+  "message": "Ce réglage est global ; il ne peut pas varier par site."
+ },
+ "off": {
+  "message": "désactivé"
+ },
+ "unitMin": {
+  "message": "min"
+ },
+ "unitSec": {
+  "message": "s"
+ },
+ "secDetection": {
+  "message": "Détection"
+ },
+ "secLook": {
+  "message": "Apparence et comportement"
+ },
+ "secMedia": {
+  "message": "Vidéo, images et texte"
+ },
+ "secExperimental": {
+  "message": "Expérimental"
+ },
+ "secCare": {
+  "message": "Protection anti-rémanence et horaires"
+ },
+ "secIdle": {
+  "message": "Mise en veille (anti-rémanence)"
+ },
+ "secSchedule": {
+  "message": "Horaires"
+ },
+ "secUpdates": {
+  "message": "Mises à jour"
+ },
+ "secBackup": {
+  "message": "Sauvegarde"
+ },
+ "presetSoft": {
+  "message": "Doux"
+ },
+ "presetNormal": {
+  "message": "Normal"
+ },
+ "presetAggressive": {
+  "message": "Agressif"
+ },
+ "h_presets": {
+  "message": "Doux : seulement les gris quasi noirs. Normal : sites sombres typiques (recommandé). Agressif : aussi des gris plus clairs — plus de noir, moins de contraste entre cartes."
+ },
+ "l_enabled": {
+  "message": "Activé"
+ },
+ "l_threshold": {
+  "message": "Seuil de noir"
+ },
+ "h_threshold": {
+  "message": "Jusqu'à quelle clarté un gris devient noir. L'échantillon montre la teinte la plus claire convertie. Environ 28 % couvre les modes sombres courants ; au-delà de 40 %, les gris moyens aussi."
+ },
+ "l_tolerance": {
+  "message": "Tolérance de couleur"
+ },
+ "h_tolerance": {
+  "message": "Jusqu'à quel point une teinte sombre peut être colorée et rester un gris. 0 % = gris purs ; environ 9 % inclut les sombres légèrement bleutés ou verdâtres ; au-delà de 15 %, les sombres très colorés aussi."
+ },
+ "l_borders": {
+  "message": "Bordures noires"
+ },
+ "h_borders": {
+  "message": "Rend aussi noires les fines bordures gris foncé."
+ },
+ "l_pseudo": {
+  "message": "Fonds des pseudo-éléments"
+ },
+ "h_pseudo": {
+  "message": "Capte les fonds dessinés par des couches invisibles ::before / ::after (cartes, séparateurs, en-têtes fixes). À désactiver seulement en cas de problème."
+ },
+ "l_hideGlow": {
+  "message": "Masquer la lueur floue derrière les vidéos"
+ },
+ "h_hideGlow": {
+  "message": "Supprime les copies floues d'une vidéo ou image dessinées derrière le contenu, comme le mode ambiant de YouTube."
+ },
+ "l_antiFlash": {
+  "message": "Éviter le flash gris au chargement"
+ },
+ "h_antiFlash": {
+  "message": "Mémorise les sites sombres et les peint en noir immédiatement la fois suivante, avant la fin de l'analyse."
+ },
+ "l_perfMode": {
+  "message": "Mode performance"
+ },
+ "h_perfMode": {
+  "message": "Analyse allégée pour les pages lourdes : pas de pseudo-couches ni de bordures, lots plus petits, ignore les changements de style en ligne. Voir le compteur en ms dans la fenêtre."
+ },
+ "l_expDim": {
+  "message": "Atténuer images et vidéo"
+ },
+ "h_expDim": {
+  "message": "Assombrit légèrement images et vidéos pour que les miniatures claires n'éblouissent pas sur la page noire."
+ },
+ "l_dimLevel": {
+  "message": "Luminosité des images"
+ },
+ "l_expVideo": {
+  "message": "Écrasement des noirs vidéo"
+ },
+ "h_expVideo": {
+  "message": "Pousse les pixels quasi noirs des vidéos vers le noir pur pour éteindre des pixels dans les scènes sombres. Pour vidéo non HDR ; consomme un peu de GPU. À désactiver si le HDR semble anormal."
+ },
+ "l_crushLevel": {
+  "message": "Niveau d'écrasement"
+ },
+ "l_expText": {
+  "message": "Adoucir le texte clair"
+ },
+ "h_expText": {
+  "message": "Plafonne le texte quasi blanc un peu sous le blanc pur pour réduire éblouissement et halo sur le noir."
+ },
+ "l_textCap": {
+  "message": "Luminosité max. du texte"
+ },
+ "l_expEdge": {
+  "message": "Fin contour sur les panneaux gris"
+ },
+ "h_expEdge": {
+  "message": "Garde un fin trait là où un panneau gris se distinguait de l'arrière-plan, pour voir encore les panneaux imbriqués."
+ },
+ "l_edgeLevel": {
+  "message": "Luminosité du contour"
+ },
+ "l_edgeDelta": {
+  "message": "Contraste minimal pour un contour"
+ },
+ "l_expHover": {
+  "message": "Indice au survol"
+ },
+ "h_expHover": {
+  "message": "Boutons, liens et lignes de liste s'allument faiblement sous le pointeur."
+ },
+ "l_expAlpha": {
+  "message": "Couches sombres translucides"
+ },
+ "h_expAlpha": {
+  "message": "Traite aussi comme fonds les gris foncé semi-transparents (opacité > 60 %). Peut masquer le contenu derrière."
+ },
+ "l_expOverlay": {
+  "message": "Adoucir les surcouches claires translucides"
+ },
+ "h_expOverlay": {
+  "message": "Les cartes qui ne sont qu'un voile blanc léger (ex. la description YouTube) reçoivent un voile plus faible."
+ },
+ "l_overlayStrength": {
+  "message": "Intensité de la surcouche"
+ },
+ "l_expInspector": {
+  "message": "Inspecteur (maintenez Alt + bougez la souris)"
+ },
+ "h_expInspector": {
+  "message": "Affiche les couleurs d'origine du site sous le pointeur et si elles deviennent noires. En anglais uniquement."
+ },
+ "l_expDebug": {
+  "message": "Débogage : peindre en bordeaux les zones détectées"
+ },
+ "h_expDebug": {
+  "message": "Montre exactement quelles zones sont détectées."
+ },
+ "l_idleCare": {
+  "message": "Assombrir puis noircir les pages inactives"
+ },
+ "h_idleCare": {
+  "message": "Une page inactive s'assombrit d'abord, puis passe au noir, pour éviter la rémanence des éléments fixes. Toute action la réveille ; le premier clic ne fait que réveiller. Jamais pendant une vidéo ni en onglet d'arrière-plan."
+ },
+ "l_idleDimMin": {
+  "message": "Assombrir après"
+ },
+ "l_idleBlackMin": {
+  "message": "Noircir après"
+ },
+ "l_idleDimLevel": {
+  "message": "Intensité d'assombrissement"
+ },
+ "l_cursorHideSec": {
+  "message": "Masquer le curseur après"
+ },
+ "l_schedule": {
+  "message": "Actif seulement à certaines heures"
+ },
+ "h_schedule": {
+  "message": "En dehors des heures choisies, l'extension ne fait rien (et la mise en veille est suspendue)."
+ },
+ "l_schedFrom": {
+  "message": "De"
+ },
+ "l_schedTo": {
+  "message": "Jusqu'à"
+ },
+ "l_lang": {
+  "message": "Langue"
+ },
+ "h_lang": {
+  "message": "Les langues sont affichées dans leur propre langue. Les corrections sont les bienvenues sur GitHub."
+ },
+ "langAuto": {
+  "message": "Automatique (langue du navigateur)"
+ },
+ "l_updateCheck": {
+  "message": "Chercher de nouvelles versions sur GitHub (une fois par jour)"
+ },
+ "h_updateCheck": {
+  "message": "Seul le numéro de version est récupéré, rien sur vous n'est envoyé. L'installation reste manuelle : les navigateurs n'autorisent pas une extension non empaquetée à se remplacer."
+ },
+ "tabGeneral": {
+  "message": "Général"
+ },
+ "tabDetection": {
+  "message": "Détection"
+ },
+ "tabLook": {
+  "message": "Apparence et comportement"
+ },
+ "tabMedia": {
+  "message": "Vidéo, images et texte"
+ },
+ "tabExperimental": {
+  "message": "Expérimental"
+ },
+ "tabCare": {
+  "message": "Anti-rémanence"
+ },
+ "tabSites": {
+  "message": "Sites"
+ },
+ "tabBackup": {
+  "message": "Mises à jour et sauvegarde"
+ },
+ "tabBrowser": {
+  "message": "Navigateur et thème"
+ },
+ "lead_general": {
+  "message": "Transforme les fonds gris foncé en noir pur (#000000) pour éteindre complètement les pixels OLED. L'aperçu montre l'effet de vos réglages."
+ },
+ "lead_det": {
+  "message": "Quels gris comptent comme « gris foncé ». Les valeurs sont des pourcentages du blanc complet (0 % = noir)."
+ },
+ "lead_look": {
+  "message": "Comment l'extension traite les bordures, les couches cachées et le chargement des pages."
+ },
+ "lead_media": {
+  "message": "Réglages facultatifs pour images, vidéo et texte. Tous expérimentaux."
+ },
+ "lead_exp": {
+  "message": "Fonctions supplémentaires qui ne conviennent pas à tous les sites."
+ },
+ "lead_care": {
+  "message": "Protège la dalle de la rémanence des images fixes."
+ },
+ "lead_sites": {
+  "message": "Où et comment l'extension agit."
+ },
+ "lead_backup": {
+  "message": "Cherchez les nouvelles versions et transférez vos réglages entre navigateurs."
+ },
+ "lead_browser": {
+  "message": "L'extension ne recolore que les pages web. Le cadre du navigateur vient du thème noir facultatif et des réglages d'apparence du navigateur."
+ },
+ "shortcutHint": {
+  "message": "Activez/désactivez partout avec Alt+Shift+B (modifiable dans la page des raccourcis d'extensions du navigateur)."
+ },
+ "resetAll": {
+  "message": "Rétablir les réglages par défaut"
+ },
+ "forgetSites": {
+  "message": "Oublier les sites mémorisés"
+ },
+ "forgotten": {
+  "message": "Oublié ✓"
+ },
+ "runOn": {
+  "message": "Actif sur"
+ },
+ "scopeEverywhere": {
+  "message": "tous les sites sauf ceux que je désactive"
+ },
+ "scopeListed": {
+  "message": "seulement les sites de ma liste"
+ },
+ "listOff": {
+  "message": "Désactivés"
+ },
+ "listOffHint": {
+  "message": "L'extension ne fait rien sur ces sites (ni leurs sous-domaines)."
+ },
+ "listAllow": {
+  "message": "Sites autorisés"
+ },
+ "listAllowHint": {
+  "message": "Utilisé quand « Actif sur » est réglé sur les sites de la liste seulement."
+ },
+ "listDeepen": {
+  "message": "Noirs seuls"
+ },
+ "listDeepenHint": {
+  "message": "Ici seuls les quasi-noirs deviennent noir pur ; aucun autre changement."
+ },
+ "listOwn": {
+  "message": "Réglages propres"
+ },
+ "listOwnHint": {
+  "message": "Sites ayant leur propre copie des réglages. À créer depuis la fenêtre de la barre d'outils."
+ },
+ "add": {
+  "message": "Ajouter"
+ },
+ "remove": {
+  "message": "Retirer"
+ },
+ "none": {
+  "message": "— aucun —"
+ },
+ "checkNow": {
+  "message": "Vérifier maintenant"
+ },
+ "checking": {
+  "message": "Vérification…"
+ },
+ "updFailed": {
+  "message": "La dernière vérification a échoué : {0}"
+ },
+ "updNever": {
+  "message": "Vous avez la {0}. Pas encore vérifié."
+ },
+ "updOk": {
+  "message": "Vous avez la {0} — à jour (vérifié {1})."
+ },
+ "updNew": {
+  "message": "La version {0} est disponible — vous avez la {1} (vérifié {2})."
+ },
+ "backupHint": {
+  "message": "Enregistrez tous les réglages (listes de sites comprises) dans un fichier ou chargez-les dans un autre navigateur."
+ },
+ "exportBtn": {
+  "message": "Exporter les réglages"
+ },
+ "importBtn": {
+  "message": "Importer les réglages"
+ },
+ "exported": {
+  "message": "Exporté."
+ },
+ "imported": {
+  "message": "Importé — rechargement…"
+ },
+ "importFailed": {
+  "message": "Échec de l'import : {0}"
+ },
+ "notSettingsFile": {
+  "message": "ce n'est pas un fichier de réglages OLED True Black"
+ },
+ "pageAppearance": {
+  "message": "Apparence"
+ },
+ "pageExtensions": {
+  "message": "Extensions / Charger non empaquetée"
+ },
+ "pageAddons": {
+  "message": "Modules"
+ },
+ "pageShortcuts": {
+  "message": "Raccourcis clavier"
+ },
+ "pageShortcutsFx": {
+  "message": "Raccourcis (menu engrenage → Gérer)"
+ },
+ "pageFlag": {
+  "message": "Flag : Auto Dark Mode"
+ },
+ "copied": {
+  "message": "Copié : {0} — collez-le dans la barre d'adresse."
+ },
+ "limits": {
+  "message": "Ne fonctionne pas sur les pages internes du navigateur, la visionneuse PDF intégrée, les boutiques d'extensions ni la barre latérale. Pour les fichiers locaux, activez « Autoriser l'accès aux URL de fichier » dans les détails de l'extension."
+ },
+ "pvTitle": {
+  "message": "Aperçu en direct"
+ },
+ "pvBefore": {
+  "message": "Site d'origine"
+ },
+ "pvAfter": {
+  "message": "Avec OLED True Black"
+ },
+ "pvPixels": {
+  "message": "Pixels éteints : {0} % → {1} %"
+ },
+ "pvNote": {
+  "message": "Une page factice — les vrais sites diffèrent. Survolez un panneau pour voir sa couleur."
+ }
+}

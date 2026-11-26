@@ -2,135 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>OLED True Black – Settings</title>
+<title>OLED True Black</title>
 <link rel="stylesheet" href="ui.css">
-<style>body{max-width:600px;margin:0 auto;padding:24px}</style>
+<link rel="stylesheet" href="options.css">
 </head>
 <body>
-  <h1>OLED True Black</h1>
-  <span class="hint">Turns dark-gray page backgrounds into pure black (#000000), so OLED pixels switch fully off. Brightness values below are shown as a percentage of full white (0% = black, 100% = white).</span>
-
-  <h2>General</h2>
-  <label class="row">Enabled <input type="checkbox" data-key="enabled"></label>
-  <span class="hint">Master switch. You can also toggle it anywhere with Alt+Shift+B (change the key on the browser's extension shortcuts page).</span>
-
-  <label class="row">Black borders <input type="checkbox" data-key="borders"></label>
-  <span class="hint">Also turns thin, dark-gray border lines black. Turn this on if panels still look "boxed in" by a faint frame.</span>
-
-  <label class="row">Pseudo-element backgrounds <input type="checkbox" data-key="pseudo"></label>
-  <span class="hint">Many sites draw card backgrounds, dividers and sticky headers with invisible ::before / ::after layers. This catches those too. Turn off only if something looks broken.</span>
-
-  <label class="row">Hide blurred glow behind videos <input type="checkbox" data-key="hideGlow"></label>
-  <span class="hint">Removes blurred, enlarged copies of a video or picture drawn behind the content — e.g. YouTube's "Ambient mode" haze around the player. These are images, not gray backgrounds, so the sliders can't catch them.</span>
-
-  <label class="row">Prevent gray flash on load <input type="checkbox" data-key="antiFlash"></label>
-  <span class="hint">Remembers which sites had a dark page background and paints them black instantly next time, before the page finishes scanning. <button id="forget" style="padding:1px 6px;font-size:11px">Forget remembered sites</button></span>
-
-  <div class="presets">
-    <button data-b="20" data-t="6">Soft</button>
-    <button data-b="28" data-t="9">Normal</button>
-    <button data-b="43" data-t="13">Aggressive</button>
+  <div class="app">
+    <nav class="side">
+      <div class="brand">OLED True Black <small id="ver"></small></div>
+      <div id="tabs"></div>
+    </nav>
+    <main id="main"></main>
+    <aside class="preview">
+      <h2 data-i18n="pvTitle"></h2>
+      <div class="cap" data-i18n="pvBefore"></div>
+      <div class="mock" id="mockBefore"></div>
+      <div class="cap" data-i18n="pvAfter"></div>
+      <div class="mock" id="mockAfter"></div>
+      <div class="pix" id="pixels"></div>
+      <div class="hint" data-i18n="pvNote"></div>
+    </aside>
   </div>
-  <span class="hint"><b>Soft</b>: only near-black grays. <b>Normal</b>: typical dark-mode sites <span class="tag">recommended</span>. <b>Aggressive</b>: also lighter grays — more black, but cards and buttons lose contrast against the background.</span>
-
-  <div class="slider"><span class="name">Black threshold</span> <span><b id="thresholdVal"></b><i class="swatch" id="thresholdSwatch"></i></span>
-    <input type="range" data-key="threshold" data-scale="pct" min="5" max="60">
-  </div>
-  <span class="hint">How light a gray may be and still turn black. The swatch shows the lightest shade that still turns black — it and everything darker become #000. 0% would be pure black only; around 28% (default) covers typical dark-mode grays; 40%+ also takes mid-grays.</span>
-
-  <div class="slider"><span class="name">Color tolerance</span> <span><b id="toleranceVal"></b></span>
-    <input type="range" data-key="tolerance" data-scale="pct" min="0" max="20">
-  </div>
-  <span class="hint">How colourful a dark shade may be and still count as "gray". 0% = pure grays only. Around 9% (default) also takes slightly blue/green-tinted darks like GitHub's. Above ~15% strongly coloured dark areas (navy, dark green) would be turned black too.</span>
-
-  <h2>Idle care (burn-in protection)</h2>
-  <label class="row">Dim, then black out idle pages <input type="checkbox" data-key="idleCare"></label>
-  <span class="hint">When a page sits untouched, it first dims, then fades fully to black, so static logos, menus and text don't burn into the OLED panel. Any mouse move, key or scroll wakes it instantly; the first click only wakes the page, it doesn't press anything. Never happens while a video is playing (including embedded videos) or in background tabs.</span>
-  <div class="slider"><span class="name">Dim after</span> <span><b id="idleDimMinVal"></b></span>
-    <input type="range" data-key="idleDimMin" data-unit=" min" data-off min="0" max="15"></div>
-  <div class="slider"><span class="name">Black out after</span> <span><b id="idleBlackMinVal"></b></span>
-    <input type="range" data-key="idleBlackMin" data-unit=" min" data-off min="0" max="30"></div>
-  <div class="slider"><span class="name">Dim strength</span> <span><b id="idleDimLevelVal"></b></span>
-    <input type="range" data-key="idleDimLevel" min="20" max="90"></div>
-  <span class="hint">0 min = that stage is off. Dim strength is how much darker the page gets in the first stage.</span>
-  <div class="slider"><span class="name">Hide mouse cursor after</span> <span><b id="cursorHideSecVal"></b></span>
-    <input type="range" data-key="cursorHideSec" data-unit=" s" data-off min="0" max="30"></div>
-  <span class="hint">Hides the cursor when the mouse hasn't moved for this many seconds (works while Idle care is on). A parked cursor is a static bright spot too.</span>
-
-  <h2>Experimental</h2>
-  <label class="row">Thin outline on gray panels <input type="checkbox" data-key="expEdge"></label>
-  <span class="hint">Where a gray panel stood out from what was behind it, a fine line stays — so you can still see where each panel was, including panels inside panels.</span>
-  <div class="slider"><span class="name">Outline brightness</span> <span><b id="edgeLevelVal"></b><i class="swatch" id="edgeLevelSwatch"></i></span>
-    <input type="range" data-key="edgeLevel" data-scale="pct" min="6" max="40">
-  </div>
-  <span class="hint">How bright the outline is. Lower = subtler, higher = easier to see.</span>
-  <div class="slider"><span class="name">Minimum contrast for an outline</span> <span><b id="edgeDeltaVal"></b></span>
-    <input type="range" data-key="edgeDelta" data-scale="pct" min="1" max="12">
-  </div>
-  <span class="hint">A panel only gets an outline if it differed from its surroundings by at least this much. Lower = more outlines (even for faint steps), higher = only clearly visible panels.</span>
-
-  <label class="row">Hover hint <input type="checkbox" data-key="expHover"></label>
-  <span class="hint">Buttons, links and list rows light up very faintly when you point at them, instead of staying fully black.</span>
-
-  <label class="row">Translucent dark layers <input type="checkbox" data-key="expAlpha"></label>
-  <span class="hint">Also treats dark grays that are partly see-through (over 60% opaque, normally only over 90%) as backgrounds. Risk: may hide content behind them.</span>
-
-  <label class="row">Soften light translucent overlays <input type="checkbox" data-key="expOverlay"></label>
-  <span class="hint">Cards that are only a faint white tint (e.g. YouTube's description box, chips, some menus) get a weaker tint, so they sit closer to black.</span>
-  <div class="slider"><span class="name">Overlay strength</span> <span><b id="overlayStrengthVal"></b></span>
-    <input type="range" data-key="overlayStrength" min="0" max="100">
-  </div>
-  <span class="hint">How much of the original tint is kept. 100% = unchanged, 30% = faint, 0% = fully transparent (card disappears into black).</span>
-
-  <label class="row">Dim images &amp; video <input type="checkbox" data-key="expDim"></label>
-  <span class="hint">Slightly darkens pictures and videos, so bright thumbnails don't glare against the black page and static bright spots wear the OLED panel less.</span>
-  <div class="slider"><span class="name">Image brightness</span> <span><b id="dimLevelVal"></b></span>
-    <input type="range" data-key="dimLevel" min="50" max="100">
-  </div>
-  <span class="hint">100% = unchanged. 85% is barely noticeable; 70% is clearly dimmer.</span>
-
-  <label class="row">Inspector (hold Alt + move the mouse) <input type="checkbox" data-key="expInspector"></label>
-  <span class="hint">Shows a small box with the site's original colours (before the extension changed them), where the visible background comes from, whether it turns black (and if not, why), and what is on screen now. Handy for tuning the sliders.</span>
-
-  <label class="row">Debug: paint detected areas burgundy <input type="checkbox" data-key="expDebug"></label>
-  <span class="hint">Shows exactly which areas the extension detects, in burgundy instead of black.</span>
-
-  <h2>Disabled sites</h2>
-  <ul id="disabled"></ul>
-  <h2>Sites with their own settings</h2>
-  <ul id="custom"></ul>
-  <span class="hint">Set from the toolbar popup: "Active on this site" and "Own settings for this site".</span>
-
-  <button class="reset" id="reset" title="Restores all sliders and switches above; keeps your site lists.">Reset settings to defaults</button>
-
-  <h2>Updates</h2>
-  <label class="row">Check GitHub for new versions (once a day) <input type="checkbox" id="updateCheck"></label>
-  <span class="hint">Asks GitHub for the latest release. When a newer one exists, the icon shows <b>NEW</b> and the popup gets a download link. Only the version number is fetched — nothing about you is sent. Installing still has to be done by hand: browsers don't let "Load unpacked" extensions replace their own files.</span>
-  <button id="checkNow">Check now</button> <span class="hint" id="updateStatus" style="display:inline"></span>
-
-  <h2>Backup</h2>
-  <span class="hint">Save all settings (including site lists) to a file, or load them in another browser.</span>
-  <button id="export">Export settings</button> <button id="importBtn">Import settings</button>
-  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
-  <span class="hint" id="backupStatus"></span>
-
-  <h2 id="browserTitle">Browser</h2>
-  <span class="hint">The extension only recolours web pages. The browser's own frame (tabs, toolbar) comes from the optional black theme (a separate package) and the browser's appearance settings.</span>
-  <div class="grid">
-    <button data-page="settings/appearance">Appearance</button>
-    <button data-page="extensions/">Extensions / Load unpacked</button>
-    <button data-page="extensions/shortcuts">Keyboard shortcuts</button>
-    <button data-page="flags/#enable-force-dark">Flag: Auto Dark Mode</button>
-  </div>
-  <span class="note" id="msg"></span>
-  <span class="hint">
-    Does not work on: browser-internal pages, the built-in PDF viewer, the extension store, the sidebar.
-    For local files, enable "Allow access to file URLs" in the extension details.
-    If a button doesn't open a page, its address is copied — paste it into the address bar.
-  </span>
-
-  <script src="ui.js"></script>
+  <script src="core.js"></script>
+  <script src="sitefixes.js"></script>
+  <script src="i18n.js"></script>
+  <script src="controls.js"></script>
+  <script src="preview.js"></script>
   <script src="options.js"></script>
-  <script src="options-extra.js"></script>
 </body>
 </html>

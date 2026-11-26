@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "將頁面的深灰色背景變為純黑（#000），讓 OLED 像素熄滅。"
+ },
+ "tipMaster": {
+  "message": "總開關 (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "設定套用於"
+ },
+ "scopeAll": {
+  "message": "所有網站"
+ },
+ "scopeSite": {
+  "message": "僅此網站"
+ },
+ "scopeSiteHint": {
+  "message": "為 {0} 單獨保存一份這些設定。切換回「所有網站」即可刪除。"
+ },
+ "modeAuto": {
+  "message": "自動"
+ },
+ "modeDeepen": {
+  "message": "僅加深黑"
+ },
+ "modeOff": {
+  "message": "關閉"
+ },
+ "modeAutoDesc": {
+  "message": "重新著色所有深灰"
+ },
+ "modeDeepenDesc": {
+  "message": "僅近黑變為純黑"
+ },
+ "modeOffDesc": {
+  "message": "在此網站不做任何事"
+ },
+ "modeNotListed": {
+  "message": "不在你的允許清單中"
+ },
+ "notAvailable": {
+  "message": "此頁面不可用"
+ },
+ "statsLine": {
+  "message": "{0} 處變黑 · {1} 毫秒 · 檢查 {2} 個"
+ },
+ "statsPseudo": {
+  "message": "{0} 個偽元素層"
+ },
+ "statsGlow": {
+  "message": "已隱藏 {0} 處光暈"
+ },
+ "statsShadow": {
+  "message": "{0} 個 Web 元件"
+ },
+ "statsReload": {
+  "message": "重新整理頁面以啟用。"
+ },
+ "statsOff": {
+  "message": "在此頁面未啟用。"
+ },
+ "updateAvail": {
+  "message": "有新版本 {0}（目前 {1}）— 下載"
+ },
+ "moreSettings": {
+  "message": "全部設定與即時預覽 →"
+ },
+ "reportSite": {
+  "message": "回報此網站的問題"
+ },
+ "reportTip": {
+  "message": "開啟已預先填好網站名稱、版本和設定的 GitHub issue。按下 Submit 之前不會傳送任何內容。"
+ },
+ "tagExperimental": {
+  "message": "實驗性"
+ },
+ "tagAllSites": {
+  "message": "所有網站"
+ },
+ "tagAllSitesTip": {
+  "message": "此設定為全域設定，無法依網站區分。"
+ },
+ "off": {
+  "message": "關"
+ },
+ "unitMin": {
+  "message": "分鐘"
+ },
+ "unitSec": {
+  "message": "秒"
+ },
+ "secDetection": {
+  "message": "偵測"
+ },
+ "secLook": {
+  "message": "外觀與行為"
+ },
+ "secMedia": {
+  "message": "影片、圖片與文字"
+ },
+ "secExperimental": {
+  "message": "實驗性"
+ },
+ "secCare": {
+  "message": "防烙印與排程"
+ },
+ "secIdle": {
+  "message": "閒置保護（防烙印）"
+ },
+ "secSchedule": {
+  "message": "排程"
+ },
+ "secUpdates": {
+  "message": "更新"
+ },
+ "secBackup": {
+  "message": "備份"
+ },
+ "presetSoft": {
+  "message": "柔和"
+ },
+ "presetNormal": {
+  "message": "標準"
+ },
+ "presetAggressive": {
+  "message": "激進"
+ },
+ "h_presets": {
+  "message": "柔和：僅近黑的灰色。標準：常見深色模式網站（建議）。激進：也包含較淺的灰——更黑，但卡片間對比減弱。"
+ },
+ "l_enabled": {
+  "message": "啟用"
+ },
+ "l_threshold": {
+  "message": "轉黑門檻"
+ },
+ "h_threshold": {
+  "message": "多淺的灰色仍會變黑。色塊顯示會變黑的最淺色調。約 28% 適合常見深色模式，40% 以上還會包含中灰。"
+ },
+ "l_tolerance": {
+  "message": "色彩容差"
+ },
+ "h_tolerance": {
+  "message": "深色允許有多少色彩仍算作灰色。0% = 僅純灰；約 9% 也包含略偏藍或偏綠的深色；超過 15% 連明顯帶色的深色也會變黑。"
+ },
+ "l_borders": {
+  "message": "黑色邊框"
+ },
+ "h_borders": {
+  "message": "同時把深灰色細邊框線變黑。"
+ },
+ "l_pseudo": {
+  "message": "偽元素背景"
+ },
+ "h_pseudo": {
+  "message": "捕獲由不可見的 ::before / ::after 層繪製的背景（卡片、分隔線、黏性頁首）。僅在出現問題時關閉。"
+ },
+ "l_hideGlow": {
+  "message": "隱藏影片後的模糊光暈"
+ },
+ "h_hideGlow": {
+  "message": "移除繪製在內容後方的影片或圖片模糊副本，例如 YouTube 的環境模式。"
+ },
+ "l_antiFlash": {
+  "message": "避免載入時閃現灰色"
+ },
+ "h_antiFlash": {
+  "message": "記住深色網站，下次在頁面掃描完成前就立即塗黑。"
+ },
+ "l_perfMode": {
+  "message": "效能模式"
+ },
+ "h_perfMode": {
+  "message": "為繁重頁面減輕掃描：不處理偽元素層和邊框，批次更小，忽略內嵌樣式變化。可在彈出視窗中查看毫秒計數。"
+ },
+ "l_expDim": {
+  "message": "調暗圖片與影片"
+ },
+ "h_expDim": {
+  "message": "略微調暗圖片和影片，避免明亮的縮圖在黑色頁面上刺眼。"
+ },
+ "l_dimLevel": {
+  "message": "圖片亮度"
+ },
+ "l_expVideo": {
+  "message": "影片壓黑"
+ },
+ "h_expVideo": {
+  "message": "把影片中近黑像素壓到純黑，讓暗場景熄滅像素。適用於非 HDR 影片；會佔用少量 GPU。若 HDR 內容顯示異常請關閉。"
+ },
+ "l_crushLevel": {
+  "message": "壓黑程度"
+ },
+ "l_expText": {
+  "message": "柔化亮色文字"
+ },
+ "h_expText": {
+  "message": "將近白色文字限制在略低於純白，減少黑底上的刺眼和光暈。"
+ },
+ "l_textCap": {
+  "message": "文字最大亮度"
+ },
+ "l_expEdge": {
+  "message": "灰色面板細輪廓"
+ },
+ "h_expEdge": {
+  "message": "在灰色面板原本與背景有區別的地方保留一條細線，便於分辨巢狀面板。"
+ },
+ "l_edgeLevel": {
+  "message": "輪廓亮度"
+ },
+ "l_edgeDelta": {
+  "message": "輪廓的最小對比度"
+ },
+ "l_expHover": {
+  "message": "懸停提示"
+ },
+ "h_expHover": {
+  "message": "指標懸停時，按鈕、連結和清單列會微微亮起。"
+ },
+ "l_expAlpha": {
+  "message": "半透明深色層"
+ },
+ "h_expAlpha": {
+  "message": "也將部分透明的深灰色（不透明度超過 60%）視為背景。可能遮住其後的內容。"
+ },
+ "l_expOverlay": {
+  "message": "柔化淺色半透明疊層"
+ },
+ "h_expOverlay": {
+  "message": "僅為淡淡白色覆蓋的卡片（如 YouTube 的說明框）會使用更淡的覆蓋。"
+ },
+ "l_overlayStrength": {
+  "message": "疊層強度"
+ },
+ "l_expInspector": {
+  "message": "檢查器（按住 Alt 並移動滑鼠）"
+ },
+ "h_expInspector": {
+  "message": "顯示指標下網站的原始顏色，以及是否會變黑。僅英文。"
+ },
+ "l_expDebug": {
+  "message": "除錯：把偵測到的區域塗成酒紅色"
+ },
+ "h_expDebug": {
+  "message": "精確顯示偵測到了哪些區域。"
+ },
+ "l_idleCare": {
+  "message": "閒置頁面先變暗再變黑"
+ },
+ "h_idleCare": {
+  "message": "無操作的頁面先變暗，再漸變為全黑，避免靜態元素烙印。任何輸入都會喚醒，第一次點擊僅用於喚醒。播放影片或在背景分頁時不會觸發。"
+ },
+ "l_idleDimMin": {
+  "message": "變暗時間"
+ },
+ "l_idleBlackMin": {
+  "message": "變黑時間"
+ },
+ "l_idleDimLevel": {
+  "message": "變暗強度"
+ },
+ "l_cursorHideSec": {
+  "message": "隱藏滑鼠指標時間"
+ },
+ "l_schedule": {
+  "message": "僅在特定時段執行"
+ },
+ "h_schedule": {
+  "message": "在所選時段之外，擴充功能不做任何事（閒置保護也會暫停）。"
+ },
+ "l_schedFrom": {
+  "message": "從"
+ },
+ "l_schedTo": {
+  "message": "到"
+ },
+ "l_lang": {
+  "message": "語言"
+ },
+ "h_lang": {
+  "message": "語言名稱以各自的語言顯示。歡迎在 GitHub 上提出修正。"
+ },
+ "langAuto": {
+  "message": "自動（瀏覽器語言）"
+ },
+ "l_updateCheck": {
+  "message": "每天檢查 GitHub 上的新版本"
+ },
+ "h_updateCheck": {
+  "message": "僅取得版本號，不會傳送任何關於你的資訊。安裝仍需手動：瀏覽器不允許未封裝的擴充功能自行替換。"
+ },
+ "tabGeneral": {
+  "message": "一般"
+ },
+ "tabDetection": {
+  "message": "偵測"
+ },
+ "tabLook": {
+  "message": "外觀與行為"
+ },
+ "tabMedia": {
+  "message": "影片、圖片與文字"
+ },
+ "tabExperimental": {
+  "message": "實驗性"
+ },
+ "tabCare": {
+  "message": "防烙印"
+ },
+ "tabSites": {
+  "message": "網站"
+ },
+ "tabBackup": {
+  "message": "更新與備份"
+ },
+ "tabBrowser": {
+  "message": "瀏覽器與主題"
+ },
+ "lead_general": {
+  "message": "把深灰色頁面背景變為純黑（#000000），讓 OLED 像素完全熄滅。預覽會展示設定的效果。"
+ },
+ "lead_det": {
+  "message": "哪些灰色算作「深灰」。數值是相對於純白的百分比（0% = 黑）。"
+ },
+ "lead_look": {
+  "message": "擴充功能如何處理邊框、隱藏層和頁面載入。"
+ },
+ "lead_media": {
+  "message": "圖片、影片和文字的可選調整，均為實驗性。"
+ },
+ "lead_exp": {
+  "message": "可能不適合所有網站的額外功能。"
+ },
+ "lead_care": {
+  "message": "保護螢幕免受靜態影像烙印。"
+ },
+ "lead_sites": {
+  "message": "擴充功能在哪些網站以及如何執行。"
+ },
+ "lead_backup": {
+  "message": "檢查新版本，並在瀏覽器之間移轉設定。"
+ },
+ "lead_browser": {
+  "message": "擴充功能只會替網頁重新著色。瀏覽器外框來自選用的黑色主題和瀏覽器本身的外觀設定。"
+ },
+ "shortcutHint": {
+  "message": "隨時用 Alt+Shift+B 開關（可在瀏覽器的擴充功能快速鍵頁面修改）。"
+ },
+ "resetAll": {
+  "message": "還原預設設定"
+ },
+ "forgetSites": {
+  "message": "清除已記住的網站"
+ },
+ "forgotten": {
+  "message": "已清除 ✓"
+ },
+ "runOn": {
+  "message": "執行範圍"
+ },
+ "scopeEverywhere": {
+  "message": "所有網站（除我關閉的以外）"
+ },
+ "scopeListed": {
+  "message": "僅限我列出的網站"
+ },
+ "listOff": {
+  "message": "已關閉"
+ },
+ "listOffHint": {
+  "message": "擴充功能在這些網站（及其子網域）上不做任何事。"
+ },
+ "listAllow": {
+  "message": "允許的網站"
+ },
+ "listAllowHint": {
+  "message": "當「執行範圍」設為僅限列出的網站時使用。"
+ },
+ "listDeepen": {
+  "message": "僅加深黑"
+ },
+ "listDeepenHint": {
+  "message": "這裡僅近黑變為純黑，不做其他更動。"
+ },
+ "listOwn": {
+  "message": "獨立設定"
+ },
+ "listOwnHint": {
+  "message": "擁有獨立設定副本的網站。可在工具列彈出視窗中建立。"
+ },
+ "add": {
+  "message": "新增"
+ },
+ "remove": {
+  "message": "移除"
+ },
+ "none": {
+  "message": "— 無 —"
+ },
+ "checkNow": {
+  "message": "立即檢查"
+ },
+ "checking": {
+  "message": "檢查中…"
+ },
+ "updFailed": {
+  "message": "上次檢查失敗：{0}"
+ },
+ "updNever": {
+  "message": "目前版本 {0}。尚未檢查。"
+ },
+ "updOk": {
+  "message": "目前 {0} — 已是最新（檢查於 {1}）。"
+ },
+ "updNew": {
+  "message": "有新版本 {0}，目前 {1}（檢查於 {2}）。"
+ },
+ "backupHint": {
+  "message": "將所有設定（含網站清單）儲存到檔案，或在其他瀏覽器中載入。"
+ },
+ "exportBtn": {
+  "message": "匯出設定"
+ },
+ "importBtn": {
+  "message": "匯入設定"
+ },
+ "exported": {
+  "message": "已匯出。"
+ },
+ "imported": {
+  "message": "已匯入 — 正在重新載入…"
+ },
+ "importFailed": {
+  "message": "匯入失敗：{0}"
+ },
+ "notSettingsFile": {
+  "message": "不是 OLED True Black 的設定檔"
+ },
+ "pageAppearance": {
+  "message": "外觀"
+ },
+ "pageExtensions": {
+  "message": "擴充功能 / 載入未封裝項目"
+ },
+ "pageAddons": {
+  "message": "附加元件"
+ },
+ "pageShortcuts": {
+  "message": "鍵盤快速鍵"
+ },
+ "pageShortcutsFx": {
+  "message": "快速鍵（齒輪選單 → 管理）"
+ },
+ "pageFlag": {
+  "message": "旗標：Auto Dark Mode"
+ },
+ "copied": {
+  "message": "已複製：{0} — 請貼到網址列。"
+ },
+ "limits": {
+  "message": "在瀏覽器內部頁面、內建 PDF 檢視器、擴充功能商店和側邊欄中無效。對於本機檔案，請在擴充功能詳細資料中開啟「允許存取檔案網址」。"
+ },
+ "pvTitle": {
+  "message": "即時預覽"
+ },
+ "pvBefore": {
+  "message": "原始網站"
+ },
+ "pvAfter": {
+  "message": "啟用 OLED True Black 後"
+ },
+ "pvPixels": {
+  "message": "熄滅的像素：{0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "範例頁面 — 實際網站會有差異。將滑鼠停在面板上可查看其顏色。"
+ }
+}

@@ -4,16 +4,13 @@
 //  - hide the mouse cursor after `cursorHideSec` seconds without movement
 // Nothing happens while a video is playing (in this page or in any embedded frame).
 (() => {
-  const DEFAULTS = {
-    enabled: true, disabledSites: [],
-    idleCare: false, idleDimMin: 2, idleBlackMin: 5, idleDimLevel: 60, cursorHideSec: 0,
-  };
+  const DEFAULTS = OLED.DEFAULTS; // core.js
   const TOP = window === window.top;
   const MSG = "oled-true-black:idle";
   const CURSOR_ATTR = "data-oled-nocursor";
 
   let cfg = { ...DEFAULTS };
-  const on = () => cfg.enabled && !cfg.disabledSites.includes(location.hostname);
+  const on = () => cfg.enabled && OLED.siteMode(cfg, location.hostname) !== "off" && OLED.inSchedule(cfg);
 
   // ---------- video detection (also inside open shadow roots) ----------
   function videoPlaying(root = document, depth = 0) {
@@ -127,8 +124,8 @@
 
   function sync() {
     clearInterval(ticker);
-    if (on() && cfg.idleCare) {
-      ticker = setInterval(tick, 1000);
+    if (cfg.idleCare) {
+      ticker = setInterval(tick, 1000); // tick() itself checks on(), so the schedule can switch it on later
     } else {
       setStage(0);
       showCursor();

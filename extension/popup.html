@@ -3,35 +3,36 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="ui.css">
-<style>body{width:310px}</style>
+<link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <a id="update" href="#" style="display:none;margin:-4px 0 10px;padding:7px 9px;border:1px solid #1f6feb;border-radius:6px;text-decoration:none;color:#9cc2ff"></a>
-  <h1>OLED True Black <small class="kbd" title="Press this anywhere to switch the extension on/off">Alt+Shift+B</small></h1>
+  <a id="update" href="#" hidden></a>
+  <header>
+    <h1>OLED True Black <small id="ver"></small></h1>
+    <label class="sw" id="masterSw" data-i18n-title="tipMaster"><input type="checkbox" id="enabled"><i></i></label>
+  </header>
 
-  <label class="row" title="Master switch for all sites.">Enabled <input type="checkbox" id="enabled"></label>
-  <label class="row" title="Turn the effect off for just this website."><span id="siteLabel">Active on this site</span> <input type="checkbox" id="siteOn"></label>
-  <label class="row" title="Use separate sliders for this website only; other sites keep the global ones."><span>Own settings for this site</span> <input type="checkbox" id="siteCustom"></label>
-  <label class="row" title="Also turn thin dark-gray border lines black."><span>Black borders</span> <input type="checkbox" id="borders"></label>
-  <label class="row" title="Keep a fine gray line where a gray panel used to be, so nested panels stay readable."><span>Panel outlines <span class="tag">experimental</span></span> <input type="checkbox" id="expEdge"></label>
+  <div class="card">
+    <div class="siteline"><b id="host"></b><span class="dim" id="modeDesc"></span></div>
+    <div id="modeSeg"></div>
+  </div>
+  <div class="card scopeline">
+    <span data-i18n="editFor"></span>
+    <div id="scopeSeg"></div>
+  </div>
+  <div class="hint" id="scopeHint"></div>
 
-  <div class="presets">
-    <button data-b="20" data-t="6" title="Only near-black grays">Soft</button>
-    <button data-b="28" data-t="9" title="Typical dark-mode sites (recommended)">Normal</button>
-    <button data-b="43" data-t="13" title="Also lighter grays; may flatten contrast">Aggressive</button>
-  </div>
+  <div id="sections"></div>
 
-  <div class="slider"><span class="name">Black threshold</span> <span><b id="thVal"></b><i class="swatch" id="thSwatch"></i></span>
-    <input type="range" id="threshold" min="5" max="60" title="Grays up to this brightness turn fully black.">
-    <span class="hint" style="float:none">Grays up to this brightness turn black. The swatch shows the lightest shade that still turns black. Higher = more of the page goes black.</span>
+  <div class="hint" id="stats"></div>
+  <div class="foot">
+    <a href="#" id="more" data-i18n="moreSettings"></a>
+    <button id="report" data-i18n="reportSite" data-i18n-title="reportTip"></button>
   </div>
-  <div class="slider"><span class="name">Color tolerance</span> <span><b id="tolVal"></b></span>
-    <input type="range" id="tolerance" min="0" max="20" title="How colourful a dark shade may be and still count as gray.">
-    <span class="hint" style="float:none">0% = only pure grays. Higher also catches tinted darks (e.g. blue-gray), but strongly coloured dark areas lose their colour.</span>
-  </div>
-  <span class="hint" id="stats" style="margin-top:4px"></span>
-  <a href="#" id="more">More settings &amp; browser →</a>
-  <script src="ui.js"></script>
+  <script src="core.js"></script>
+  <script src="sitefixes.js"></script>
+  <script src="i18n.js"></script>
+  <script src="controls.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "Wandelt dunkelgraue Seitenhintergründe in echtes Schwarz (#000) um, damit OLED-Pixel ausgehen."
+ },
+ "tipMaster": {
+  "message": "Hauptschalter (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "Einstellungen gelten für"
+ },
+ "scopeAll": {
+  "message": "Alle Seiten"
+ },
+ "scopeSite": {
+  "message": "Nur diese Seite"
+ },
+ "scopeSiteHint": {
+  "message": "Für {0} wird eine eigene Kopie dieser Einstellungen gespeichert. Zurück zu „Alle Seiten“ entfernt sie."
+ },
+ "modeAuto": {
+  "message": "Auto"
+ },
+ "modeDeepen": {
+  "message": "Nur Tiefschwarz"
+ },
+ "modeOff": {
+  "message": "Aus"
+ },
+ "modeAutoDesc": {
+  "message": "Färbt jedes dunkle Grau um"
+ },
+ "modeDeepenDesc": {
+  "message": "Nur fast Schwarzes wird echtes Schwarz"
+ },
+ "modeOffDesc": {
+  "message": "Tut auf dieser Seite nichts"
+ },
+ "modeNotListed": {
+  "message": "Nicht in deiner Erlaubt-Liste"
+ },
+ "notAvailable": {
+  "message": "Auf dieser Seite nicht verfügbar"
+ },
+ "statsLine": {
+  "message": "{0} Bereiche schwarz · {1} ms · {2} geprüft"
+ },
+ "statsPseudo": {
+  "message": "{0} Pseudo-Ebenen"
+ },
+ "statsGlow": {
+  "message": "{0} Glows ausgeblendet"
+ },
+ "statsShadow": {
+  "message": "{0} Web-Komponenten"
+ },
+ "statsReload": {
+  "message": "Seite neu laden, um es zu aktivieren."
+ },
+ "statsOff": {
+  "message": "Auf dieser Seite nicht aktiv."
+ },
+ "updateAvail": {
+  "message": "Version {0} ist verfügbar (du hast {1}) — herunterladen"
+ },
+ "moreSettings": {
+  "message": "Alle Einstellungen & Live-Vorschau →"
+ },
+ "reportSite": {
+  "message": "Problem mit dieser Seite melden"
+ },
+ "reportTip": {
+  "message": "Öffnet ein vorausgefülltes GitHub-Issue mit Seite, Version und Einstellungen. Erst mit „Submit“ wird etwas gesendet."
+ },
+ "tagExperimental": {
+  "message": "experimentell"
+ },
+ "tagAllSites": {
+  "message": "alle Seiten"
+ },
+ "tagAllSitesTip": {
+  "message": "Diese Einstellung ist global und kann nicht je Seite abweichen."
+ },
+ "off": {
+  "message": "aus"
+ },
+ "unitMin": {
+  "message": "Min."
+ },
+ "unitSec": {
+  "message": "s"
+ },
+ "secDetection": {
+  "message": "Erkennung"
+ },
+ "secLook": {
+  "message": "Aussehen & Verhalten"
+ },
+ "secMedia": {
+  "message": "Video, Bilder & Text"
+ },
+ "secExperimental": {
+  "message": "Experimentell"
+ },
+ "secCare": {
+  "message": "Einbrennschutz & Zeitplan"
+ },
+ "secIdle": {
+  "message": "Ruhe-Schutz (Einbrennschutz)"
+ },
+ "secSchedule": {
+  "message": "Zeitplan"
+ },
+ "secUpdates": {
+  "message": "Updates"
+ },
+ "secBackup": {
+  "message": "Sicherung"
+ },
+ "presetSoft": {
+  "message": "Sanft"
+ },
+ "presetNormal": {
+  "message": "Normal"
+ },
+ "presetAggressive": {
+  "message": "Aggressiv"
+ },
+ "h_presets": {
+  "message": "Sanft: nur fast schwarze Grautöne. Normal: typische Dark-Mode-Seiten (empfohlen). Aggressiv: auch hellere Grautöne – mehr Schwarz, weniger Kontrast zwischen Karten."
+ },
+ "l_enabled": {
+  "message": "Aktiviert"
+ },
+ "l_threshold": {
+  "message": "Schwarzschwelle"
+ },
+ "h_threshold": {
+  "message": "Wie hell ein Grau sein darf und trotzdem schwarz wird. Das Farbfeld zeigt den hellsten Ton, der noch schwarz wird. Etwa 28 % deckt typische Dark Modes ab; ab 40 % auch mittlere Grautöne."
+ },
+ "l_tolerance": {
+  "message": "Farbtoleranz"
+ },
+ "h_tolerance": {
+  "message": "Wie farbig ein dunkler Ton sein darf und noch als Grau gilt. 0 % = nur reine Grautöne; etwa 9 % nimmt leicht bläuliche oder grünliche Töne mit; über 15 % werden auch stark farbige Dunkeltöne schwarz."
+ },
+ "l_borders": {
+  "message": "Schwarze Rahmen"
+ },
+ "h_borders": {
+  "message": "Macht auch dünne dunkelgraue Rahmenlinien schwarz."
+ },
+ "l_pseudo": {
+  "message": "Hintergründe von Pseudo-Elementen"
+ },
+ "h_pseudo": {
+  "message": "Erfasst Hintergründe unsichtbarer ::before-/::after-Ebenen (Karten, Trenner, fixierte Kopfzeilen). Nur ausschalten, wenn etwas kaputtgeht."
+ },
+ "l_hideGlow": {
+  "message": "Unscharfen Glow hinter Videos ausblenden"
+ },
+ "h_hideGlow": {
+  "message": "Entfernt unscharfe Kopien eines Videos oder Bildes hinter dem Inhalt, etwa den Ambient-Modus von YouTube."
+ },
+ "l_antiFlash": {
+  "message": "Graues Aufblitzen beim Laden verhindern"
+ },
+ "h_antiFlash": {
+  "message": "Merkt sich dunkle Seiten und färbt sie beim nächsten Mal sofort schwarz, noch vor Ende der Analyse."
+ },
+ "l_perfMode": {
+  "message": "Leistungsmodus"
+ },
+ "h_perfMode": {
+  "message": "Schlankere Analyse für schwere Seiten: keine Pseudo-Ebenen oder Rahmen, kleinere Pakete, Inline-Style-Änderungen werden ignoriert. Siehe ms-Zähler im Popup."
+ },
+ "l_expDim": {
+  "message": "Bilder & Video abdunkeln"
+ },
+ "h_expDim": {
+  "message": "Dunkelt Bilder und Videos leicht ab, damit helle Vorschaubilder auf der schwarzen Seite nicht blenden."
+ },
+ "l_dimLevel": {
+  "message": "Bildhelligkeit"
+ },
+ "l_expVideo": {
+  "message": "Videoschwarz anheben"
+ },
+ "h_expVideo": {
+  "message": "Schiebt fast schwarze Videopixel auf echtes Schwarz, damit dunkle Szenen Pixel abschalten. Für Nicht-HDR-Video; kostet etwas GPU. Ausschalten, falls HDR-Inhalte falsch aussehen."
+ },
+ "l_crushLevel": {
+  "message": "Stärke"
+ },
+ "l_expText": {
+  "message": "Helle Schrift dämpfen"
+ },
+ "h_expText": {
+  "message": "Begrenzt fast weiße Schrift knapp unter reines Weiß, um Blendung und Halo auf Schwarz zu verringern."
+ },
+ "l_textCap": {
+  "message": "Maximale Schrifthelligkeit"
+ },
+ "l_expEdge": {
+  "message": "Dünner Umriss an grauen Panels"
+ },
+ "h_expEdge": {
+  "message": "Behält eine feine Linie, wo sich ein graues Panel vom Hintergrund abhob – so bleiben verschachtelte Panels sichtbar."
+ },
+ "l_edgeLevel": {
+  "message": "Umrisshelligkeit"
+ },
+ "l_edgeDelta": {
+  "message": "Mindestkontrast für einen Umriss"
+ },
+ "l_expHover": {
+  "message": "Hover-Hinweis"
+ },
+ "h_expHover": {
+  "message": "Schaltflächen, Links und Listenzeilen leuchten unter dem Mauszeiger schwach auf."
+ },
+ "l_expAlpha": {
+  "message": "Transluzente dunkle Ebenen"
+ },
+ "h_expAlpha": {
+  "message": "Behandelt auch teilweise durchsichtige dunkle Grautöne (über 60 % deckend) als Hintergrund. Kann Inhalte dahinter verdecken."
+ },
+ "l_expOverlay": {
+  "message": "Helle transluzente Überlagerungen dämpfen"
+ },
+ "h_expOverlay": {
+  "message": "Karten, die nur ein schwacher weißer Schleier sind (z. B. YouTubes Beschreibungsbox), bekommen einen schwächeren."
+ },
+ "l_overlayStrength": {
+  "message": "Überlagerungsstärke"
+ },
+ "l_expInspector": {
+  "message": "Inspektor (Alt halten + Maus bewegen)"
+ },
+ "h_expInspector": {
+  "message": "Zeigt die Originalfarben der Seite unter dem Zeiger und ob sie schwarz werden. Nur auf Englisch."
+ },
+ "l_expDebug": {
+  "message": "Debug: erkannte Bereiche burgunderrot färben"
+ },
+ "h_expDebug": {
+  "message": "Zeigt genau, welche Bereiche erkannt werden."
+ },
+ "l_idleCare": {
+  "message": "Ruhende Seiten abdunkeln, dann schwärzen"
+ },
+ "h_idleCare": {
+  "message": "Eine unberührte Seite dunkelt erst ab und wird dann schwarz, damit sich statische Elemente nicht einbrennen. Jede Eingabe weckt sie; der erste Klick weckt nur. Nie bei laufendem Video oder in Hintergrund-Tabs."
+ },
+ "l_idleDimMin": {
+  "message": "Abdunkeln nach"
+ },
+ "l_idleBlackMin": {
+  "message": "Schwärzen nach"
+ },
+ "l_idleDimLevel": {
+  "message": "Abdunklungsstärke"
+ },
+ "l_cursorHideSec": {
+  "message": "Mauszeiger ausblenden nach"
+ },
+ "l_schedule": {
+  "message": "Nur zu bestimmten Zeiten aktiv"
+ },
+ "h_schedule": {
+  "message": "Außerhalb der gewählten Zeiten tut die Erweiterung nichts (und der Ruhe-Schutz pausiert)."
+ },
+ "l_schedFrom": {
+  "message": "Von"
+ },
+ "l_schedTo": {
+  "message": "Bis"
+ },
+ "l_lang": {
+  "message": "Sprache"
+ },
+ "h_lang": {
+  "message": "Sprachnamen erscheinen in der jeweiligen Sprache. Korrekturen sind auf GitHub willkommen."
+ },
+ "langAuto": {
+  "message": "Automatisch (Browsersprache)"
+ },
+ "l_updateCheck": {
+  "message": "GitHub auf neue Versionen prüfen (einmal täglich)"
+ },
+ "h_updateCheck": {
+  "message": "Es wird nur die Versionsnummer abgerufen, nichts über dich gesendet. Die Installation bleibt manuell: Browser lassen entpackte Erweiterungen sich nicht selbst ersetzen."
+ },
+ "tabGeneral": {
+  "message": "Allgemein"
+ },
+ "tabDetection": {
+  "message": "Erkennung"
+ },
+ "tabLook": {
+  "message": "Aussehen & Verhalten"
+ },
+ "tabMedia": {
+  "message": "Video, Bilder & Text"
+ },
+ "tabExperimental": {
+  "message": "Experimentell"
+ },
+ "tabCare": {
+  "message": "Einbrennschutz"
+ },
+ "tabSites": {
+  "message": "Seiten"
+ },
+ "tabBackup": {
+  "message": "Updates & Sicherung"
+ },
+ "tabBrowser": {
+  "message": "Browser & Theme"
+ },
+ "lead_general": {
+  "message": "Wandelt dunkelgraue Hintergründe in reines Schwarz (#000000) um, damit OLED-Pixel ganz ausgehen. Die Vorschau zeigt, was deine Einstellungen bewirken."
+ },
+ "lead_det": {
+  "message": "Welche Grautöne als „dunkelgrau“ gelten. Werte sind Prozent von Vollweiß (0 % = Schwarz)."
+ },
+ "lead_look": {
+  "message": "Wie die Erweiterung Rahmen, versteckte Ebenen und das Laden von Seiten behandelt."
+ },
+ "lead_media": {
+  "message": "Optionale Anpassungen für Bilder, Video und Text. Alle experimentell."
+ },
+ "lead_exp": {
+  "message": "Zusatzfunktionen, die nicht zu jeder Seite passen."
+ },
+ "lead_care": {
+  "message": "Schützt das Panel vor dem Einbrennen statischer Bilder."
+ },
+ "lead_sites": {
+  "message": "Wo und wie die Erweiterung arbeitet."
+ },
+ "lead_backup": {
+  "message": "Neue Versionen prüfen und Einstellungen zwischen Browsern übertragen."
+ },
+ "lead_browser": {
+  "message": "Die Erweiterung färbt nur Webseiten um. Der Browserrahmen kommt vom optionalen schwarzen Theme und den Darstellungseinstellungen des Browsers."
+ },
+ "shortcutHint": {
+  "message": "Überall mit Alt+Shift+B ein-/ausschalten (änderbar auf der Tastenkürzel-Seite der Erweiterungen im Browser)."
+ },
+ "resetAll": {
+  "message": "Einstellungen zurücksetzen"
+ },
+ "forgetSites": {
+  "message": "Gemerkte Seiten vergessen"
+ },
+ "forgotten": {
+  "message": "Vergessen ✓"
+ },
+ "runOn": {
+  "message": "Aktiv auf"
+ },
+ "scopeEverywhere": {
+  "message": "allen Seiten außer den ausgeschalteten"
+ },
+ "scopeListed": {
+  "message": "nur den Seiten meiner Liste"
+ },
+ "listOff": {
+  "message": "Ausgeschaltet"
+ },
+ "listOffHint": {
+  "message": "Auf diesen Seiten (und Subdomains) tut die Erweiterung nichts."
+ },
+ "listAllow": {
+  "message": "Erlaubte Seiten"
+ },
+ "listAllowHint": {
+  "message": "Wird genutzt, wenn „Aktiv auf“ auf nur gelistete Seiten steht."
+ },
+ "listDeepen": {
+  "message": "Nur Tiefschwarz"
+ },
+ "listDeepenHint": {
+  "message": "Hier wird nur fast Schwarzes echtes Schwarz; sonst keine Änderungen."
+ },
+ "listOwn": {
+  "message": "Eigene Einstellungen"
+ },
+ "listOwnHint": {
+  "message": "Seiten mit eigener Kopie der Einstellungen. Anlegen im Popup der Symbolleiste."
+ },
+ "add": {
+  "message": "Hinzufügen"
+ },
+ "remove": {
+  "message": "Entfernen"
+ },
+ "none": {
+  "message": "— keine —"
+ },
+ "checkNow": {
+  "message": "Jetzt prüfen"
+ },
+ "checking": {
+  "message": "Prüfe …"
+ },
+ "updFailed": {
+  "message": "Letzte Prüfung fehlgeschlagen: {0}"
+ },
+ "updNever": {
+  "message": "Du hast {0}. Noch nicht geprüft."
+ },
+ "updOk": {
+  "message": "Du hast {0} – aktuell (geprüft {1})."
+ },
+ "updNew": {
+  "message": "Version {0} ist verfügbar – du hast {1} (geprüft {2})."
+ },
+ "backupHint": {
+  "message": "Alle Einstellungen (inkl. Seitenlisten) in eine Datei speichern oder in einem anderen Browser laden."
+ },
+ "exportBtn": {
+  "message": "Einstellungen exportieren"
+ },
+ "importBtn": {
+  "message": "Einstellungen importieren"
+ },
+ "exported": {
+  "message": "Exportiert."
+ },
+ "imported": {
+  "message": "Importiert – lade neu …"
+ },
+ "importFailed": {
+  "message": "Import fehlgeschlagen: {0}"
+ },
+ "notSettingsFile": {
+  "message": "keine OLED-True-Black-Einstellungsdatei"
+ },
+ "pageAppearance": {
+  "message": "Darstellung"
+ },
+ "pageExtensions": {
+  "message": "Erweiterungen / Entpackte laden"
+ },
+ "pageAddons": {
+  "message": "Add-ons"
+ },
+ "pageShortcuts": {
+  "message": "Tastenkürzel"
+ },
+ "pageShortcutsFx": {
+  "message": "Kürzel (Zahnrad-Menü → Verwalten)"
+ },
+ "pageFlag": {
+  "message": "Flag: Auto Dark Mode"
+ },
+ "copied": {
+  "message": "Kopiert: {0} – in die Adressleiste einfügen."
+ },
+ "limits": {
+  "message": "Funktioniert nicht auf Browser-internen Seiten, im integrierten PDF-Viewer, in Erweiterungs-Stores oder in der Seitenleiste. Für lokale Dateien in den Erweiterungsdetails „Zugriff auf Datei-URLs zulassen“ aktivieren."
+ },
+ "pvTitle": {
+  "message": "Live-Vorschau"
+ },
+ "pvBefore": {
+  "message": "Originalseite"
+ },
+ "pvAfter": {
+  "message": "Mit OLED True Black"
+ },
+ "pvPixels": {
+  "message": "Abgeschaltete Pixel: {0} % → {1} %"
+ },
+ "pvNote": {
+  "message": "Eine Beispielseite – echte Seiten unterscheiden sich. Fahre über ein Panel, um die Farbe zu sehen."
+ }
+}

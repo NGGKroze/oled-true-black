@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "페이지의 짙은 회색 배경을 순수한 검정(#000)으로 바꿔 OLED 픽셀이 꺼지게 합니다."
+ },
+ "tipMaster": {
+  "message": "전체 스위치 (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "설정 적용 대상"
+ },
+ "scopeAll": {
+  "message": "모든 사이트"
+ },
+ "scopeSite": {
+  "message": "이 사이트만"
+ },
+ "scopeSiteHint": {
+  "message": "{0}에 대해 이 설정의 별도 사본을 보관합니다. ‘모든 사이트’로 돌아가면 삭제됩니다."
+ },
+ "modeAuto": {
+  "message": "자동"
+ },
+ "modeDeepen": {
+  "message": "검정만"
+ },
+ "modeOff": {
+  "message": "끔"
+ },
+ "modeAutoDesc": {
+  "message": "모든 짙은 회색을 변경"
+ },
+ "modeDeepenDesc": {
+  "message": "거의 검정만 순수 검정으로"
+ },
+ "modeOffDesc": {
+  "message": "이 사이트에서는 아무것도 안 함"
+ },
+ "modeNotListed": {
+  "message": "허용 목록에 없음"
+ },
+ "notAvailable": {
+  "message": "이 페이지에서는 사용할 수 없음"
+ },
+ "statsLine": {
+  "message": "검정 {0}곳 · {1} ms · 검사 {2}개"
+ },
+ "statsPseudo": {
+  "message": "의사 레이어 {0}개"
+ },
+ "statsGlow": {
+  "message": "글로우 {0}개 숨김"
+ },
+ "statsShadow": {
+  "message": "웹 컴포넌트 {0}개"
+ },
+ "statsReload": {
+  "message": "페이지를 새로고침하면 활성화됩니다."
+ },
+ "statsOff": {
+  "message": "이 페이지에서는 꺼져 있음."
+ },
+ "updateAvail": {
+  "message": "버전 {0}을(를) 사용할 수 있습니다 (현재 {1}) — 다운로드"
+ },
+ "moreSettings": {
+  "message": "모든 설정 및 실시간 미리보기 →"
+ },
+ "reportSite": {
+  "message": "이 사이트 문제 신고"
+ },
+ "reportTip": {
+  "message": "사이트 이름, 버전, 설정이 미리 입력된 GitHub 이슈를 엽니다. Submit을 누르기 전에는 아무것도 전송되지 않습니다."
+ },
+ "tagExperimental": {
+  "message": "실험적"
+ },
+ "tagAllSites": {
+  "message": "모든 사이트"
+ },
+ "tagAllSitesTip": {
+  "message": "이 설정은 전역이며 사이트별로 다르게 할 수 없습니다."
+ },
+ "off": {
+  "message": "끔"
+ },
+ "unitMin": {
+  "message": "분"
+ },
+ "unitSec": {
+  "message": "초"
+ },
+ "secDetection": {
+  "message": "감지"
+ },
+ "secLook": {
+  "message": "모양 및 동작"
+ },
+ "secMedia": {
+  "message": "동영상, 이미지, 텍스트"
+ },
+ "secExperimental": {
+  "message": "실험적 기능"
+ },
+ "secCare": {
+  "message": "번인 방지 및 일정"
+ },
+ "secIdle": {
+  "message": "유휴 보호 (번인 방지)"
+ },
+ "secSchedule": {
+  "message": "일정"
+ },
+ "secUpdates": {
+  "message": "업데이트"
+ },
+ "secBackup": {
+  "message": "백업"
+ },
+ "presetSoft": {
+  "message": "부드럽게"
+ },
+ "presetNormal": {
+  "message": "보통"
+ },
+ "presetAggressive": {
+  "message": "강하게"
+ },
+ "h_presets": {
+  "message": "부드럽게: 거의 검정에 가까운 회색만. 보통: 일반적인 다크 모드 사이트(권장). 강하게: 더 밝은 회색도 — 검정이 늘고 카드 간 대비는 줄어듭니다."
+ },
+ "l_enabled": {
+  "message": "사용"
+ },
+ "l_threshold": {
+  "message": "검정 변환 기준"
+ },
+ "h_threshold": {
+  "message": "얼마나 밝은 회색까지 검정으로 바꿀지 정합니다. 견본은 검정이 되는 가장 밝은 색조입니다. 약 28%면 일반 다크 모드를 포괄하고, 40% 이상이면 중간 회색도 포함합니다."
+ },
+ "l_tolerance": {
+  "message": "색상 허용 범위"
+ },
+ "h_tolerance": {
+  "message": "어두운 색에 색감이 얼마나 있어도 회색으로 볼지 정합니다. 0%는 순수한 회색만, 약 9%는 푸른빛·초록빛 도는 어두운 색도, 15%를 넘으면 색이 진한 어두운 색까지 검정이 됩니다."
+ },
+ "l_borders": {
+  "message": "검정 테두리"
+ },
+ "h_borders": {
+  "message": "얇은 짙은 회색 테두리 선도 검정으로 바꿉니다."
+ },
+ "l_pseudo": {
+  "message": "의사 요소 배경"
+ },
+ "h_pseudo": {
+  "message": "보이지 않는 ::before / ::after 레이어가 그리는 배경(카드, 구분선, 고정 헤더)까지 잡아냅니다. 문제가 생길 때만 끄세요."
+ },
+ "l_hideGlow": {
+  "message": "동영상 뒤의 흐린 글로우 숨기기"
+ },
+ "h_hideGlow": {
+  "message": "콘텐츠 뒤에 그려지는 동영상·이미지의 흐린 복사본(YouTube 앰비언트 모드 등)을 제거합니다."
+ },
+ "l_antiFlash": {
+  "message": "로딩 시 회색 깜빡임 방지"
+ },
+ "h_antiFlash": {
+  "message": "어두운 사이트를 기억해 두었다가 다음번에는 스캔이 끝나기 전에 즉시 검정으로 칠합니다."
+ },
+ "l_perfMode": {
+  "message": "성능 모드"
+ },
+ "h_perfMode": {
+  "message": "무거운 페이지를 위한 가벼운 검사: 의사 레이어·테두리 제외, 더 작은 배치, 인라인 스타일 변경 무시. 팝업의 ms 카운터를 확인하세요."
+ },
+ "l_expDim": {
+  "message": "이미지·동영상 어둡게"
+ },
+ "h_expDim": {
+  "message": "이미지와 동영상을 약간 어둡게 해서 밝은 썸네일이 검은 페이지에서 눈부시지 않게 합니다."
+ },
+ "l_dimLevel": {
+  "message": "이미지 밝기"
+ },
+ "l_expVideo": {
+  "message": "동영상 블랙 크러시"
+ },
+ "h_expVideo": {
+  "message": "동영상의 거의 검정인 픽셀을 순수 검정으로 밀어 어두운 장면에서 픽셀이 꺼지게 합니다. 비 HDR 동영상용이며 GPU를 조금 사용합니다. HDR 콘텐츠가 이상하면 끄세요."
+ },
+ "l_crushLevel": {
+  "message": "크러시 강도"
+ },
+ "l_expText": {
+  "message": "밝은 글자 부드럽게"
+ },
+ "h_expText": {
+  "message": "거의 흰색인 글자를 순백보다 약간 낮게 제한해 검은 배경에서의 눈부심과 번짐을 줄입니다."
+ },
+ "l_textCap": {
+  "message": "글자 최대 밝기"
+ },
+ "l_expEdge": {
+  "message": "회색 패널에 얇은 윤곽선"
+ },
+ "h_expEdge": {
+  "message": "회색 패널이 배경과 구분되던 곳에 가는 선을 남겨 중첩된 패널도 알아볼 수 있습니다."
+ },
+ "l_edgeLevel": {
+  "message": "윤곽선 밝기"
+ },
+ "l_edgeDelta": {
+  "message": "윤곽선 최소 대비"
+ },
+ "l_expHover": {
+  "message": "호버 힌트"
+ },
+ "h_expHover": {
+  "message": "포인터를 올리면 버튼, 링크, 목록 행이 은은하게 밝아집니다."
+ },
+ "l_expAlpha": {
+  "message": "반투명 어두운 레이어"
+ },
+ "h_expAlpha": {
+  "message": "부분적으로 투명한 짙은 회색(불투명도 60% 초과)도 배경으로 취급합니다. 뒤의 내용이 가려질 수 있습니다."
+ },
+ "l_expOverlay": {
+  "message": "밝은 반투명 오버레이 약화"
+ },
+ "h_expOverlay": {
+  "message": "옅은 흰색 막일 뿐인 카드(예: YouTube 설명란)는 더 옅게 만듭니다."
+ },
+ "l_overlayStrength": {
+  "message": "오버레이 강도"
+ },
+ "l_expInspector": {
+  "message": "인스펙터 (Alt 누른 채 마우스 이동)"
+ },
+ "h_expInspector": {
+  "message": "포인터 아래 사이트의 원래 색상과 검정으로 바뀌는지 표시합니다. 영어만 지원."
+ },
+ "l_expDebug": {
+  "message": "디버그: 감지된 영역을 자주색으로 칠하기"
+ },
+ "h_expDebug": {
+  "message": "어떤 영역이 감지되는지 정확히 보여 줍니다."
+ },
+ "l_idleCare": {
+  "message": "방치된 페이지를 어둡게 한 뒤 검게"
+ },
+ "h_idleCare": {
+  "message": "건드리지 않은 페이지는 먼저 어두워졌다가 검정으로 사라져 고정 요소가 번인되지 않게 합니다. 어떤 입력이든 깨우며, 첫 클릭은 깨우기만 합니다. 동영상 재생 중이나 백그라운드 탭에서는 작동하지 않습니다."
+ },
+ "l_idleDimMin": {
+  "message": "어두워지기까지"
+ },
+ "l_idleBlackMin": {
+  "message": "검게 되기까지"
+ },
+ "l_idleDimLevel": {
+  "message": "어둡게 하는 강도"
+ },
+ "l_cursorHideSec": {
+  "message": "마우스 커서 숨기기까지"
+ },
+ "l_schedule": {
+  "message": "특정 시간에만 실행"
+ },
+ "h_schedule": {
+  "message": "선택한 시간대 외에는 아무것도 하지 않습니다(유휴 보호도 일시 중지)."
+ },
+ "l_schedFrom": {
+  "message": "시작"
+ },
+ "l_schedTo": {
+  "message": "종료"
+ },
+ "l_lang": {
+  "message": "언어"
+ },
+ "h_lang": {
+  "message": "언어 이름은 각 언어로 표시됩니다. GitHub에서 수정 제안을 환영합니다."
+ },
+ "langAuto": {
+  "message": "자동 (브라우저 언어)"
+ },
+ "l_updateCheck": {
+  "message": "GitHub에서 새 버전 확인 (하루 한 번)"
+ },
+ "h_updateCheck": {
+  "message": "버전 번호만 가져오며 사용자에 대한 정보는 전송하지 않습니다. 설치는 여전히 수동입니다. 브라우저는 압축 해제된 확장 프로그램이 스스로 교체되는 것을 허용하지 않습니다."
+ },
+ "tabGeneral": {
+  "message": "일반"
+ },
+ "tabDetection": {
+  "message": "감지"
+ },
+ "tabLook": {
+  "message": "모양 및 동작"
+ },
+ "tabMedia": {
+  "message": "동영상, 이미지, 텍스트"
+ },
+ "tabExperimental": {
+  "message": "실험적 기능"
+ },
+ "tabCare": {
+  "message": "번인 방지"
+ },
+ "tabSites": {
+  "message": "사이트"
+ },
+ "tabBackup": {
+  "message": "업데이트 및 백업"
+ },
+ "tabBrowser": {
+  "message": "브라우저 및 테마"
+ },
+ "lead_general": {
+  "message": "짙은 회색 배경을 순수 검정(#000000)으로 바꿔 OLED 픽셀이 완전히 꺼지게 합니다. 미리보기에서 설정의 효과를 볼 수 있습니다."
+ },
+ "lead_det": {
+  "message": "어떤 회색을 ‘짙은 회색’으로 볼지 정합니다. 값은 흰색 대비 백분율입니다(0% = 검정)."
+ },
+ "lead_look": {
+  "message": "테두리, 숨은 레이어, 페이지 로딩을 처리하는 방식입니다."
+ },
+ "lead_media": {
+  "message": "이미지, 동영상, 텍스트에 대한 선택적 조정입니다. 모두 실험적 기능입니다."
+ },
+ "lead_exp": {
+  "message": "모든 사이트에 맞지는 않을 수 있는 추가 기능입니다."
+ },
+ "lead_care": {
+  "message": "정지 이미지로 인한 패널 번인을 막아 줍니다."
+ },
+ "lead_sites": {
+  "message": "확장 프로그램이 어디서 어떻게 동작할지 정합니다."
+ },
+ "lead_backup": {
+  "message": "새 버전을 확인하고 브라우저 간에 설정을 옮길 수 있습니다."
+ },
+ "lead_browser": {
+  "message": "확장 프로그램은 웹 페이지만 다시 칠합니다. 브라우저 프레임은 선택형 검정 테마와 브라우저의 모양 설정으로 바뀝니다."
+ },
+ "shortcutHint": {
+  "message": "Alt+Shift+B로 어디서든 켜고 끌 수 있습니다(브라우저의 확장 프로그램 단축키 페이지에서 변경)."
+ },
+ "resetAll": {
+  "message": "설정 초기화"
+ },
+ "forgetSites": {
+  "message": "기억한 사이트 지우기"
+ },
+ "forgotten": {
+  "message": "지웠습니다 ✓"
+ },
+ "runOn": {
+  "message": "실행 대상"
+ },
+ "scopeEverywhere": {
+  "message": "끈 사이트를 제외한 모든 사이트"
+ },
+ "scopeListed": {
+  "message": "목록에 있는 사이트만"
+ },
+ "listOff": {
+  "message": "꺼진 사이트"
+ },
+ "listOffHint": {
+  "message": "이 사이트(와 하위 도메인)에서는 아무것도 하지 않습니다."
+ },
+ "listAllow": {
+  "message": "허용 사이트"
+ },
+ "listAllowHint": {
+  "message": "‘실행 대상’이 목록에 있는 사이트만일 때 사용됩니다."
+ },
+ "listDeepen": {
+  "message": "검정만"
+ },
+ "listDeepenHint": {
+  "message": "여기서는 거의 검정만 순수 검정으로 바꾸고 다른 변경은 없습니다."
+ },
+ "listOwn": {
+  "message": "개별 설정"
+ },
+ "listOwnHint": {
+  "message": "설정 사본을 따로 가진 사이트입니다. 도구 모음 팝업에서 만들 수 있습니다."
+ },
+ "add": {
+  "message": "추가"
+ },
+ "remove": {
+  "message": "제거"
+ },
+ "none": {
+  "message": "— 없음 —"
+ },
+ "checkNow": {
+  "message": "지금 확인"
+ },
+ "checking": {
+  "message": "확인 중…"
+ },
+ "updFailed": {
+  "message": "마지막 확인 실패: {0}"
+ },
+ "updNever": {
+  "message": "현재 {0}. 아직 확인하지 않음."
+ },
+ "updOk": {
+  "message": "현재 {0} — 최신 버전입니다 (확인: {1})."
+ },
+ "updNew": {
+  "message": "버전 {0}을(를) 사용할 수 있습니다 — 현재 {1} (확인: {2})."
+ },
+ "backupHint": {
+  "message": "사이트 목록을 포함한 모든 설정을 파일로 저장하거나 다른 브라우저에서 불러옵니다."
+ },
+ "exportBtn": {
+  "message": "설정 내보내기"
+ },
+ "importBtn": {
+  "message": "설정 가져오기"
+ },
+ "exported": {
+  "message": "내보냈습니다."
+ },
+ "imported": {
+  "message": "가져왔습니다 — 다시 불러오는 중…"
+ },
+ "importFailed": {
+  "message": "가져오기 실패: {0}"
+ },
+ "notSettingsFile": {
+  "message": "OLED True Black 설정 파일이 아닙니다"
+ },
+ "pageAppearance": {
+  "message": "모양"
+ },
+ "pageExtensions": {
+  "message": "확장 프로그램 / 압축해제된 확장 프로그램 로드"
+ },
+ "pageAddons": {
+  "message": "부가 기능"
+ },
+ "pageShortcuts": {
+  "message": "키보드 단축키"
+ },
+ "pageShortcutsFx": {
+  "message": "단축키 (톱니바퀴 메뉴 → 관리)"
+ },
+ "pageFlag": {
+  "message": "플래그: Auto Dark Mode"
+ },
+ "copied": {
+  "message": "복사됨: {0} — 주소 표시줄에 붙여넣으세요."
+ },
+ "limits": {
+  "message": "브라우저 내부 페이지, 내장 PDF 뷰어, 확장 프로그램 스토어, 사이드바에서는 작동하지 않습니다. 로컬 파일은 확장 프로그램 세부정보에서 ‘파일 URL에 대한 액세스 허용’을 켜세요."
+ },
+ "pvTitle": {
+  "message": "실시간 미리보기"
+ },
+ "pvBefore": {
+  "message": "원본 사이트"
+ },
+ "pvAfter": {
+  "message": "OLED True Black 적용 후"
+ },
+ "pvPixels": {
+  "message": "꺼진 픽셀: {0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "예시 페이지입니다. 실제 사이트와 다를 수 있습니다. 패널에 마우스를 올리면 색상을 볼 수 있습니다."
+ }
+}

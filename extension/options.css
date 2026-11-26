@@ -1,0 +1,49 @@
+body { padding: 0; }
+.app { display: grid; grid-template-columns: 210px minmax(0, 1fr) 380px; gap: 28px; max-width: 1280px; margin: 0 auto; padding: 0 20px; min-height: 100vh; }
+.side { position: sticky; top: 0; align-self: start; padding: 22px 0; height: 100vh; border-right: 1px solid var(--line); padding-right: 14px; }
+.brand { font-weight: 700; font-size: 15px; margin-bottom: 16px; }
+.brand small { font-weight: normal; font-size: 11px; }
+.tabbtn { display: block; width: 100%; text-align: left; background: none; border: 0; border-radius: 8px; padding: 8px 10px; margin: 1px 0; color: #bbb; position: relative; transition: background .15s, color .15s; }
+.tabbtn:hover { background: #111; color: #fff; }
+.tabbtn.on { background: #111; color: #fff; }
+.tabbtn.on::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: var(--acc); }
+main { padding: 22px 0 60px; max-width: 640px; }
+.tab { display: none; animation: rise .28s ease; }
+.tab.on { display: block; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+main h1 { font-size: 20px; margin: 0 0 4px; }
+main h3 { font-size: 13px; color: #bbb; margin: 22px 0 6px; border-bottom: 1px solid #222; padding-bottom: 4px; }
+.lead { color: var(--dim); margin: 0 0 14px; }
+.ctl { padding: 8px 0; border-bottom: 1px solid #101010; }
+.ctl .ctl { border-bottom: 0; padding: 4px 0; }
+.sub > div { padding-left: 14px; }
+.row2 { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 10px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; min-height: 28px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; background: #111; border: 1px solid #2a2a2a; border-radius: 14px; padding: 3px 4px 3px 10px; animation: rise .2s ease; }
+.chip button { border: 0; background: #1c1c1c; border-radius: 50%; width: 18px; height: 18px; padding: 0; line-height: 1; color: #aaa; }
+.addrow { display: flex; gap: 6px; margin-bottom: 4px; }
+.addrow input { flex: 1; }
+.grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.status { color: var(--dim); font-size: 12px; margin: 6px 0; }
+.reset { margin-top: 18px; }
+
+/* ---------- live preview ---------- */
+.preview { position: sticky; top: 0; align-self: start; padding: 22px 0; }
+.preview h2 { font-size: 13px; margin: 0 0 8px; color: #bbb; }
+.cap { font-size: 11px; color: var(--dim); margin: 8px 0 3px; }
+.mock { position: relative; height: 188px; border: 1px solid #333; border-radius: 6px; overflow: hidden; font-size: 9.5px; isolation: isolate; }
+.mock .n { position: absolute; box-sizing: border-box; border: 1px solid transparent; transition: background-color .25s, border-color .25s, outline-color .25s; }
+.mock .t { position: absolute; white-space: nowrap; font-weight: 600; transition: color .25s; line-height: 1; }
+.mock .flash { animation: flash .8s ease; }
+@keyframes flash { 0% { box-shadow: 0 0 0 2px var(--acc); } 100% { box-shadow: 0 0 0 2px transparent; } }
+.mock .video { background: radial-gradient(circle at 70% 35%, #fff 0 4%, #bbb 6%, transparent 22%), linear-gradient(135deg, #040404 0%, #0a0a0a 28%, #121212 45%, #1e1e1e 62%, #3b3b3b 100%); }
+.mock .image { background: linear-gradient(135deg, #e85d75, #f4b942 50%, #3aa0d8); }
+.mock .glow { background: radial-gradient(circle, #6a7bb8 0%, #2e3760 60%, transparent 75%); filter: blur(9px); transition: opacity .3s; }
+.pix { margin: 10px 0 4px; font-size: 13px; font-weight: 600; color: var(--ok); }
+
+@media (max-width: 1150px) {
+  .app { grid-template-columns: 180px minmax(0, 1fr); }
+  .preview { grid-column: 2; grid-row: 1; position: static; padding-bottom: 0; }
+  main { grid-column: 2; padding-top: 10px; }
+  .side { grid-row: 1 / span 2; }
+}

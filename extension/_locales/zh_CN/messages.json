@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "将页面的深灰色背景变为纯黑（#000），让 OLED 像素熄灭。"
+ },
+ "tipMaster": {
+  "message": "总开关 (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "设置应用于"
+ },
+ "scopeAll": {
+  "message": "所有网站"
+ },
+ "scopeSite": {
+  "message": "仅此网站"
+ },
+ "scopeSiteHint": {
+  "message": "为 {0} 单独保存一份这些设置。切换回“所有网站”即可删除。"
+ },
+ "modeAuto": {
+  "message": "自动"
+ },
+ "modeDeepen": {
+  "message": "仅加深黑"
+ },
+ "modeOff": {
+  "message": "关闭"
+ },
+ "modeAutoDesc": {
+  "message": "重新着色所有深灰"
+ },
+ "modeDeepenDesc": {
+  "message": "仅近黑变为纯黑"
+ },
+ "modeOffDesc": {
+  "message": "在此网站不做任何事"
+ },
+ "modeNotListed": {
+  "message": "不在你的允许列表中"
+ },
+ "notAvailable": {
+  "message": "此页面不可用"
+ },
+ "statsLine": {
+  "message": "{0} 处变黑 · {1} 毫秒 · 检查 {2} 个"
+ },
+ "statsPseudo": {
+  "message": "{0} 个伪元素层"
+ },
+ "statsGlow": {
+  "message": "已隐藏 {0} 处光晕"
+ },
+ "statsShadow": {
+  "message": "{0} 个 Web 组件"
+ },
+ "statsReload": {
+  "message": "刷新页面以启用。"
+ },
+ "statsOff": {
+  "message": "在此页面未启用。"
+ },
+ "updateAvail": {
+  "message": "有新版本 {0}（当前 {1}）— 下载"
+ },
+ "moreSettings": {
+  "message": "全部设置与实时预览 →"
+ },
+ "reportSite": {
+  "message": "报告此网站的问题"
+ },
+ "reportTip": {
+  "message": "打开预填好网站名、版本和设置的 GitHub issue。点击 Submit 之前不会发送任何内容。"
+ },
+ "tagExperimental": {
+  "message": "实验性"
+ },
+ "tagAllSites": {
+  "message": "所有网站"
+ },
+ "tagAllSitesTip": {
+  "message": "此设置为全局设置，无法按网站区分。"
+ },
+ "off": {
+  "message": "关"
+ },
+ "unitMin": {
+  "message": "分钟"
+ },
+ "unitSec": {
+  "message": "秒"
+ },
+ "secDetection": {
+  "message": "检测"
+ },
+ "secLook": {
+  "message": "外观与行为"
+ },
+ "secMedia": {
+  "message": "视频、图片与文字"
+ },
+ "secExperimental": {
+  "message": "实验性"
+ },
+ "secCare": {
+  "message": "防烧屏与计划"
+ },
+ "secIdle": {
+  "message": "闲置保护（防烧屏）"
+ },
+ "secSchedule": {
+  "message": "计划"
+ },
+ "secUpdates": {
+  "message": "更新"
+ },
+ "secBackup": {
+  "message": "备份"
+ },
+ "presetSoft": {
+  "message": "柔和"
+ },
+ "presetNormal": {
+  "message": "标准"
+ },
+ "presetAggressive": {
+  "message": "激进"
+ },
+ "h_presets": {
+  "message": "柔和：仅近黑的灰色。标准：常见深色模式网站（推荐）。激进：也包含较浅的灰——更黑，但卡片间对比减弱。"
+ },
+ "l_enabled": {
+  "message": "启用"
+ },
+ "l_threshold": {
+  "message": "转黑阈值"
+ },
+ "h_threshold": {
+  "message": "多浅的灰色仍会变黑。色块显示会变黑的最浅色调。约 28% 适合常见深色模式，40% 以上还会包含中灰。"
+ },
+ "l_tolerance": {
+  "message": "色彩容差"
+ },
+ "h_tolerance": {
+  "message": "深色允许有多少色彩仍算作灰色。0% = 仅纯灰；约 9% 也包含略偏蓝或偏绿的深色；超过 15% 连明显带色的深色也会变黑。"
+ },
+ "l_borders": {
+  "message": "黑色边框"
+ },
+ "h_borders": {
+  "message": "同时把深灰色细边框线变黑。"
+ },
+ "l_pseudo": {
+  "message": "伪元素背景"
+ },
+ "h_pseudo": {
+  "message": "捕获由不可见的 ::before / ::after 层绘制的背景（卡片、分隔线、粘性页眉）。仅在出现问题时关闭。"
+ },
+ "l_hideGlow": {
+  "message": "隐藏视频后的模糊光晕"
+ },
+ "h_hideGlow": {
+  "message": "移除绘制在内容后方的视频或图片模糊副本，例如 YouTube 的氛围模式。"
+ },
+ "l_antiFlash": {
+  "message": "避免加载时闪现灰色"
+ },
+ "h_antiFlash": {
+  "message": "记住深色网站，下次在页面扫描完成前就立即涂黑。"
+ },
+ "l_perfMode": {
+  "message": "性能模式"
+ },
+ "h_perfMode": {
+  "message": "为繁重页面减轻扫描：不处理伪元素层和边框，批次更小，忽略内联样式变化。可在弹窗中查看毫秒计数。"
+ },
+ "l_expDim": {
+  "message": "调暗图片与视频"
+ },
+ "h_expDim": {
+  "message": "略微调暗图片和视频，避免明亮的缩略图在黑色页面上刺眼。"
+ },
+ "l_dimLevel": {
+  "message": "图片亮度"
+ },
+ "l_expVideo": {
+  "message": "视频压黑"
+ },
+ "h_expVideo": {
+  "message": "把视频中近黑像素压到纯黑，让暗场景熄灭像素。适用于非 HDR 视频；会占用少量 GPU。若 HDR 内容显示异常请关闭。"
+ },
+ "l_crushLevel": {
+  "message": "压黑程度"
+ },
+ "l_expText": {
+  "message": "柔化亮色文字"
+ },
+ "h_expText": {
+  "message": "将近白色文字限制在略低于纯白，减少黑底上的刺眼和光晕。"
+ },
+ "l_textCap": {
+  "message": "文字最大亮度"
+ },
+ "l_expEdge": {
+  "message": "灰色面板细轮廓"
+ },
+ "h_expEdge": {
+  "message": "在灰色面板原本与背景有区别的地方保留一条细线，便于分辨嵌套面板。"
+ },
+ "l_edgeLevel": {
+  "message": "轮廓亮度"
+ },
+ "l_edgeDelta": {
+  "message": "轮廓的最小对比度"
+ },
+ "l_expHover": {
+  "message": "悬停提示"
+ },
+ "h_expHover": {
+  "message": "指针悬停时，按钮、链接和列表行会微微亮起。"
+ },
+ "l_expAlpha": {
+  "message": "半透明深色层"
+ },
+ "h_expAlpha": {
+  "message": "也将部分透明的深灰色（不透明度超过 60%）视为背景。可能遮住其后的内容。"
+ },
+ "l_expOverlay": {
+  "message": "柔化浅色半透明叠层"
+ },
+ "h_expOverlay": {
+  "message": "仅为淡淡白色覆盖的卡片（如 YouTube 的说明框）会使用更淡的覆盖。"
+ },
+ "l_overlayStrength": {
+  "message": "叠层强度"
+ },
+ "l_expInspector": {
+  "message": "检查器（按住 Alt 并移动鼠标）"
+ },
+ "h_expInspector": {
+  "message": "显示指针下网站的原始颜色，以及是否会变黑。仅英文。"
+ },
+ "l_expDebug": {
+  "message": "调试：把检测到的区域涂成酒红色"
+ },
+ "h_expDebug": {
+  "message": "精确显示检测到了哪些区域。"
+ },
+ "l_idleCare": {
+  "message": "闲置页面先变暗再变黑"
+ },
+ "h_idleCare": {
+  "message": "无操作的页面先变暗，再渐变为全黑，避免静态元素烧屏。任何输入都会唤醒，第一次点击仅用于唤醒。播放视频或在后台标签页时不会触发。"
+ },
+ "l_idleDimMin": {
+  "message": "变暗时间"
+ },
+ "l_idleBlackMin": {
+  "message": "变黑时间"
+ },
+ "l_idleDimLevel": {
+  "message": "变暗强度"
+ },
+ "l_cursorHideSec": {
+  "message": "隐藏鼠标指针时间"
+ },
+ "l_schedule": {
+  "message": "仅在特定时段运行"
+ },
+ "h_schedule": {
+  "message": "在所选时段之外，扩展不做任何事（闲置保护也会暂停）。"
+ },
+ "l_schedFrom": {
+  "message": "从"
+ },
+ "l_schedTo": {
+  "message": "到"
+ },
+ "l_lang": {
+  "message": "语言"
+ },
+ "h_lang": {
+  "message": "语言名称以各自的语言显示。欢迎在 GitHub 上提出修正。"
+ },
+ "langAuto": {
+  "message": "自动（浏览器语言）"
+ },
+ "l_updateCheck": {
+  "message": "每天检查 GitHub 上的新版本"
+ },
+ "h_updateCheck": {
+  "message": "仅获取版本号，不会发送任何关于你的信息。安装仍需手动：浏览器不允许未打包的扩展自行替换。"
+ },
+ "tabGeneral": {
+  "message": "常规"
+ },
+ "tabDetection": {
+  "message": "检测"
+ },
+ "tabLook": {
+  "message": "外观与行为"
+ },
+ "tabMedia": {
+  "message": "视频、图片与文字"
+ },
+ "tabExperimental": {
+  "message": "实验性"
+ },
+ "tabCare": {
+  "message": "防烧屏"
+ },
+ "tabSites": {
+  "message": "网站"
+ },
+ "tabBackup": {
+  "message": "更新与备份"
+ },
+ "tabBrowser": {
+  "message": "浏览器与主题"
+ },
+ "lead_general": {
+  "message": "把深灰色页面背景变为纯黑（#000000），让 OLED 像素完全熄灭。预览会展示设置的效果。"
+ },
+ "lead_det": {
+  "message": "哪些灰色算作“深灰”。数值是相对于纯白的百分比（0% = 黑）。"
+ },
+ "lead_look": {
+  "message": "扩展如何处理边框、隐藏层和页面加载。"
+ },
+ "lead_media": {
+  "message": "图片、视频和文字的可选调整，均为实验性。"
+ },
+ "lead_exp": {
+  "message": "可能不适合所有网站的额外功能。"
+ },
+ "lead_care": {
+  "message": "保护屏幕免受静态图像烧屏。"
+ },
+ "lead_sites": {
+  "message": "扩展在哪些网站以及如何运行。"
+ },
+ "lead_backup": {
+  "message": "检查新版本，并在浏览器之间迁移设置。"
+ },
+ "lead_browser": {
+  "message": "扩展只会给网页重新着色。浏览器外框来自可选的黑色主题和浏览器自身的外观设置。"
+ },
+ "shortcutHint": {
+  "message": "随时用 Alt+Shift+B 开关（可在浏览器的扩展快捷键页面修改）。"
+ },
+ "resetAll": {
+  "message": "恢复默认设置"
+ },
+ "forgetSites": {
+  "message": "清除已记住的网站"
+ },
+ "forgotten": {
+  "message": "已清除 ✓"
+ },
+ "runOn": {
+  "message": "运行范围"
+ },
+ "scopeEverywhere": {
+  "message": "所有网站（除我关闭的以外）"
+ },
+ "scopeListed": {
+  "message": "仅限我列出的网站"
+ },
+ "listOff": {
+  "message": "已关闭"
+ },
+ "listOffHint": {
+  "message": "扩展在这些网站（及其子域名）上不做任何事。"
+ },
+ "listAllow": {
+  "message": "允许的网站"
+ },
+ "listAllowHint": {
+  "message": "当“运行范围”设为仅限列出的网站时使用。"
+ },
+ "listDeepen": {
+  "message": "仅加深黑"
+ },
+ "listDeepenHint": {
+  "message": "这里仅近黑变为纯黑，不做其他改动。"
+ },
+ "listOwn": {
+  "message": "独立设置"
+ },
+ "listOwnHint": {
+  "message": "拥有独立设置副本的网站。可在工具栏弹窗中创建。"
+ },
+ "add": {
+  "message": "添加"
+ },
+ "remove": {
+  "message": "移除"
+ },
+ "none": {
+  "message": "— 无 —"
+ },
+ "checkNow": {
+  "message": "立即检查"
+ },
+ "checking": {
+  "message": "检查中…"
+ },
+ "updFailed": {
+  "message": "上次检查失败：{0}"
+ },
+ "updNever": {
+  "message": "当前版本 {0}。尚未检查。"
+ },
+ "updOk": {
+  "message": "当前 {0} — 已是最新（检查于 {1}）。"
+ },
+ "updNew": {
+  "message": "有新版本 {0}，当前 {1}（检查于 {2}）。"
+ },
+ "backupHint": {
+  "message": "将所有设置（含网站列表）保存到文件，或在其他浏览器中载入。"
+ },
+ "exportBtn": {
+  "message": "导出设置"
+ },
+ "importBtn": {
+  "message": "导入设置"
+ },
+ "exported": {
+  "message": "已导出。"
+ },
+ "imported": {
+  "message": "已导入 — 正在重新加载…"
+ },
+ "importFailed": {
+  "message": "导入失败：{0}"
+ },
+ "notSettingsFile": {
+  "message": "不是 OLED True Black 的设置文件"
+ },
+ "pageAppearance": {
+  "message": "外观"
+ },
+ "pageExtensions": {
+  "message": "扩展程序 / 加载已解压的"
+ },
+ "pageAddons": {
+  "message": "附加组件"
+ },
+ "pageShortcuts": {
+  "message": "键盘快捷键"
+ },
+ "pageShortcutsFx": {
+  "message": "快捷键（齿轮菜单 → 管理）"
+ },
+ "pageFlag": {
+  "message": "标志：Auto Dark Mode"
+ },
+ "copied": {
+  "message": "已复制：{0} — 请粘贴到地址栏。"
+ },
+ "limits": {
+  "message": "在浏览器内部页面、内置 PDF 查看器、扩展商店和侧边栏中无效。对于本地文件，请在扩展详情中开启“允许访问文件网址”。"
+ },
+ "pvTitle": {
+  "message": "实时预览"
+ },
+ "pvBefore": {
+  "message": "原始网站"
+ },
+ "pvAfter": {
+  "message": "启用 OLED True Black 后"
+ },
+ "pvPixels": {
+  "message": "熄灭的像素：{0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "示例页面 — 实际网站会有差异。将鼠标悬停在面板上可查看其颜色。"
+ }
+}

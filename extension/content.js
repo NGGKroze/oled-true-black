@@ -8,21 +8,18 @@
   const GATTR = "data-oled-glow";
   const MEDIA = new Set(["CANVAS", "VIDEO", "IMG"]);
   const SKIPATTR = "data-oled-skip";
-  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR, GATTR];
-  const DEFAULTS = {
-    enabled: true, threshold: 72, tolerance: 24, borders: false, disabledSites: [], sites: {},
-    // experimental
-    expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false, expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85, hideGlow: true,
-  };
+  const TATTR = "data-oled-txt";
+  const MARKS = [ATTR, BATTR, EATTR, OATTR, PATTR, GATTR, TATTR];
+  const DEFAULTS = OLED.DEFAULTS; // core.js
   const SKIP = new Set(["SCRIPT", "STYLE", "LINK", "META", "HEAD", "TITLE", "IMG", "VIDEO", "CANVAS", "IFRAME", "NOSCRIPT", "SOURCE", "PATH"]);
   const OBS = { childList: true, subtree: true, attributes: true, attributeOldValue: true, attributeFilter: ["class", "style"] };
-  const BATCH = 250;
+  const batchSize = () => (cfg.perfMode ? 80 : 250);
   const SIDES = ["Top", "Right", "Bottom", "Left"];
   const PSEUDOS = [["::before", 16], ["::after", 32]];
 
   let raw = { ...DEFAULTS };
   let cfg = { ...DEFAULTS }; // effective config = global + this site's overrides
-  const recompute = () => { cfg = { ...raw, ...((raw.sites || {})[location.hostname] || {}) }; };
+  const recompute = () => { cfg = OLED.effective(raw, location.hostname); };
 
   let active = false;
   let observer = null;
@@ -32,7 +29,10 @@
   const styles = new Map(); // root (document or shadowRoot) -> <style>
   const orig = new WeakMap(); // element -> its original opaque background colour, or false if it had none
 
-  const shouldRun = () => cfg.enabled && !cfg.disabledSites.includes(location.hostname);
+  const shouldRun = () => raw.enabled && OLED.siteMode(raw, location.hostname) !== "off" && OLED.inSchedule(raw);
+
+  // time spent by this script on this page (shown in the popup)
+  const perf = { ms: 0, checked: 0 };
 
   // Each selector gets :not(#oled-x):not(#oled-x) (= 2 IDs of specificity), so site rules such as
   // html[dark]{background:#0f0f0f !important} can no longer override our !important black.
@@ -56,8 +56,14 @@
       const k = cfg.overlayStrength / 100;
       for (let n = 1; n <= 50; n++) css += `[${OATTR}="${n}"]${B}{background-color:rgba(255,255,255,${((n / 100) * k).toFixed(3)}) !important;}`;
     }
-    if (cfg.expDim) {
-      css += `:is(img,video,picture,svg image)${B}{filter:brightness(${cfg.dimLevel / 100}) !important;}`;
+    // filters stay off while an element is being re-read (RATTR), so a site's own filter (e.g. a blurred glow) stays visible to the detector
+    const dim = cfg.expDim ? `brightness(${cfg.dimLevel / 100})` : "";
+    if (dim) css += `:is(img,picture,svg image)${B}:not([${RATTR}]){filter:${dim} !important;}`;
+    const vf = [cfg.expVideo ? OLED.crushFilter(cfg.crushLevel) : "", dim].filter(Boolean).join(" ");
+    if (vf) css += `video${B}:not([${RATTR}]){filter:${vf} !important;}`;
+    if (cfg.expText) {
+      const k = Math.round(cfg.textCap * 2.55);
+      css += `[${TATTR}]${B}{color:rgb(${k},${k},${k}) !important;}`;
     }
     return css;
   }
@@ -103,20 +109,10 @@
   }
 
   // Dark and near-neutral enough -> background candidate
-  function isDarkGray(c) {
-    if (!c || c.a < (cfg.expAlpha ? 0.6 : 0.9)) return false; // leave translucent overlays/scrims alone
-    const max = Math.max(c.r, c.g, c.b);
-    const min = Math.min(c.r, c.g, c.b);
-    return max > 0 && max <= cfg.threshold && max - min <= cfg.tolerance;
-  }
+  const isDarkGray = (c) => OLED.isDarkGray(c, cfg); // translucent overlays/scrims are left alone
 
   // Border candidate: judged by how it looks composited over black (so rgba(255,255,255,.1) counts)
-  function isDarkOnBlack(c) {
-    if (!c || c.a === 0) return false;
-    const max = Math.max(c.r, c.g, c.b);
-    const min = Math.min(c.r, c.g, c.b);
-    return max * c.a > 0 && max * c.a <= cfg.threshold && max - min <= cfg.tolerance;
-  }
+  const isDarkOnBlack = (c) => OLED.isDarkOnBlack(c, cfg);
 
   function darkScheme(cs) {
     const s = cs || "";
@@ -183,6 +179,13 @@
     return w >= 200 && h >= 150 && w / el.width >= 4 && h / el.height >= 4;
   }
 
+  const TEXT_TAGS = new Set(["INPUT", "TEXTAREA", "SELECT", "BUTTON"]);
+  function hasOwnText(el) {
+    if (TEXT_TAGS.has(el.tagName)) return true;
+    for (let n = el.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) return true;
+    return false;
+  }
+
   // --- decision for a single element (read-only): bit 1 = background, 2 = border, 4 = edge outline ----
   function decide(el) {
     const cs = getComputedStyle(el);
@@ -221,6 +224,15 @@
       }
     }
 
+    // experimental: cap near-white text a little below pure white (less glare/halation)
+    if (cfg.expText && hasOwnText(el)) {
+      const tc = parseColor(cs.color);
+      if (tc && tc.a >= 0.9) {
+        const lo = Math.min(tc.r, tc.g, tc.b);
+        if (lo > Math.round(cfg.textCap * 2.55) && Math.max(tc.r, tc.g, tc.b) - lo <= cfg.tolerance) bits |= 128;
+      }
+    }
+
     // experimental: soften light translucent overlays (e.g. rgba(255,255,255,.1) cards) to a weaker alpha
     if (cfg.expOverlay && c && c.a >= 0.02 && c.a <= 0.5 && Math.min(c.r, c.g, c.b) >= 200 && Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b) <= cfg.tolerance) {
       bits |= 8 | (Math.min(50, Math.round(c.a * 100)) << 8);
@@ -245,6 +257,7 @@
   function flush() {
     scheduled = false;
     if (!active) return;
+    const t0 = performance.now();
 
     // page frameworks sometimes wipe our <style>; put it back
     for (const [root, st] of styles) if (!st.isConnected) attachStyle(root, st);
@@ -253,7 +266,7 @@
     for (const el of queue) {
       queue.delete(el);
       if (el.isConnected && (!SKIP.has(el.tagName) || (cfg.hideGlow && MEDIA.has(el.tagName))) && !el.hasAttribute(SKIPATTR)) batch.push(el);
-      if (batch.length >= BATCH) break;
+      if (batch.length >= batchSize()) break;
     }
 
     // 1) remove old marks so we read the page's real colours (one style recalc per batch).
@@ -263,7 +276,7 @@
     for (const el of batch) {
       let had = false;
       for (const a of MARKS) if (el.hasAttribute(a)) { el.removeAttribute(a); had = true; }
-      if (had) { el.setAttribute(RATTR, ""); reread.push(el); }
+      if (had || (MEDIA.has(el.tagName) && (cfg.expDim || cfg.expVideo))) { el.setAttribute(RATTR, ""); reread.push(el); }
     }
     // 2) read
     const bits = batch.map((el) => (MEDIA.has(el.tagName) ? (isGlow(el, getComputedStyle(el)) || isStretchedCanvas(el) ? 64 : 0) : decide(el)));
@@ -276,6 +289,7 @@
       if (b & 4) el.setAttribute(EATTR, "");
       if (b & 8) el.setAttribute(OATTR, String(b >> 8));
       if (b & 64) el.setAttribute(GATTR, "");
+      if (b & 128) el.setAttribute(TATTR, "");
       if (b & 48) el.setAttribute(PATTR, (b & 16 ? "b " : "") + (b & 32 ? "a" : ""));
       if (el.shadowRoot) shadows.push(el.shadowRoot);
     });
@@ -285,6 +299,8 @@
       for (const el of reread) el.removeAttribute(RATTR);
     }
     shadows.forEach(hookRoot);
+    perf.ms += performance.now() - t0;
+    perf.checked += batch.length;
 
     if (queue.size) schedule();
     else if (!firstPassDone && document.body) {
@@ -373,13 +389,13 @@
     if (host && host.shadowRoot) hookRoot(host.shadowRoot);
   }
 
-  function rescanDocumentSoon() {
+  function rescanDocumentSoon(delay) {
     clearTimeout(deepTimer);
     deepTimer = setTimeout(() => {
       enqueue(document.documentElement, true);
       for (const root of styles.keys()) if (root !== document) root.querySelectorAll("*").forEach((n) => queue.add(n));
       schedule();
-    }, 400);
+    }, delay ?? (cfg.perfMode ? 1500 : 400));
   }
 
   // mousemove listener exists only while the inspector is enabled (zero cost otherwise)
@@ -442,6 +458,7 @@
         const t = m.target;
         // ignore inline-style churn (animations, transforms...) that can't change a background
         if (m.attributeName === "style") {
+          if (cfg.perfMode) continue;
           const old = m.oldValue || "";
           const now = t.getAttribute("style") || "";
           const rel = (s) => s.includes("background") || s.includes("--") || s.includes("border") || s.includes("filter");
@@ -479,12 +496,20 @@
     styles.clear();
   }
 
+  // the schedule is re-checked every minute (only while it is switched on)
+  let schedTimer = 0;
+  function syncSchedule() {
+    if (raw.schedule && !schedTimer) schedTimer = setInterval(() => { if (shouldRun() !== active) apply(); }, 60000);
+    else if (!raw.schedule && schedTimer) { clearInterval(schedTimer); schedTimer = 0; }
+  }
+
   function apply() {
+    syncSchedule();
     if (!shouldRun()) return stop();
     if (active) {
       for (const st of styles.values()) st.textContent = cssText(); // experimental flags change the CSS
       syncInspector();
-      rescanDocumentSoon();
+      rescanDocumentSoon(30); // a settings change should show up at once, even in performance mode
     } else start();
   }
 
@@ -503,7 +528,7 @@
       pseudo += root.querySelectorAll(`[${PATTR}]`).length;
       glow += root.querySelectorAll(`[${GATTR}]`).length;
     }
-    reply({ active, black, pseudo, glow, shadowRoots: Math.max(0, roots - 1) });
+    reply({ active, black, pseudo, glow, shadowRoots: Math.max(0, roots - 1), ms: Math.round(perf.ms), checked: perf.checked, mode: OLED.siteMode(raw, location.hostname) });
   });
 
   chrome.storage.onChanged.addListener((changes, area) => {

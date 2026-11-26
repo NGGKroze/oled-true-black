@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "ページのダークグレーの背景を真っ黒（#000）に変え、OLED の画素をオフにします。"
+ },
+ "tipMaster": {
+  "message": "全体のスイッチ (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "設定の適用先"
+ },
+ "scopeAll": {
+  "message": "すべてのサイト"
+ },
+ "scopeSite": {
+  "message": "このサイトのみ"
+ },
+ "scopeSiteHint": {
+  "message": "{0} 用に設定の個別コピーを保持します。「すべてのサイト」に戻すと削除されます。"
+ },
+ "modeAuto": {
+  "message": "自動"
+ },
+ "modeDeepen": {
+  "message": "黒のみ"
+ },
+ "modeOff": {
+  "message": "オフ"
+ },
+ "modeAutoDesc": {
+  "message": "ダークグレーをすべて変更"
+ },
+ "modeDeepenDesc": {
+  "message": "ほぼ黒だけを真っ黒に"
+ },
+ "modeOffDesc": {
+  "message": "このサイトでは何もしない"
+ },
+ "modeNotListed": {
+  "message": "許可リストにありません"
+ },
+ "notAvailable": {
+  "message": "このページでは利用できません"
+ },
+ "statsLine": {
+  "message": "黒 {0} 箇所 · {1} ms · 検査 {2} 件"
+ },
+ "statsPseudo": {
+  "message": "疑似レイヤー {0}"
+ },
+ "statsGlow": {
+  "message": "グロー {0} 件を非表示"
+ },
+ "statsShadow": {
+  "message": "Web コンポーネント {0}"
+ },
+ "statsReload": {
+  "message": "ページを再読み込みすると有効になります。"
+ },
+ "statsOff": {
+  "message": "このページでは無効です。"
+ },
+ "updateAvail": {
+  "message": "バージョン {0} が利用可能です（現在 {1}）— ダウンロード"
+ },
+ "moreSettings": {
+  "message": "すべての設定とライブプレビュー →"
+ },
+ "reportSite": {
+  "message": "このサイトの問題を報告"
+ },
+ "reportTip": {
+  "message": "サイト名・バージョン・設定を入力済みの GitHub issue を開きます。Submit を押すまで何も送信されません。"
+ },
+ "tagExperimental": {
+  "message": "実験的"
+ },
+ "tagAllSites": {
+  "message": "全サイト"
+ },
+ "tagAllSitesTip": {
+  "message": "この設定は全体共通で、サイトごとに変えられません。"
+ },
+ "off": {
+  "message": "オフ"
+ },
+ "unitMin": {
+  "message": "分"
+ },
+ "unitSec": {
+  "message": "秒"
+ },
+ "secDetection": {
+  "message": "検出"
+ },
+ "secLook": {
+  "message": "見た目と動作"
+ },
+ "secMedia": {
+  "message": "動画・画像・テキスト"
+ },
+ "secExperimental": {
+  "message": "実験的機能"
+ },
+ "secCare": {
+  "message": "焼き付き防止とスケジュール"
+ },
+ "secIdle": {
+  "message": "アイドル保護（焼き付き防止）"
+ },
+ "secSchedule": {
+  "message": "スケジュール"
+ },
+ "secUpdates": {
+  "message": "アップデート"
+ },
+ "secBackup": {
+  "message": "バックアップ"
+ },
+ "presetSoft": {
+  "message": "ソフト"
+ },
+ "presetNormal": {
+  "message": "標準"
+ },
+ "presetAggressive": {
+  "message": "強め"
+ },
+ "h_presets": {
+  "message": "ソフト：ほぼ黒のグレーのみ。標準：一般的なダークモードのサイト（推奨）。強め：明るめのグレーも対象——黒が増え、カード間のコントラストは減ります。"
+ },
+ "l_enabled": {
+  "message": "有効"
+ },
+ "l_threshold": {
+  "message": "黒にする上限"
+ },
+ "h_threshold": {
+  "message": "どこまで明るいグレーを黒にするか。色見本は黒になる最も明るい色です。約 28% で一般的なダークモードに対応、40% 以上は中間のグレーも対象になります。"
+ },
+ "l_tolerance": {
+  "message": "色の許容差"
+ },
+ "h_tolerance": {
+  "message": "暗い色にどこまで色味があってもグレーとみなすか。0% は純粋なグレーのみ、約 9% でやや青・緑がかった暗色も対象、15% を超えると色の強い暗色も黒になります。"
+ },
+ "l_borders": {
+  "message": "枠線も黒に"
+ },
+ "h_borders": {
+  "message": "細いダークグレーの枠線も黒にします。"
+ },
+ "l_pseudo": {
+  "message": "疑似要素の背景"
+ },
+ "h_pseudo": {
+  "message": "見えない ::before / ::after レイヤーが描く背景（カード、区切り線、固定ヘッダー）も対象にします。問題が出た場合のみオフに。"
+ },
+ "l_hideGlow": {
+  "message": "動画背後のぼかしグローを隠す"
+ },
+ "h_hideGlow": {
+  "message": "コンテンツの背後に描かれる動画・画像のぼかしコピー（YouTube のアンビエントモードなど）を消します。"
+ },
+ "l_antiFlash": {
+  "message": "読み込み時のグレーのちらつきを防ぐ"
+ },
+ "h_antiFlash": {
+  "message": "ダークなサイトを記憶し、次回はスキャン完了前に即座に黒く塗ります。"
+ },
+ "l_perfMode": {
+  "message": "パフォーマンスモード"
+ },
+ "h_perfMode": {
+  "message": "重いページ向けの軽量スキャン：疑似レイヤーと枠線は対象外、処理単位を小さくし、インラインスタイルの変化は無視します。ポップアップで ms カウンターを確認できます。"
+ },
+ "l_expDim": {
+  "message": "画像と動画を暗くする"
+ },
+ "h_expDim": {
+  "message": "画像と動画を少し暗くして、明るいサムネイルが黒いページで眩しくならないようにします。"
+ },
+ "l_dimLevel": {
+  "message": "画像の明るさ"
+ },
+ "l_expVideo": {
+  "message": "動画の黒つぶし"
+ },
+ "h_expVideo": {
+  "message": "動画のほぼ黒の画素を真っ黒に寄せ、暗いシーンで画素をオフにします。非 HDR 動画向けで、GPU を少し使います。HDR コンテンツがおかしい場合はオフに。"
+ },
+ "l_crushLevel": {
+  "message": "黒つぶしの強さ"
+ },
+ "l_expText": {
+  "message": "明るい文字を和らげる"
+ },
+ "h_expText": {
+  "message": "ほぼ白の文字を純白より少し下に抑え、黒背景でのまぶしさやハレーションを減らします。"
+ },
+ "l_textCap": {
+  "message": "文字の最大輝度"
+ },
+ "l_expEdge": {
+  "message": "グレーのパネルに細い輪郭"
+ },
+ "h_expEdge": {
+  "message": "グレーのパネルが背景と区別されていた箇所に細い線を残し、入れ子のパネルも見分けられます。"
+ },
+ "l_edgeLevel": {
+  "message": "輪郭の明るさ"
+ },
+ "l_edgeDelta": {
+  "message": "輪郭を付ける最小コントラスト"
+ },
+ "l_expHover": {
+  "message": "ホバーヒント"
+ },
+ "h_expHover": {
+  "message": "ポインターを合わせると、ボタン・リンク・リスト行がうっすら光ります。"
+ },
+ "l_expAlpha": {
+  "message": "半透明のダークレイヤー"
+ },
+ "h_expAlpha": {
+  "message": "半透明のダークグレー（不透明度 60% 超）も背景として扱います。背後の内容が隠れることがあります。"
+ },
+ "l_expOverlay": {
+  "message": "明るい半透明オーバーレイを弱める"
+ },
+ "h_expOverlay": {
+  "message": "うっすら白いだけのカード（YouTube の説明欄など）は、さらに薄くします。"
+ },
+ "l_overlayStrength": {
+  "message": "オーバーレイの強さ"
+ },
+ "l_expInspector": {
+  "message": "インスペクター（Alt を押しながらマウス移動）"
+ },
+ "h_expInspector": {
+  "message": "ポインター位置のサイト元の色と、黒になるかどうかを表示します。英語のみ。"
+ },
+ "l_expDebug": {
+  "message": "デバッグ：検出領域をえんじ色にする"
+ },
+ "h_expDebug": {
+  "message": "検出された領域を正確に表示します。"
+ },
+ "l_idleCare": {
+  "message": "放置したページを暗くしてから黒に"
+ },
+ "h_idleCare": {
+  "message": "操作のないページはまず暗くなり、その後黒にフェードして、静止要素の焼き付きを防ぎます。入力で復帰し、最初のクリックは復帰のみです。動画再生中やバックグラウンドのタブでは動作しません。"
+ },
+ "l_idleDimMin": {
+  "message": "暗くするまで"
+ },
+ "l_idleBlackMin": {
+  "message": "黒にするまで"
+ },
+ "l_idleDimLevel": {
+  "message": "暗くする強さ"
+ },
+ "l_cursorHideSec": {
+  "message": "カーソルを隠すまで"
+ },
+ "l_schedule": {
+  "message": "特定の時間帯のみ動作"
+ },
+ "h_schedule": {
+  "message": "選択した時間帯以外は何もしません（アイドル保護も停止）。"
+ },
+ "l_schedFrom": {
+  "message": "開始"
+ },
+ "l_schedTo": {
+  "message": "終了"
+ },
+ "l_lang": {
+  "message": "言語"
+ },
+ "h_lang": {
+  "message": "言語名はそれぞれの言語で表示されます。GitHub での修正提案を歓迎します。"
+ },
+ "langAuto": {
+  "message": "自動（ブラウザーの言語）"
+ },
+ "l_updateCheck": {
+  "message": "GitHub で新バージョンを確認（1 日 1 回）"
+ },
+ "h_updateCheck": {
+  "message": "取得するのはバージョン番号のみで、あなたの情報は送信されません。インストールは手動のままです。ブラウザーは展開済み拡張機能の自己置換を許可しません。"
+ },
+ "tabGeneral": {
+  "message": "一般"
+ },
+ "tabDetection": {
+  "message": "検出"
+ },
+ "tabLook": {
+  "message": "見た目と動作"
+ },
+ "tabMedia": {
+  "message": "動画・画像・テキスト"
+ },
+ "tabExperimental": {
+  "message": "実験的機能"
+ },
+ "tabCare": {
+  "message": "焼き付き防止"
+ },
+ "tabSites": {
+  "message": "サイト"
+ },
+ "tabBackup": {
+  "message": "アップデートとバックアップ"
+ },
+ "tabBrowser": {
+  "message": "ブラウザーとテーマ"
+ },
+ "lead_general": {
+  "message": "ダークグレーの背景を真っ黒（#000000）にし、OLED の画素を完全にオフにします。プレビューで設定の効果を確認できます。"
+ },
+ "lead_det": {
+  "message": "どのグレーを「ダークグレー」とみなすか。値は純白に対する割合です（0% = 黒）。"
+ },
+ "lead_look": {
+  "message": "枠線、隠れたレイヤー、ページ読み込みの扱いを設定します。"
+ },
+ "lead_media": {
+  "message": "画像・動画・テキストの任意調整です。すべて実験的機能です。"
+ },
+ "lead_exp": {
+  "message": "すべてのサイトに合うとは限らない追加機能です。"
+ },
+ "lead_care": {
+  "message": "静止画による焼き付きからパネルを守ります。"
+ },
+ "lead_sites": {
+  "message": "拡張機能を動作させる場所と方法です。"
+ },
+ "lead_backup": {
+  "message": "新バージョンの確認と、ブラウザー間での設定の移行ができます。"
+ },
+ "lead_browser": {
+  "message": "拡張機能が色を変えるのは Web ページのみです。ブラウザーの枠は、任意の黒テーマとブラウザー自体の外観設定で変わります。"
+ },
+ "shortcutHint": {
+  "message": "Alt+Shift+B でどこでも切り替え（変更はブラウザーの拡張機能ショートカットページで）。"
+ },
+ "resetAll": {
+  "message": "設定を初期値に戻す"
+ },
+ "forgetSites": {
+  "message": "記憶したサイトを消去"
+ },
+ "forgotten": {
+  "message": "消去しました ✓"
+ },
+ "runOn": {
+  "message": "動作対象"
+ },
+ "scopeEverywhere": {
+  "message": "すべてのサイト（オフにしたものを除く）"
+ },
+ "scopeListed": {
+  "message": "リストにあるサイトのみ"
+ },
+ "listOff": {
+  "message": "オフにしたサイト"
+ },
+ "listOffHint": {
+  "message": "これらのサイト（サブドメイン含む）では何もしません。"
+ },
+ "listAllow": {
+  "message": "許可するサイト"
+ },
+ "listAllowHint": {
+  "message": "「動作対象」がリストのサイトのみのときに使われます。"
+ },
+ "listDeepen": {
+  "message": "黒のみ"
+ },
+ "listDeepenHint": {
+  "message": "ここではほぼ黒だけを真っ黒にし、他は変更しません。"
+ },
+ "listOwn": {
+  "message": "個別設定"
+ },
+ "listOwnHint": {
+  "message": "設定の個別コピーを持つサイトです。ツールバーのポップアップから作成できます。"
+ },
+ "add": {
+  "message": "追加"
+ },
+ "remove": {
+  "message": "削除"
+ },
+ "none": {
+  "message": "— なし —"
+ },
+ "checkNow": {
+  "message": "今すぐ確認"
+ },
+ "checking": {
+  "message": "確認中…"
+ },
+ "updFailed": {
+  "message": "前回の確認に失敗: {0}"
+ },
+ "updNever": {
+  "message": "現在 {0}。未確認です。"
+ },
+ "updOk": {
+  "message": "現在 {0} — 最新です（確認: {1}）。"
+ },
+ "updNew": {
+  "message": "バージョン {0} が利用可能です — 現在 {1}（確認: {2}）。"
+ },
+ "backupHint": {
+  "message": "サイトリストを含むすべての設定をファイルに保存、または別のブラウザーで読み込みます。"
+ },
+ "exportBtn": {
+  "message": "設定をエクスポート"
+ },
+ "importBtn": {
+  "message": "設定をインポート"
+ },
+ "exported": {
+  "message": "エクスポートしました。"
+ },
+ "imported": {
+  "message": "インポートしました — 再読み込み中…"
+ },
+ "importFailed": {
+  "message": "インポート失敗: {0}"
+ },
+ "notSettingsFile": {
+  "message": "OLED True Black の設定ファイルではありません"
+ },
+ "pageAppearance": {
+  "message": "デザイン"
+ },
+ "pageExtensions": {
+  "message": "拡張機能 / パッケージ化されていない拡張機能を読み込む"
+ },
+ "pageAddons": {
+  "message": "アドオン"
+ },
+ "pageShortcuts": {
+  "message": "キーボードショートカット"
+ },
+ "pageShortcutsFx": {
+  "message": "ショートカット（歯車メニュー → 管理）"
+ },
+ "pageFlag": {
+  "message": "フラグ: Auto Dark Mode"
+ },
+ "copied": {
+  "message": "コピーしました: {0} — アドレスバーに貼り付けてください。"
+ },
+ "limits": {
+  "message": "ブラウザー内部ページ、内蔵 PDF ビューアー、拡張機能ストア、サイドバーでは動作しません。ローカルファイルでは、拡張機能の詳細で「ファイルの URL へのアクセスを許可する」を有効にしてください。"
+ },
+ "pvTitle": {
+  "message": "ライブプレビュー"
+ },
+ "pvBefore": {
+  "message": "元のサイト"
+ },
+ "pvAfter": {
+  "message": "OLED True Black 適用後"
+ },
+ "pvPixels": {
+  "message": "オフになった画素: {0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "モックページです。実際のサイトとは異なります。パネルにカーソルを合わせると色を確認できます。"
+ }
+}

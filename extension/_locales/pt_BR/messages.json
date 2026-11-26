@@ -1,0 +1,479 @@
+{
+ "extDesc": {
+  "message": "Transforma fundos cinza-escuros das páginas em preto puro (#000) para desligar os pixels OLED."
+ },
+ "tipMaster": {
+  "message": "Chave geral (Alt+Shift+B)"
+ },
+ "editFor": {
+  "message": "As configurações valem para"
+ },
+ "scopeAll": {
+  "message": "Todos os sites"
+ },
+ "scopeSite": {
+  "message": "Só este site"
+ },
+ "scopeSiteHint": {
+  "message": "Uma cópia separada destas configurações é mantida para {0}. Volte para «Todos os sites» para removê-la."
+ },
+ "modeAuto": {
+  "message": "Auto"
+ },
+ "modeDeepen": {
+  "message": "Só pretos"
+ },
+ "modeOff": {
+  "message": "Off"
+ },
+ "modeAutoDesc": {
+  "message": "Recolore todo cinza escuro"
+ },
+ "modeDeepenDesc": {
+  "message": "Só quase-pretos viram preto puro"
+ },
+ "modeOffDesc": {
+  "message": "Não faz nada neste site"
+ },
+ "modeNotListed": {
+  "message": "Fora da sua lista permitida"
+ },
+ "notAvailable": {
+  "message": "Indisponível nesta página"
+ },
+ "statsLine": {
+  "message": "{0} áreas pretas · {1} ms · {2} verificadas"
+ },
+ "statsPseudo": {
+  "message": "{0} pseudocamadas"
+ },
+ "statsGlow": {
+  "message": "{0} brilhos ocultos"
+ },
+ "statsShadow": {
+  "message": "{0} componentes web"
+ },
+ "statsReload": {
+  "message": "Recarregue a página para ativar."
+ },
+ "statsOff": {
+  "message": "Inativo nesta página."
+ },
+ "updateAvail": {
+  "message": "A versão {0} está disponível (você tem a {1}) — baixar"
+ },
+ "moreSettings": {
+  "message": "Todas as configurações e prévia →"
+ },
+ "reportSite": {
+  "message": "Relatar um problema neste site"
+ },
+ "reportTip": {
+  "message": "Abre uma issue do GitHub preenchida com site, versão e configurações. Nada é enviado até você clicar em Submit."
+ },
+ "tagExperimental": {
+  "message": "experimental"
+ },
+ "tagAllSites": {
+  "message": "todos os sites"
+ },
+ "tagAllSitesTip": {
+  "message": "Esta configuração é global; não pode variar por site."
+ },
+ "off": {
+  "message": "desligado"
+ },
+ "unitMin": {
+  "message": "min"
+ },
+ "unitSec": {
+  "message": "s"
+ },
+ "secDetection": {
+  "message": "Detecção"
+ },
+ "secLook": {
+  "message": "Aparência e comportamento"
+ },
+ "secMedia": {
+  "message": "Vídeo, imagens e texto"
+ },
+ "secExperimental": {
+  "message": "Experimental"
+ },
+ "secCare": {
+  "message": "Proteção contra burn-in e horário"
+ },
+ "secIdle": {
+  "message": "Cuidado em inatividade (anti burn-in)"
+ },
+ "secSchedule": {
+  "message": "Horário"
+ },
+ "secUpdates": {
+  "message": "Atualizações"
+ },
+ "secBackup": {
+  "message": "Backup"
+ },
+ "presetSoft": {
+  "message": "Suave"
+ },
+ "presetNormal": {
+  "message": "Normal"
+ },
+ "presetAggressive": {
+  "message": "Agressivo"
+ },
+ "h_presets": {
+  "message": "Suave: só cinzas quase pretos. Normal: sites escuros típicos (recomendado). Agressivo: também cinzas mais claros — mais preto, menos contraste entre cartões."
+ },
+ "l_enabled": {
+  "message": "Ativado"
+ },
+ "l_threshold": {
+  "message": "Limite de preto"
+ },
+ "h_threshold": {
+  "message": "Quão claro um cinza pode ser e ainda virar preto. A amostra mostra o tom mais claro que vira preto. Cerca de 28% cobre os modos escuros típicos; acima de 40% inclui cinzas médios."
+ },
+ "l_tolerance": {
+  "message": "Tolerância de cor"
+ },
+ "h_tolerance": {
+  "message": "Quão colorido um tom escuro pode ser e ainda contar como cinza. 0% = só cinzas puros; cerca de 9% inclui escuros levemente azulados ou esverdeados; acima de 15% também os bem coloridos."
+ },
+ "l_borders": {
+  "message": "Bordas pretas"
+ },
+ "h_borders": {
+  "message": "Também deixa pretas as linhas finas de borda cinza-escuro."
+ },
+ "l_pseudo": {
+  "message": "Fundos de pseudoelementos"
+ },
+ "h_pseudo": {
+  "message": "Pega fundos desenhados por camadas invisíveis ::before / ::after (cartões, divisores, cabeçalhos fixos). Desative só se algo quebrar."
+ },
+ "l_hideGlow": {
+  "message": "Ocultar o brilho desfocado atrás dos vídeos"
+ },
+ "h_hideGlow": {
+  "message": "Remove cópias desfocadas de um vídeo ou imagem desenhadas atrás do conteúdo, como o modo ambiente do YouTube."
+ },
+ "l_antiFlash": {
+  "message": "Evitar o flash cinza ao carregar"
+ },
+ "h_antiFlash": {
+  "message": "Lembra dos sites escuros e os pinta de preto na hora da próxima vez, antes de a página terminar de ser analisada."
+ },
+ "l_perfMode": {
+  "message": "Modo de desempenho"
+ },
+ "h_perfMode": {
+  "message": "Análise mais leve para páginas pesadas: sem pseudocamadas nem bordas, lotes menores, ignora mudanças de estilo inline. Veja o contador de ms no popup."
+ },
+ "l_expDim": {
+  "message": "Escurecer imagens e vídeo"
+ },
+ "h_expDim": {
+  "message": "Escurece levemente imagens e vídeos para que miniaturas claras não ofusquem na página preta."
+ },
+ "l_dimLevel": {
+  "message": "Brilho das imagens"
+ },
+ "l_expVideo": {
+  "message": "Esmagar pretos do vídeo"
+ },
+ "h_expVideo": {
+  "message": "Empurra pixels quase pretos do vídeo para preto puro, assim cenas escuras desligam pixels. Para vídeo não HDR; usa um pouco de GPU. Desative se conteúdo HDR parecer errado."
+ },
+ "l_crushLevel": {
+  "message": "Nível de esmagamento"
+ },
+ "l_expText": {
+  "message": "Suavizar texto claro"
+ },
+ "h_expText": {
+  "message": "Limita o texto quase branco um pouco abaixo do branco puro para reduzir ofuscamento e halo sobre o preto."
+ },
+ "l_textCap": {
+  "message": "Brilho máximo do texto"
+ },
+ "l_expEdge": {
+  "message": "Contorno fino em painéis cinza"
+ },
+ "h_expEdge": {
+  "message": "Mantém uma linha fina onde um painel cinza se destacava do fundo, para ainda ver painéis aninhados."
+ },
+ "l_edgeLevel": {
+  "message": "Brilho do contorno"
+ },
+ "l_edgeDelta": {
+  "message": "Contraste mínimo para um contorno"
+ },
+ "l_expHover": {
+  "message": "Dica ao passar o mouse"
+ },
+ "h_expHover": {
+  "message": "Botões, links e linhas de lista acendem levemente sob o ponteiro."
+ },
+ "l_expAlpha": {
+  "message": "Camadas escuras translúcidas"
+ },
+ "h_expAlpha": {
+  "message": "Trata como fundo também cinzas escuros semitransparentes (mais de 60% opacos). Pode ocultar conteúdo atrás."
+ },
+ "l_expOverlay": {
+  "message": "Suavizar sobreposições claras translúcidas"
+ },
+ "h_expOverlay": {
+  "message": "Cartões que são só um leve véu branco (ex.: descrição do YouTube) recebem um véu mais fraco."
+ },
+ "l_overlayStrength": {
+  "message": "Intensidade da sobreposição"
+ },
+ "l_expInspector": {
+  "message": "Inspetor (segure Alt + mova o mouse)"
+ },
+ "h_expInspector": {
+  "message": "Mostra as cores originais do site sob o ponteiro e se viram preto. Só em inglês."
+ },
+ "l_expDebug": {
+  "message": "Depuração: pintar de bordô as áreas detectadas"
+ },
+ "h_expDebug": {
+  "message": "Mostra exatamente quais áreas são detectadas."
+ },
+ "l_idleCare": {
+  "message": "Escurecer e depois apagar páginas inativas"
+ },
+ "h_idleCare": {
+  "message": "Uma página parada primeiro escurece, depois some no preto, para que elementos estáticos não queimem. Qualquer entrada a acorda; o primeiro clique só acorda. Nunca durante vídeo ou em abas em segundo plano."
+ },
+ "l_idleDimMin": {
+  "message": "Escurecer após"
+ },
+ "l_idleBlackMin": {
+  "message": "Apagar após"
+ },
+ "l_idleDimLevel": {
+  "message": "Intensidade do escurecimento"
+ },
+ "l_cursorHideSec": {
+  "message": "Ocultar o cursor após"
+ },
+ "l_schedule": {
+  "message": "Executar só em certos horários"
+ },
+ "h_schedule": {
+  "message": "Fora do horário escolhido a extensão não faz nada (e o cuidado em inatividade pausa)."
+ },
+ "l_schedFrom": {
+  "message": "Das"
+ },
+ "l_schedTo": {
+  "message": "Até"
+ },
+ "l_lang": {
+  "message": "Idioma"
+ },
+ "h_lang": {
+  "message": "Os idiomas aparecem na própria língua. Correções são bem-vindas no GitHub."
+ },
+ "langAuto": {
+  "message": "Automático (idioma do navegador)"
+ },
+ "l_updateCheck": {
+  "message": "Verificar novas versões no GitHub (uma vez por dia)"
+ },
+ "h_updateCheck": {
+  "message": "Só o número da versão é baixado; nada sobre você é enviado. A instalação continua manual: navegadores não deixam extensões não empacotadas se substituírem."
+ },
+ "tabGeneral": {
+  "message": "Geral"
+ },
+ "tabDetection": {
+  "message": "Detecção"
+ },
+ "tabLook": {
+  "message": "Aparência e comportamento"
+ },
+ "tabMedia": {
+  "message": "Vídeo, imagens e texto"
+ },
+ "tabExperimental": {
+  "message": "Experimental"
+ },
+ "tabCare": {
+  "message": "Anti burn-in"
+ },
+ "tabSites": {
+  "message": "Sites"
+ },
+ "tabBackup": {
+  "message": "Atualizações e backup"
+ },
+ "tabBrowser": {
+  "message": "Navegador e tema"
+ },
+ "lead_general": {
+  "message": "Transforma fundos cinza-escuros em preto puro (#000000) para desligar totalmente os pixels OLED. A prévia mostra o efeito das configurações."
+ },
+ "lead_det": {
+  "message": "Quais cinzas contam como «cinza-escuro». Os valores são porcentagens do branco total (0% = preto)."
+ },
+ "lead_look": {
+  "message": "Como a extensão trata bordas, camadas ocultas e o carregamento de páginas."
+ },
+ "lead_media": {
+  "message": "Ajustes opcionais para imagens, vídeo e texto. Todos experimentais."
+ },
+ "lead_exp": {
+  "message": "Recursos extras que podem não servir para todos os sites."
+ },
+ "lead_care": {
+  "message": "Protege o painel contra burn-in de imagens estáticas."
+ },
+ "lead_sites": {
+  "message": "Onde e como a extensão funciona."
+ },
+ "lead_backup": {
+  "message": "Verifique novas versões e leve suas configurações entre navegadores."
+ },
+ "lead_browser": {
+  "message": "A extensão só recolore páginas web. A moldura do navegador vem do tema preto opcional e das configurações de aparência do navegador."
+ },
+ "shortcutHint": {
+  "message": "Ligue/desligue em qualquer lugar com Alt+Shift+B (altere na página de atalhos de extensões do navegador)."
+ },
+ "resetAll": {
+  "message": "Restaurar configurações padrão"
+ },
+ "forgetSites": {
+  "message": "Esquecer sites lembrados"
+ },
+ "forgotten": {
+  "message": "Esquecido ✓"
+ },
+ "runOn": {
+  "message": "Executar em"
+ },
+ "scopeEverywhere": {
+  "message": "todos os sites, exceto os que eu desligar"
+ },
+ "scopeListed": {
+  "message": "somente os sites da minha lista"
+ },
+ "listOff": {
+  "message": "Desligados"
+ },
+ "listOffHint": {
+  "message": "A extensão não faz nada nestes sites (nem em seus subdomínios)."
+ },
+ "listAllow": {
+  "message": "Sites permitidos"
+ },
+ "listAllowHint": {
+  "message": "Usado quando «Executar em» está só nos sites da lista."
+ },
+ "listDeepen": {
+  "message": "Só pretos"
+ },
+ "listDeepenHint": {
+  "message": "Aqui só quase-pretos viram preto puro; nenhuma outra mudança."
+ },
+ "listOwn": {
+  "message": "Configurações próprias"
+ },
+ "listOwnHint": {
+  "message": "Sites com cópia própria das configurações. Crie uma pelo popup da barra de ferramentas."
+ },
+ "add": {
+  "message": "Adicionar"
+ },
+ "remove": {
+  "message": "Remover"
+ },
+ "none": {
+  "message": "— nenhum —"
+ },
+ "checkNow": {
+  "message": "Verificar agora"
+ },
+ "checking": {
+  "message": "Verificando…"
+ },
+ "updFailed": {
+  "message": "A última verificação falhou: {0}"
+ },
+ "updNever": {
+  "message": "Você tem a {0}. Ainda não verificado."
+ },
+ "updOk": {
+  "message": "Você tem a {0} — atualizada (verificado {1})."
+ },
+ "updNew": {
+  "message": "A versão {0} está disponível — você tem a {1} (verificado {2})."
+ },
+ "backupHint": {
+  "message": "Salve todas as configurações (com as listas de sites) em um arquivo ou carregue-as em outro navegador."
+ },
+ "exportBtn": {
+  "message": "Exportar configurações"
+ },
+ "importBtn": {
+  "message": "Importar configurações"
+ },
+ "exported": {
+  "message": "Exportado."
+ },
+ "imported": {
+  "message": "Importado — recarregando…"
+ },
+ "importFailed": {
+  "message": "Falha ao importar: {0}"
+ },
+ "notSettingsFile": {
+  "message": "não é um arquivo de configurações do OLED True Black"
+ },
+ "pageAppearance": {
+  "message": "Aparência"
+ },
+ "pageExtensions": {
+  "message": "Extensões / Carregar sem compactação"
+ },
+ "pageAddons": {
+  "message": "Complementos"
+ },
+ "pageShortcuts": {
+  "message": "Atalhos de teclado"
+ },
+ "pageShortcutsFx": {
+  "message": "Atalhos (menu de engrenagem → Gerenciar)"
+ },
+ "pageFlag": {
+  "message": "Flag: Auto Dark Mode"
+ },
+ "copied": {
+  "message": "Copiado: {0} — cole na barra de endereços."
+ },
+ "limits": {
+  "message": "Não funciona em páginas internas do navegador, no leitor de PDF integrado, nas lojas de extensões nem na barra lateral. Para arquivos locais, ative «Permitir acesso a URLs de arquivo» nos detalhes da extensão."
+ },
+ "pvTitle": {
+  "message": "Prévia ao vivo"
+ },
+ "pvBefore": {
+  "message": "Site original"
+ },
+ "pvAfter": {
+  "message": "Com OLED True Black"
+ },
+ "pvPixels": {
+  "message": "Pixels desligados: {0}% → {1}%"
+ },
+ "pvNote": {
+  "message": "Uma página de exemplo — sites reais diferem. Passe o mouse sobre um painel para ver a cor."
+ }
+}
