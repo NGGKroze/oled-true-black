@@ -23,6 +23,7 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
   ![Ambient glow hidden](screenshots/compare-glow.png)
 
 - **No gray flash:** sites that were dark last time are painted black immediately on the next visit.
+- **Idle care (burn-in protection, off by default):** an untouched page first dims, then fades to black. Static logos, menus and text don't sit on the panel for hours. Any input wakes it, and the first click only wakes the page. It never triggers while a video plays (embedded videos included) or in background tabs. It can also hide a parked mouse cursor.
 - **Per-site control:** turn it off for a site, or give a site its own settings.
 - **Optional black browser frame:** a separate theme for the tabs and toolbar.
 - **Quick toggle:** `Alt+Shift+B`.
@@ -50,7 +51,7 @@ All downloads are on the **[latest release](https://github.com/NGGKroze/oled-tru
 
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.11.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-True-Black-v1.11.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.12.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-True-Black-v1.12.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
@@ -61,10 +62,10 @@ After updating the files, click **Reload** on the extension. For local `file://`
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.11.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-True-Black-v1.11.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.12.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-True-Black-v1.12.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.11.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
@@ -80,6 +81,7 @@ All brightness values are a percentage of full white (0% = black, 100% = white).
 | Black borders | off | Also turns thin dark-gray border lines black. |
 | Pseudo-element backgrounds | on | Catches backgrounds drawn with `::before` / `::after`. |
 | Hide blurred glow behind videos | on | Hides large blurred canvas/video/image layers (blur ≥ 8px). The real video is never touched. |
+| Idle care | off | Dim after 2 min, black out after 5 min (0 = stage off), dim strength 60%, hide cursor after N s (0 = off). |
 | Prevent gray flash | on | Remembers dark sites and paints them black before the page has been scanned. |
 
 ## How it works
@@ -143,6 +145,7 @@ extension/
   manifest.json          Manifest V3 (Chromium)
   manifest.firefox.json  Manifest V3 (Firefox: background script, add-on ID)
   content.js        detection + recolouring (isolated world)
+  idle.js           idle dimming / blackout, cursor hiding
   main-world.js     attachShadow patch (page world)
   background.js     keyboard shortcut, OFF badge
   popup.*           toolbar popup

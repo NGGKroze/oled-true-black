@@ -43,6 +43,20 @@
   </div>
   <span class="hint">How colourful a dark shade may be and still count as "gray". 0% = pure grays only. Around 9% (default) also takes slightly blue/green-tinted darks like GitHub's. Above ~15% strongly coloured dark areas (navy, dark green) would be turned black too.</span>
 
+  <h2>Idle care (burn-in protection)</h2>
+  <label class="row">Dim, then black out idle pages <input type="checkbox" data-key="idleCare"></label>
+  <span class="hint">When a page sits untouched, it first dims, then fades fully to black, so static logos, menus and text don't burn into the OLED panel. Any mouse move, key or scroll wakes it instantly; the first click only wakes the page, it doesn't press anything. Never happens while a video is playing (including embedded videos) or in background tabs.</span>
+  <div class="slider"><span class="name">Dim after</span> <span><b id="idleDimMinVal"></b></span>
+    <input type="range" data-key="idleDimMin" data-unit=" min" data-off min="0" max="15"></div>
+  <div class="slider"><span class="name">Black out after</span> <span><b id="idleBlackMinVal"></b></span>
+    <input type="range" data-key="idleBlackMin" data-unit=" min" data-off min="0" max="30"></div>
+  <div class="slider"><span class="name">Dim strength</span> <span><b id="idleDimLevelVal"></b></span>
+    <input type="range" data-key="idleDimLevel" min="20" max="90"></div>
+  <span class="hint">0 min = that stage is off. Dim strength is how much darker the page gets in the first stage.</span>
+  <div class="slider"><span class="name">Hide mouse cursor after</span> <span><b id="cursorHideSecVal"></b></span>
+    <input type="range" data-key="cursorHideSec" data-unit=" s" data-off min="0" max="30"></div>
+  <span class="hint">Hides the cursor when the mouse hasn't moved for this many seconds (works while Idle care is on). A parked cursor is a static bright spot too.</span>
+
   <h2>Experimental</h2>
   <label class="row">Thin outline on gray panels <input type="checkbox" data-key="expEdge"></label>
   <span class="hint">Where a gray panel stood out from what was behind it, a fine line stays — so you can still see where each panel was, including panels inside panels.</span>

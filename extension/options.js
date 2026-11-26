@@ -2,6 +2,7 @@ const DEFAULTS = {
   enabled: true, threshold: 72, tolerance: 24, borders: false, disabledSites: [], sites: {},
   expEdge: false, edgeLevel: 44, edgeDelta: 6, expHover: false, expAlpha: false, expDebug: false, expInspector: false,
   expOverlay: false, overlayStrength: 50, pseudo: true, antiFlash: true, expDim: false, dimLevel: 85, hideGlow: true,
+  idleCare: false, idleDimMin: 2, idleBlackMin: 5, idleDimLevel: 60, cursorHideSec: 0,
 };
 const LISTS = ["disabledSites", "sites"];
 const $ = (id) => document.getElementById(id);
@@ -32,7 +33,7 @@ const show = () => {
     const shown = isPct(el) ? toPct(v) : v;
     el.value = shown;
     const lab = $(key + "Val");
-    if (lab) lab.textContent = shown + "%";
+    if (lab) lab.textContent = el.dataset.off !== undefined && +shown === 0 ? "off" : shown + (el.dataset.unit ?? "%");
     const sw = $(key + "Swatch");
     if (sw) sw.style.background = hexGray(v);
   });
