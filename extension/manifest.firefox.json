@@ -72,7 +72,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "oled-true-black@nggkroze",
+      "id": "oled-true-black-store@nggkroze",
       "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": [
