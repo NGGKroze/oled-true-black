@@ -81,7 +81,7 @@ To update: download the new zip, replace the old `extension` folder with the new
   1. Download **[OLED-True-Black-v1.16.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-True-Black-v1.16.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** **[OLED Black Theme on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/true-oled-black-theme/)** is a separate theme for the tabs, toolbar, menus and sidebar. You can also load [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.16.0/OLED-Black-Theme-firefox.zip) manually.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
