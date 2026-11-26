@@ -82,6 +82,21 @@ chrome.storage.sync.get(DEFAULTS, async (cfg) => {
   stats();
   setInterval(stats, 1500);
 
+  chrome.storage.local.get({ latest: null }, ({ latest }) => {
+    const cur = chrome.runtime.getManifest().version;
+    const num = (v) => String(v).split(".").map((n) => parseInt(n, 10) || 0);
+    const newer = latest && num(latest.version).some((n, i, a) => {
+      const c = num(cur);
+      for (let j = 0; j < Math.max(a.length, c.length); j++) if ((a[j] || 0) !== (c[j] || 0)) return (a[j] || 0) > (c[j] || 0);
+      return false;
+    });
+    if (newer) {
+      $("update").textContent = `⬆ Version ${latest.version} is available (you have ${cur}) — download`;
+      $("update").style.display = "block";
+      $("update").onclick = (e) => { e.preventDefault(); chrome.tabs.create({ url: latest.download }); };
+    }
+  });
+
   $("more").onclick = (e) => { e.preventDefault(); chrome.runtime.openOptionsPage(); };
   render();
 });

@@ -24,6 +24,8 @@ The screenshots were taken in Chrome with the extension loaded, on the bundled [
 
 - **No gray flash:** sites that were dark last time are painted black immediately on the next visit.
 - **Idle care (burn-in protection, off by default):** an untouched page first dims, then fades to black. Static logos, menus and text don't sit on the panel for hours. Any input wakes it, and the first click only wakes the page. It never triggers while a video plays (embedded videos included) or in background tabs. It can also hide a parked mouse cursor.
+- **Update notice:** once a day the extension asks GitHub for the latest release. If there's a newer one, the icon shows **NEW** and the popup has a download link. Only the release version is fetched; nothing about you is sent. Turn it off in Settings → Updates. Browsers don't let unpacked extensions replace their own files, so installing the update is still manual.
+- **Backup:** export all settings, including site lists, to a file and import them in another browser.
 - **Per-site control:** turn it off for a site, or give a site its own settings.
 - **Optional black browser frame:** a separate theme for the tabs and toolbar.
 - **Quick toggle:** `Alt+Shift+B`.
@@ -51,21 +53,21 @@ All downloads are on the **[latest release](https://github.com/NGGKroze/oled-tru
 
 ### Edge, Chrome, Brave, Opera, Vivaldi
 
-1. Download **[OLED-True-Black-v1.12.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-True-Black-v1.12.0-chromium.zip)** and unzip it.
+1. Download **[OLED-True-Black-v1.13.0-chromium.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.13.0/OLED-True-Black-v1.13.0-chromium.zip)** and unzip it.
 2. Open `edge://extensions` (or `chrome://extensions`) and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension`** folder.
 4. Optional: repeat step 3 with the **`theme`** folder for a black browser frame. A theme and an extension can't share one package.
 
-After updating the files, click **Reload** on the extension. For local `file://` pages, turn on **Allow access to file URLs** in the extension's details.
+To update: download the new zip, replace the old `extension` folder with the new one, then click **Reload** on the extension. Your settings are kept. For local `file://` pages, turn on **Allow access to file URLs** in the extension's details.
 
 ### Firefox (140 or newer)
 
 - **From Firefox Add-ons:** once the listing is approved, install it from addons.mozilla.org like any other add-on.
 - **Try it now (temporary, removed when Firefox restarts):**
-  1. Download **[OLED-True-Black-v1.12.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-True-Black-v1.12.0-firefox.zip)**.
+  1. Download **[OLED-True-Black-v1.13.0-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.13.0/OLED-True-Black-v1.13.0-firefox.zip)**.
   2. Open `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on…**.
   3. Select the downloaded zip.
-- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.12.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
+- **Black Firefox frame (optional):** [OLED-Black-Theme-firefox.zip](https://github.com/NGGKroze/oled-true-black/releases/download/v1.13.0/OLED-Black-Theme-firefox.zip) is a separate theme for the tabs, toolbar, menus and sidebar.
 
 Regular Firefox only keeps add-ons that Mozilla has signed, which is why the permanent install goes through addons.mozilla.org.
 
@@ -147,9 +149,9 @@ extension/
   content.js        detection + recolouring (isolated world)
   idle.js           idle dimming / blackout, cursor hiding
   main-world.js     attachShadow patch (page world)
-  background.js     keyboard shortcut, OFF badge
+  background.js     keyboard shortcut, OFF / NEW badge, daily update check
   popup.*           toolbar popup
-  options.*         settings page
+  options.*         settings page (options-extra.js: updates + backup)
   newtab.*          black new-tab page
   ui.css, ui.js     shared UI styles and helpers
 theme/

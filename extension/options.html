@@ -103,6 +103,17 @@
 
   <button class="reset" id="reset" title="Restores all sliders and switches above; keeps your site lists.">Reset settings to defaults</button>
 
+  <h2>Updates</h2>
+  <label class="row">Check GitHub for new versions (once a day) <input type="checkbox" id="updateCheck"></label>
+  <span class="hint">Asks GitHub for the latest release. When a newer one exists, the icon shows <b>NEW</b> and the popup gets a download link. Only the version number is fetched — nothing about you is sent. Installing still has to be done by hand: browsers don't let "Load unpacked" extensions replace their own files.</span>
+  <button id="checkNow">Check now</button> <span class="hint" id="updateStatus" style="display:inline"></span>
+
+  <h2>Backup</h2>
+  <span class="hint">Save all settings (including site lists) to a file, or load them in another browser.</span>
+  <button id="export">Export settings</button> <button id="importBtn">Import settings</button>
+  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
+  <span class="hint" id="backupStatus"></span>
+
   <h2 id="browserTitle">Browser</h2>
   <span class="hint">The extension only recolours web pages. The browser's own frame (tabs, toolbar) comes from the optional black theme (a separate package) and the browser's appearance settings.</span>
   <div class="grid">
@@ -120,5 +131,6 @@
 
   <script src="ui.js"></script>
   <script src="options.js"></script>
+  <script src="options-extra.js"></script>
 </body>
 </html>

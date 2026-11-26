@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "OLED True Black",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "description": "Turns dark-gray page backgrounds into true black (#000) so OLED pixels switch off.",
   "permissions": [
     "storage",
     "activeTab",
-    "search"
+    "search",
+    "alarms"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -64,5 +65,8 @@
       },
       "description": "Toggle OLED true black on/off"
     }
-  }
+  },
+  "host_permissions": [
+    "https://api.github.com/*"
+  ]
 }
